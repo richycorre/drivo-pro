@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="es-VE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DRIVO PRO | Academia del Conductor Empresario</title>
+<meta name="description" content="Tu plan de negocios como conductor Yango en Caracas. De conductor reactivo a empresario soberano. Tips, estrategia, finanzas y mentalidad PRO en dolares.">
+<meta name="keywords" content="ganar mas yango caracas, tips conductor yango, academia drivo pro, conductor empresario venezuela, como ganar dolares manejando">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0D0B0C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Academia DRIVO PRO | De Conductor a Empresario">
+<meta property="og:description" content="El plan paso a paso para maximizar tus ingresos en dolares manejando con Yango en Caracas.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_VE">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --obsidiana:#0D0B0C;
+  --obsidiana-2:#171213;
+  --obsidiana-3:#1E1A1B;
+  --cian:#FF3333;
+  --cian-soft:#D81E1E;
+  --amarillo:#FF8A3D;
+  --verde:#22C55E;
+  --azul:#3B82F6;
+  --violeta:#A78BFA;
+  --oro:#F59E0B;
+  --blanco:#F6F2F2;
+  --gris:#9A8E8F;
+  --gris-line:rgba(255,255,255,.09);
+  --radius:18px;
+  --shadow:0 20px 60px rgba(0,0,0,.45);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--obsidiana);
+  color:var(--blanco);
+  overflow-x:hidden;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.bebas{font-family:'Bebas Neue',sans-serif;letter-spacing:.5px;line-height:1}
+.accent{color:var(--cian)}
+.gold{color:var(--oro)}
+.green{color:var(--verde)}
+.container{max-width:1100px;margin:0 auto;padding:0 22px}
+
+/* Atmosphere */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(700px 500px at 85% 0%, rgba(245,158,11,.10), transparent 60%),
+    radial-gradient(600px 400px at 0% 80%, rgba(255,51,51,.08), transparent 55%);
+  pointer-events:none;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 28px;
+  background:rgba(10,14,20,.82);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--gris-line);
+}
+.logo{font-family:'Bebas Neue';font-size:30px;letter-spacing:2px;text-decoration:none;color:var(--blanco)}
+.logo span{color:var(--cian)}
+.logo small{font-size:11px;letter-spacing:3px;color:var(--gris);display:block;margin-top:-6px;font-family:'DM Sans';font-weight:700}
+.nav-cta{
+  background:var(--cian);color:var(--obsidiana);font-weight:700;
+  padding:11px 22px;border-radius:50px;text-decoration:none;font-size:14px;
+  transition:.25s;
+}
+.nav-cta:hover{background:var(--blanco);transform:translateY(-2px)}
+
+/* HERO */
+.hero-academia{
+  min-height:90vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:140px 22px 80px;
+  background:linear-gradient(180deg,rgba(245,158,11,.06) 0%,transparent 50%);
+  position:relative;
+}
+.hero-academia::after{
+  content:"";position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(245,158,11,.3),transparent);
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);
+  color:var(--oro);padding:8px 20px;border-radius:50px;
+  font-size:13px;font-weight:700;letter-spacing:1px;margin-bottom:28px;
+}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--oro);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-academia h1{font-size:clamp(48px,7vw,88px);margin-bottom:20px;line-height:.95}
+.hero-academia h1 .line2{display:block;color:var(--oro)}
+.hero-sub{font-size:20px;color:var(--gris);max-width:640px;margin:0 auto 16px}
+.hero-quote{
+  max-width:560px;margin:28px auto 36px;padding:20px 28px;
+  background:rgba(245,158,11,.06);border-left:4px solid var(--oro);
+  border-radius:0 14px 14px 0;text-align:left;
+  font-style:italic;color:var(--blanco);font-size:16px;
+}
+.hero-quote cite{display:block;margin-top:8px;font-style:normal;font-size:13px;color:var(--oro);font-weight:700}
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-gold{
+  background:linear-gradient(135deg,var(--oro),#FBBF24);color:var(--obsidiana);font-weight:700;font-size:16px;
+  padding:16px 32px;border-radius:50px;text-decoration:none;
+  display:inline-flex;align-items:center;gap:10px;transition:.25s;
+  box-shadow:0 10px 30px rgba(245,158,11,.25);
+}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(245,158,11,.4)}
+.btn-outline{
+  background:transparent;color:var(--blanco);font-weight:700;font-size:16px;
+  padding:16px 30px;border-radius:50px;text-decoration:none;
+  border:1px solid var(--gris-line);transition:.25s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-outline:hover{border-color:var(--oro);color:var(--oro)}
+
+/* SECTIONS */
+.pad{padding:100px 0}
+.sec-head{text-align:center;max-width:700px;margin:0 auto 56px}
+.sec-tag{font-weight:700;letter-spacing:3px;font-size:13px;text-transform:uppercase}
+.sec-tag.red{color:var(--cian)}
+.sec-tag.gold{color:var(--oro)}
+.sec-tag.green{color:var(--verde)}
+.sec-tag.blue{color:var(--azul)}
+.sec-head h2{font-size:clamp(40px,5vw,64px);margin:12px 0}
+.sec-head p{color:var(--gris);font-size:18px}
+
+/* MANIFESTO CARDS */
+.manifesto-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.manifesto-card{
+  background:var(--obsidiana-2);border:1px solid var(--gris-line);
+  border-radius:var(--radius);padding:32px;position:relative;overflow:hidden;
+  transition:.3s;
+}
+.manifesto-card:hover{transform:translateY(-6px);border-color:rgba(245,158,11,.3)}
+.manifesto-card.full{grid-column:1/-1}
+.mc-phase{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 16px;border-radius:50px;font-size:12px;font-weight:700;
+  letter-spacing:1px;margin-bottom:16px;
+}
+.mc-phase.p1{background:rgba(59,130,246,.1);color:var(--azul);border:1px solid rgba(59,130,246,.25)}
+.mc-phase.p2{background:rgba(245,158,11,.1);color:var(--oro);border:1px solid rgba(245,158,11,.25)}
+.mc-phase.p3{background:rgba(34,197,94,.1);color:var(--verde);border:1px solid rgba(34,197,94,.25)}
+.mc-phase.p4{background:rgba(167,139,250,.1);color:var(--violeta);border:1px solid rgba(167,139,250,.25)}
+.manifesto-card h3{font-size:30px;margin-bottom:10px}
+.manifesto-card .mc-months{font-size:14px;color:var(--gris);margin-bottom:16px}
+.manifesto-card p{color:var(--gris);font-size:15px;margin-bottom:16px}
+
+/* ACTION ITEMS */
+.action-list{list-style:none;padding:0}
+.action-item{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:14px;margin-bottom:8px;
+  background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);
+  border-radius:12px;transition:.2s;
+}
+.action-item:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.action-icon{font-size:24px;flex-shrink:0;width:36px;text-align:center}
+.action-item strong{color:var(--blanco);display:block;font-size:15px;margin-bottom:2px}
+.action-item span{color:var(--gris);font-size:13px}
+.action-quote{
+  margin-top:16px;padding:14px 18px;border-radius:12px;
+  background:rgba(245,158,11,.04);border-left:3px solid var(--oro);
+  font-style:italic;font-size:14px;color:var(--oro);
+}
+
+/* PILARES */
+.pilares-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.pilar-card{
+  background:var(--obsidiana-2);border:1px solid var(--gris-line);
+  border-radius:var(--radius);padding:30px;transition:.3s;position:relative;overflow:hidden;
+}
+.pilar-card:hover{transform:translateY(-5px)}
+.pilar-card.pilar-1:hover{border-color:rgba(255,51,51,.4)}
+.pilar-card.pilar-2:hover{border-color:rgba(59,130,246,.4)}
+.pilar-card.pilar-3:hover{border-color:rgba(255,51,51,.6)}
+.pilar-card.pilar-4:hover{border-color:rgba(245,158,11,.4)}
+.pilar-num{
+  font-family:'Bebas Neue';font-size:80px;position:absolute;top:-10px;right:16px;
+  opacity:.06;line-height:1;
+}
+.pilar-icon{font-size:36px;margin-bottom:16px}
+.pilar-card h3{font-size:28px;margin-bottom:12px}
+.pilar-card p{color:var(--gris);font-size:14px;margin-bottom:14px}
+
+/* TIPS */
+.tip-list{list-style:none;padding:0}
+.tip-item{
+  display:flex;gap:12px;align-items:flex-start;padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.04);font-size:14px;color:var(--gris);
+}
+.tip-item:last-child{border-bottom:none}
+.tip-item .tip-icon{flex-shrink:0;font-size:18px}
+.tip-item strong{color:var(--blanco)}
+
+/* HONOR CODE */
+.honor-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.honor-card{
+  border-radius:var(--radius);padding:30px;
+}
+.honor-card.good{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2)}
+.honor-card.bad{background:rgba(255,51,51,.06);border:1px solid rgba(255,51,51,.2)}
+.honor-card h3{font-size:28px;margin-bottom:16px}
+.honor-list{list-style:none;padding:0}
+.honor-list li{
+  padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);
+  font-size:14px;color:var(--gris);display:flex;gap:10px;align-items:flex-start;
+}
+.honor-list li:last-child{border-bottom:none}
+.honor-list li strong{color:var(--blanco)}
+
+/* HOURS TABLE */
+.hours-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.hour-card{
+  background:var(--obsidiana-2);border:1px solid var(--gris-line);
+  border-radius:14px;padding:22px;text-align:center;transition:.3s;
+}
+.hour-card:hover{border-color:rgba(245,158,11,.3);transform:translateY(-4px)}
+.hour-card .hc-emoji{font-size:36px;margin-bottom:10px}
+.hour-card .hc-time{font-family:'Bebas Neue';font-size:26px;color:var(--oro)}
+.hour-card .hc-label{font-size:13px;color:var(--gris);margin-top:4px}
+.hour-card .hc-demand{font-size:12px;color:var(--verde);font-weight:700;margin-top:8px}
+
+/* FINANCE CALC */
+.finance-wrap{
+  background:linear-gradient(160deg,var(--obsidiana-2),rgba(17,23,34,.3));
+  border:1px solid var(--gris-line);border-radius:24px;padding:40px;
+  display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+}
+.finance-input label{display:block;font-size:14px;color:var(--gris);margin:18px 0 8px;font-weight:700}
+.finance-input input[type=range]{
+  -webkit-appearance:none;width:100%;height:6px;border-radius:5px;
+  background:var(--gris-line);outline:none;
+}
+.finance-input input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:24px;height:24px;border-radius:50%;
+  background:linear-gradient(135deg,var(--oro),#FBBF24);cursor:pointer;
+  box-shadow:0 0 0 5px rgba(245,158,11,.2);
+}
+.range-row{display:flex;justify-content:space-between;font-size:14px;color:var(--blanco);font-weight:700;margin-top:6px}
+
+.budget-result{background:var(--obsidiana);border:1px solid var(--gris-line);border-radius:20px;padding:30px}
+.budget-bar{
+  height:14px;border-radius:7px;overflow:hidden;display:flex;margin:20px 0 16px;
+}
+.budget-bar .b-fijos{background:var(--cian);width:50%}
+.budget-bar .b-vida{background:var(--oro);width:30%}
+.budget-bar .b-libertad{background:var(--verde);width:20%}
+.budget-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px}
+.budget-row:last-child{border-bottom:none}
+.budget-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+.budget-row span:last-child{font-weight:700;color:var(--blanco);font-family:'Bebas Neue';font-size:22px}
+
+/* CHECKLIST */
+.checklist-card{
+  background:var(--obsidiana-2);border:1px solid var(--gris-line);
+  border-radius:var(--radius);padding:28px;
+}
+.checklist-card h3{font-size:24px;margin-bottom:16px}
+.check-item{
+  display:flex;gap:10px;align-items:center;padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.04);font-size:14px;color:var(--gris);
+}
+.check-item:last-child{border-bottom:none}
+.check-box{
+  width:22px;height:22px;border-radius:6px;flex-shrink:0;
+  border:2px solid var(--gris-line);display:grid;place-items:center;
+  font-size:12px;color:transparent;transition:.2s;cursor:pointer;
+}
+.check-box.checked{background:var(--verde);border-color:var(--verde);color:var(--obsidiana)}
+
+/* CTA FINAL */
+.final-cta{
+  background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(255,51,51,.10));
+  border:2px solid var(--oro);
+  border-radius:30px;padding:64px 40px;text-align:center;position:relative;overflow:hidden;
+}
+.final-cta h2{font-size:clamp(42px,5vw,68px);margin-bottom:14px}
+.final-cta p{font-size:18px;color:var(--gris);margin-bottom:30px;max-width:600px;margin-left:auto;margin-right:auto}
+.final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-red{
+  background:var(--cian);color:var(--blanco);font-weight:700;font-size:16px;
+  padding:16px 36px;border-radius:50px;text-decoration:none;
+  display:inline-flex;align-items:center;gap:10px;transition:.25s;
+}
+.btn-red:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(255,51,51,.4)}
+
+/* FOOTER */
+footer{padding:40px 22px 30px;border-top:1px solid var(--gris-line);margin-top:80px}
+.foot-grid{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+footer .logo{font-size:24px}
+footer p{color:var(--gris);font-size:13px}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .manifesto-grid,.pilares-grid,.honor-grid,.finance-wrap{grid-template-columns:1fr}
+  .hours-grid{grid-template-columns:1fr 1fr}
+  nav{padding:14px 16px}
+}
+@media(max-width:560px){
+  .hours-grid{grid-template-columns:1fr}
+  .hero-ctas{flex-direction:column;align-items:center}
+  .logo small{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">DRIVO<span> PRO</span><small>YANGO &middot; VENEZUELA</small></a>
+  <a href="index.html#registro" class="nav-cta">Registrarme</a>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     HERO — El Manifiesto
+════════════════════════════════════════════════ -->
+<header class="hero-academia">
+  <div>
+    <div class="hero-badge"><span class="dot"></span> ACADEMIA DEL CONDUCTOR EMPRESARIO</div>
+    <h1>DEJA DE HACER VIAJES.<span class="line2">EMPIEZA A CONSTRUIR UN NEGOCIO.</span></h1>
+    <p class="hero-sub">Si te levantas cada manana pensando "a ver si caen viajes", estas operando en modo supervivencia. Aqui te ensenamos a operar en <strong style="color:var(--oro)">modo empresario</strong>.</p>
+    <div class="hero-quote">
+      "La diferencia entre el conductor que gana $30/mes y el que gana $400/mes no es el carro, no es la zona, no es la suerte. Es el <strong>sistema</strong> &mdash; y ahora tienes uno a tu favor."
+      <cite>&mdash; DRIVO PRO</cite>
+    </div>
+    <div class="hero-ctas">
+      <a href="#fases" class="btn-gold">&#x1F4DA; Ver el Plan Completo</a>
+      <a href="#finanzas" class="btn-outline">&#x1F4B0; Calculadora Financiera</a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════
+     LAS 4 FASES — Roadmap del Conductor
+════════════════════════════════════════════════ -->
+<section class="pad" id="fases">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag gold">TU PLAN DE NEGOCIOS</div>
+      <h2>De Conductor Reactivo a <span class="gold">Empresario Soberano</span></h2>
+      <p>Un plan en 4 fases con acciones concretas. Sin teoria vacia &mdash; solo lo que funciona en la calle.</p>
+    </div>
+
+    <div class="manifesto-grid">
+
+      <!-- FASE 1 -->
+      <div class="manifesto-card">
+        <span class="mc-phase p1">&#x1F6E1;&#xFE0F; FASE 1</span>
+        <h3>El Despertar Tecnico</h3>
+        <div class="mc-months">Mes 1&ndash;2 &middot; Construir base indestructible</div>
+        <p>Tu meta NO es ganar mucho todavia. Es <strong style="color:var(--blanco)">entender el sistema y proteger tu cuenta</strong>. Cada decision que tomes aqui te ahorra problemas despues.</p>
+        <ul class="action-list">
+          <li class="action-item"><span class="action-icon">&#x1F6E1;&#xFE0F;</span><div><strong>Blindaje de Cuenta</strong><span>CERO acciones prohibidas. Tu cuenta es tu activo mas valioso. Sin cuenta, no hay negocio.</span></div></li>
+          <li class="action-item"><span class="action-icon">&#x1F4F2;</span><div><strong>Dominio de Yango Pro</strong><span>Dedica 2 horas a aprender cada boton de la app. La app no es tu jefe &mdash; es tu tablero de control.</span></div></li>
+          <li class="action-item"><span class="action-icon">&#x2B50;</span><div><strong>Servicio 5 Estrellas</strong><span>Vehiculo limpio, saludo cordial, ruta correcta. No es amabilidad &mdash; es estrategia para que el algoritmo te priorice.</span></div></li>
+        </ul>
+        <div class="action-quote">"Mi cuenta es mi activo mas valioso. La protejo con integridad."</div>
+      </div>
+
+      <!-- FASE 2 -->
+      <div class="manifesto-card">
+        <span class="mc-phase p2">&#x1F9E0; FASE 2</span>
+        <h3>El Conductor Estrategico</h3>
+        <div class="mc-months">Mes 3&ndash;4 &middot; Dejar de "hacer viajes" y empezar a "fabricar dolares"</div>
+        <p>Ya dominas la app. Ahora a <strong style="color:var(--blanco)">pensar como empresario</strong>: horas pico, zonas calientes, bonos planificados.</p>
+        <ul class="action-list">
+          <li class="action-item"><span class="action-icon">&#x1F9E0;</span><div><strong>Inteligencia de Algoritmo</strong><span>Revisa tu nivel diariamente. Evita cancelaciones. El algoritmo recompensa la consistencia.</span></div></li>
+          <li class="action-item"><span class="action-icon">&#x1F4B0;</span><div><strong>Arquitectura de Bonos</strong><span>Planifica cada semana para cobrar bonos. Aplica la Regla de Oro: si tu meta es 80 viajes, haz 83.</span></div></li>
+          <li class="action-item"><span class="action-icon">&#x1F5FA;&#xFE0F;</span><div><strong>Eficiencia Geoespacial</strong><span>Identifica las zonas calientes de Caracas. Tu meta es maxima ganancia por hora, no por kilometro.</span></div></li>
+        </ul>
+        <div class="action-quote">"Los bonos son parte de mi sueldo. Planifico para cobrarlos, no espero tener suerte."</div>
+      </div>
+
+      <!-- FASE 3 -->
+      <div class="manifesto-card">
+        <span class="mc-phase p3">&#x1F4CA; FASE 3</span>
+        <h3>Gestion de tu Imperio</h3>
+        <div class="mc-months">Mes 5&ndash;6 &middot; Convertir ingresos en patrimonio</div>
+        <p>Ya generas ingresos consistentes en dolares. Ahora a <strong style="color:var(--blanco)">administrarlos como un empresario</strong>, no como alguien que vive al dia.</p>
+        <ul class="action-list">
+          <li class="action-item"><span class="action-icon">&#x1F4CA;</span><div><strong>Presupuesto Soberano 50/30/20</strong><span>50% gastos fijos (gasolina, mantenimiento, comida) / 30% vida personal / 20% fondo de libertad.</span></div></li>
+          <li class="action-item"><span class="action-icon">&#x1F3E6;</span><div><strong>Plan de Salida de Deudas</strong><span>Cada deuda pagada es un grillete menos. El 20% de tu ingreso va a tu Fondo de Libertad.</span></div></li>
+          <li class="action-item"><span class="action-icon">&#x1F4B5;</span><div><strong>Control de Gastos del Vehiculo</strong><span>Registra cada gasto: gasolina, aceite, cauchos, lavado. Saber tus costos reales = saber tu ganancia real.</span></div></li>
+        </ul>
+        <div class="action-quote">"Cada dolar que ahorro es un soldado que pelea por mi libertad."</div>
+      </div>
+
+      <!-- FASE 4 -->
+      <div class="manifesto-card">
+        <span class="mc-phase p4">&#x1F31F; FASE 4</span>
+        <h3>Soberania y Legado</h3>
+        <div class="mc-months">Mes 7+ &middot; Libertad financiera real</div>
+        <p>Ya no solo ganas &mdash; <strong style="color:var(--blanco)">construyes</strong>. Tu vehiculo es un negocio rentable y estas construyendo el futuro de tu familia.</p>
+        <ul class="action-list">
+          <li class="action-item"><span class="action-icon">&#x1F31F;</span><div><strong>Plan de Suenos con Fecha</strong><span>No basta con sonar. Ponle fecha y monto a cada meta: educacion, vivienda, segundo vehiculo.</span></div></li>
+          <li class="action-item"><span class="action-icon">&#x1F4C8;</span><div><strong>Diversificacion</strong><span>Conductor top = credito positivo, reputacion, red. Usa esos activos para crecer mas alla del volante.</span></div></li>
+          <li class="action-item"><span class="action-icon">&#x1F3C6;</span><div><strong>Mentorea a Otros</strong><span>Ayuda a nuevos conductores. El que ensena, aprende dos veces. Y DRIVO PRO reconoce a sus lideres.</span></div></li>
+        </ul>
+        <div class="action-quote">"Estoy construyendo el futuro de mi familia con cada viaje estrategico."</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     LOS 4 PILARES — Operacion Diaria
+════════════════════════════════════════════════ -->
+<section class="pad" style="background:rgba(255,255,255,.015)">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag red">OPERACION DIARIA</div>
+      <h2>Los 4 Pilares del <span class="accent">Conductor PRO</span></h2>
+      <p>Domina estos pilares y transforma tu vehiculo en un negocio de alta rentabilidad.</p>
+    </div>
+
+    <div class="pilares-grid">
+
+      <!-- PILAR 1 -->
+      <div class="pilar-card pilar-1">
+        <div class="pilar-num">01</div>
+        <div class="pilar-icon">&#x2B50;</div>
+        <h3>Mentalidad PRO</h3>
+        <p>Tu calificacion es tu activo mas importante. Una calificacion alta te da prioridad. Una baja te bloquea.</p>
+        <ul class="tip-list">
+          <li class="tip-item"><span class="tip-icon">&#x1F454;</span><strong>Imagen impecable:</strong> Viste adecuadamente. Tu vehiculo es tu oficina movil &mdash; debe brillar.</li>
+          <li class="tip-item"><span class="tip-icon">&#x1F44B;</span><strong>Saludo y despedida:</strong> "Buen dia, bienvenido" y "Gracias por viajar conmigo". Simple, poderoso.</li>
+          <li class="tip-item"><span class="tip-icon">&#x1F4A7;</span><strong>Agua y cargador:</strong> Detalles baratos que generan calificaciones 5 estrellas.</li>
+        </ul>
+      </div>
+
+      <!-- PILAR 2 -->
+      <div class="pilar-card pilar-2">
+        <div class="pilar-num">02</div>
+        <div class="pilar-icon">&#x1F4F1;</div>
+        <h3>Dominio de la App</h3>
+        <p>Cada boton tiene un proposito. Usarlos mal te cuesta dinero.</p>
+        <ul class="tip-list">
+          <li class="tip-item"><span class="tip-icon">&#x1F4CD;</span><strong>"He Llegado":</strong> Solo al estar en el punto EXACTO de recogida. Nunca antes.</li>
+          <li class="tip-item"><span class="tip-icon">&#x1F697;</span><strong>"Iniciar Viaje":</strong> UNICAMENTE cuando el pasajero este a bordo. Jamas con el carro vacio.</li>
+          <li class="tip-item"><span class="tip-icon">&#x26A0;&#xFE0F;</span><strong>&#191;No recibes viajes?</strong> Verifica: GPS en alta precision + saldo positivo + cuenta activa.</li>
+        </ul>
+      </div>
+
+      <!-- PILAR 3 -->
+      <div class="pilar-card pilar-3">
+        <div class="pilar-num">03</div>
+        <div class="pilar-icon">&#x1F6D1;</div>
+        <h3>Lineas Rojas</h3>
+        <p>Estas acciones son fraude. Evitarlas es proteger tu negocio.</p>
+        <ul class="tip-list">
+          <li class="tip-item"><span class="tip-icon">&#x274C;</span><strong>NUNCA</strong> alteres tu ubicacion GPS</li>
+          <li class="tip-item"><span class="tip-icon">&#x274C;</span><strong>NUNCA</strong> crees "viajes fantasma"</li>
+          <li class="tip-item"><span class="tip-icon">&#x274C;</span><strong>NUNCA</strong> compartas tu cuenta con otra persona</li>
+          <li class="tip-item"><span class="tip-icon">&#x274C;</span><strong>NUNCA</strong> pidas al pasajero que cancele el viaje</li>
+          <li class="tip-item"><span class="tip-icon">&#x274C;</span><strong>NUNCA</strong> uses modo avion durante un viaje activo</li>
+        </ul>
+      </div>
+
+      <!-- PILAR 4 -->
+      <div class="pilar-card pilar-4">
+        <div class="pilar-num">04</div>
+        <div class="pilar-icon">&#x1F3AF;</div>
+        <h3>Estrategia de Campeon</h3>
+        <p>La diferencia entre ganar $50 y $100 por semana esta en la estrategia, no en las horas.</p>
+        <ul class="tip-list">
+          <li class="tip-item"><span class="tip-icon">&#x1F4CB;</span><strong>Revisa bonos diariamente:</strong> La seccion de bonificaciones tiene tus metas y geobonos activos.</li>
+          <li class="tip-item"><span class="tip-icon">&#x1F6E1;&#xFE0F;</span><strong>Regla de Oro del Colchon:</strong> Si tu meta es 80 viajes, haz 83. Esos 3 extra son tu seguro.</li>
+          <li class="tip-item"><span class="tip-icon">&#x23F0;</span><strong>Horas pico = dolares pico:</strong> Conectate en franjas de alta demanda (ver abajo).</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     HORAS DE ORO EN CARACAS
+════════════════════════════════════════════════ -->
+<section class="pad">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag gold">INTELIGENCIA DE CALLE</div>
+      <h2>Horas de Oro en <span class="gold">Caracas</span></h2>
+      <p>Datos reales de demanda en la plataforma. Conectate en estas franjas para maximizar tus viajes y tus dolares.</p>
+    </div>
+    <div class="hours-grid">
+      <div class="hour-card">
+        <div class="hc-emoji">&#x1F305;</div>
+        <div class="hc-time">7:00 &mdash; 9:00 AM</div>
+        <div class="hc-label">Hora pico manana</div>
+        <div class="hc-demand">&#x2B06;&#xFE0F; Gente yendo al trabajo</div>
+      </div>
+      <div class="hour-card" style="border-color:rgba(245,158,11,.2)">
+        <div class="hc-emoji">&#x2600;&#xFE0F;</div>
+        <div class="hc-time">12:00 &mdash; 2:00 PM</div>
+        <div class="hc-label">Hora almuerzo</div>
+        <div class="hc-demand">&#x2B06;&#xFE0F; Pico delivery + diligencias</div>
+      </div>
+      <div class="hour-card" style="border-color:rgba(245,158,11,.35);box-shadow:0 0 20px rgba(245,158,11,.08)">
+        <div class="hc-emoji">&#x1F525;</div>
+        <div class="hc-time">4:00 &mdash; 8:00 PM</div>
+        <div class="hc-label">HORA DE ORO</div>
+        <div class="hc-demand">&#x1F525; Maxima demanda del dia</div>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--gris);font-size:13px;margin-top:20px;font-style:italic">* Basado en datos reales de ordenes Yango en Caracas, Mayo 2026. La demanda varia por zona y dia.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CALCULADORA FINANCIERA — Presupuesto Soberano
+════════════════════════════════════════════════ -->
+<section class="pad" id="finanzas" style="background:rgba(255,255,255,.015)">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag green">FINANZAS PERSONALES</div>
+      <h2>Tu Presupuesto <span class="green">Soberano</span></h2>
+      <p>La regla 50/30/20 en dolares. Ingresa lo que ganas y mira como distribuirlo para construir tu libertad financiera.</p>
+    </div>
+    <div class="finance-wrap">
+      <div class="finance-input">
+        <h3 style="font-size:28px;margin-bottom:4px">&#x1F4B5; Calculadora 50/30/20</h3>
+        <p style="color:var(--gris);font-size:14px;margin-bottom:20px">Mueve el slider para ver como distribuir tu ingreso semanal en dolares.</p>
+
+        <label>Tu ingreso semanal en USD</label>
+        <input type="range" id="ingresoSlider" min="10" max="300" value="75" oninput="calcBudget()">
+        <div class="range-row"><span>$10</span><span id="ingresoVal" style="color:var(--oro);font-size:18px">$75 USD/sem</span><span>$300</span></div>
+      </div>
+
+      <div class="budget-result">
+        <p style="font-size:14px;color:var(--gris);text-align:center;margin-bottom:8px">DISTRIBUCION RECOMENDADA</p>
+        <div style="text-align:center;margin-bottom:12px">
+          <span style="font-family:'Bebas Neue';font-size:56px;color:var(--oro)" id="ingresoTotal">$75</span>
+          <span style="font-size:14px;color:var(--gris)"> USD / semana</span>
+        </div>
+        <div class="budget-bar">
+          <div class="b-fijos"></div>
+          <div class="b-vida"></div>
+          <div class="b-libertad"></div>
+        </div>
+        <div class="budget-row">
+          <div style="display:flex;align-items:center;gap:8px"><div class="budget-dot" style="background:var(--cian)"></div><span style="color:var(--gris)">50% &mdash; Gastos Fijos</span></div>
+          <span id="fijosVal">$38</span>
+        </div>
+        <div class="budget-row">
+          <div style="display:flex;align-items:center;gap:8px"><div class="budget-dot" style="background:var(--oro)"></div><span style="color:var(--gris)">30% &mdash; Vida Personal</span></div>
+          <span id="vidaVal">$23</span>
+        </div>
+        <div class="budget-row">
+          <div style="display:flex;align-items:center;gap:8px"><div class="budget-dot" style="background:var(--verde)"></div><span style="color:var(--gris)">20% &mdash; Fondo Libertad</span></div>
+          <span id="libertadVal">$15</span>
+        </div>
+        <p style="font-size:12px;color:var(--gris);margin-top:16px;font-style:italic;text-align:center">Gastos fijos = gasolina, mantenimiento, comida, telefono.<br>Fondo Libertad = ahorros + pago deudas + metas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CODIGO DE HONOR
+════════════════════════════════════════════════ -->
+<section class="pad">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag red">COMPROMISO</div>
+      <h2>El Codigo de Honor <span class="accent">DRIVO PRO</span></h2>
+      <p>Las reglas que separan a los conductores exitosos de los que se estancan.</p>
+    </div>
+    <div class="honor-grid">
+      <div class="honor-card good">
+        <h3 style="color:var(--verde)">&#x2705; Buenas Practicas</h3>
+        <ul class="honor-list">
+          <li><span>&#x1F6E1;&#xFE0F;</span><div><strong>Regla de Oro del Colchon:</strong> Si tu meta es de 80 viajes, haz 83. Ese colchon es tu seguro para blindar el bono.</div></li>
+          <li><span>&#x1F3AF;</span><div><strong>Precision con la app:</strong> "Llegue" SOLO en el punto exacto. "Iniciar Viaje" SOLO con pasajero a bordo. Precision = rentabilidad.</div></li>
+          <li><span>&#x2B50;</span><div><strong>Reputacion digital:</strong> Un nivel alto te da prioridad para los mejores viajes. Cada 5 estrellas cuenta.</div></li>
+          <li><span>&#x1F4B5;</span><div><strong>Balance positivo:</strong> Manten tu saldo en positivo. Saldo negativo = bloqueo temporal = perdida de ingresos.</div></li>
+          <li><span>&#x1F4C5;</span><div><strong>Consistencia diaria:</strong> Mejor 5 horas todos los dias que 12 horas un dia y nada al siguiente.</div></li>
+          <li><span>&#x1F4F1;</span><div><strong>Datos y GPS siempre activos:</strong> Sin GPS, no hay viajes. Sin datos, el sistema no te ve.</div></li>
+        </ul>
+      </div>
+      <div class="honor-card bad">
+        <h3 style="color:var(--cian)">&#x1F6AB; Malas Practicas</h3>
+        <ul class="honor-list">
+          <li><span>&#x274C;</span><div><strong>CERO tolerancia al fraude:</strong> "Viajes fantasma", GPS alterado o cuenta compartida = perdida de bonos y riesgo de suspension permanente.</div></li>
+          <li><span>&#x274C;</span><div><strong>JAMAS modo avion en viaje:</strong> El sistema verifica la ruta por GPS. Sin verificacion, el viaje no cuenta para el bono.</div></li>
+          <li><span>&#x274C;</span><div><strong>NUNCA pidas al pasajero que cancele:</strong> Es falta grave. Mejor asumir una penalizacion que arriesgar la integridad de tu cuenta.</div></li>
+          <li><span>&#x274C;</span><div><strong>NO operes con saldo negativo:</strong> Paga tus comisiones a tiempo. El saldo negativo es la ruta mas rapida al bloqueo.</div></li>
+          <li><span>&#x274C;</span><div><strong>NO rechaces viajes por costumbre:</strong> Cada rechazo baja tu prioridad en el algoritmo. Acepta y ejecuta.</div></li>
+          <li><span>&#x274C;</span><div><strong>NO ignores el mantenimiento:</strong> Un vehiculo descompuesto es un negocio cerrado. Prevenir sale mas barato que reparar.</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CHECKLIST DIARIO
+════════════════════════════════════════════════ -->
+<section class="pad" style="background:rgba(255,255,255,.015)">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag gold">TU CAJA DE HERRAMIENTAS</div>
+      <h2>Checklist del <span class="gold">Conductor Empresario</span></h2>
+      <p>Completa estos pasos cada manana antes de encender el motor. Los mejores conductores son los mas organizados.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+      <div class="checklist-card">
+        <h3>&#x2600;&#xFE0F; Arranque Diario</h3>
+        <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked')">&#x2713;</div>Meta de ganancia del dia definida</div>
+        <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked')">&#x2713;</div>Mentalidad: "Soy un empresario al mando"</div>
+        <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked')">&#x2713;</div>Vehiculo limpio y presentacion impecable</div>
+        <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked')">&#x2713;</div>App Yango actualizada y cuenta activa</div>
+        <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked')">&#x2713;</div>GPS en alta precision activado</div>
+        <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked')">&#x2713;</div>Saldo positivo verificado</div>
+        <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked')">&#x2713;</div>Telefono cargado al 100%</div>
+      </div>
+
+      <div class="checklist-card">
+        <h3>&#x1F4CB; Meta Semanal (ejemplo)</h3>
+        <div class="check-item" style="border-bottom:none;padding:8px 0"><div style="color:var(--gris);font-size:14px;width:100%">
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span>Meta de ingreso:</span><strong style="color:var(--oro)">$75 USD</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span>Ordenes objetivo:</span><strong style="color:var(--blanco)">~21 ordenes</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span>+ Colchon seguridad (15%):</span><strong style="color:var(--blanco)">3 ordenes extra</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span><strong>= TOTAL OBJETIVO:</strong></span><strong style="color:var(--verde)">24 ordenes/sem</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0"><span>Promedio diario (5 dias):</span><strong style="color:var(--blanco)">~5 ordenes/dia</strong></div>
+        </div></div>
+        <p style="font-size:12px;color:var(--gris);margin-top:8px;font-style:italic">Basado en promedio $3.60/orden completada en Caracas (Mayo 2026). A medida que la demanda crece, estos numeros suben.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     YANGO PRO — Asi Funciona la App
+════════════════════════════════════════════════ -->
+<section class="pad">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag blue" style="color:var(--azul)">YANGO PRO</div>
+      <h2>Lo que la App te <span style="color:var(--azul)">Ofrece</span></h2>
+      <p>Yango Pro es tu herramienta de trabajo. Conoce sus beneficios y como sacarle el maximo provecho.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <div style="background:var(--obsidiana-2);border:1px solid var(--gris-line);border-radius:var(--radius);padding:28px;text-align:center;transition:.3s" onmouseover="this.style.borderColor='rgba(59,130,246,.3)';this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='var(--gris-line)';this.style.transform='none'">
+        <div style="font-size:40px;margin-bottom:14px">&#x1F4B0;</div>
+        <h3 style="font-size:24px;margin-bottom:8px">Bonificaciones</h3>
+        <p style="color:var(--gris);font-size:14px">Recibe bonificaciones adicionales semanales por completar cierto numero de viajes. <strong style="color:var(--blanco)">Mas viajes = mas bonos.</strong></p>
+      </div>
+      <div style="background:var(--obsidiana-2);border:1px solid var(--gris-line);border-radius:var(--radius);padding:28px;text-align:center;transition:.3s" onmouseover="this.style.borderColor='rgba(59,130,246,.3)';this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='var(--gris-line)';this.style.transform='none'">
+        <div style="font-size:40px;margin-bottom:14px">&#x26A1;</div>
+        <h3 style="font-size:24px;margin-bottom:8px">Pagos Semanales</h3>
+        <p style="color:var(--gris);font-size:14px">Recibe tu dinero cada semana. <strong style="color:var(--blanco)">Calculado en USD, pagado en bolivares</strong> a tasa BCV vigente.</p>
+      </div>
+      <div style="background:var(--obsidiana-2);border:1px solid var(--gris-line);border-radius:var(--radius);padding:28px;text-align:center;transition:.3s" onmouseover="this.style.borderColor='rgba(59,130,246,.3)';this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='var(--gris-line)';this.style.transform='none'">
+        <div style="font-size:40px;margin-bottom:14px">&#x1F570;&#xFE0F;</div>
+        <h3 style="font-size:24px;margin-bottom:8px">Se tu Propio Jefe</h3>
+        <p style="color:var(--gris);font-size:14px">Conectate cuando quieras. <strong style="color:var(--blanco)">Cero horarios fijos.</strong> Tu decides tu jornada y tus descansos.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(167,139,250,.05));border:1px solid rgba(59,130,246,.2);border-radius:20px;padding:32px">
+      <h3 style="font-size:28px;margin-bottom:20px;text-align:center">&#x1F4F1; Como Empezar en 3 Pasos</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+        <div style="text-align:center">
+          <div style="font-family:'Bebas Neue';font-size:48px;color:var(--azul);opacity:.3;line-height:1">01</div>
+          <h4 style="font-size:20px;margin:8px 0">Descarga Yango Pro</h4>
+          <p style="color:var(--gris);font-size:13px">Disponible en Google Play y App Store. Busca "Yango Pro" y descargala gratis.</p>
+        </div>
+        <div style="text-align:center">
+          <div style="font-family:'Bebas Neue';font-size:48px;color:var(--azul);opacity:.3;line-height:1">02</div>
+          <h4 style="font-size:20px;margin:8px 0">Sube tus Documentos</h4>
+          <p style="color:var(--gris);font-size:13px">Cedula, licencia, documentos del vehiculo y foto. DRIVO PRO te guia en cada paso.</p>
+        </div>
+        <div style="text-align:center">
+          <div style="font-family:'Bebas Neue';font-size:48px;color:var(--azul);opacity:.3;line-height:1">03</div>
+          <h4 style="font-size:20px;margin:8px 0">&#161;A Generar Ingresos!</h4>
+          <p style="color:var(--gris);font-size:13px">Con documentos listos, puedes estar activo en horas. Enciende la app y empieza a recibir viajes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CTA FINAL
+════════════════════════════════════════════════ -->
+<section class="pad">
+  <div class="container">
+    <div class="final-cta">
+      <h2>El Piloto Automatico <span class="gold">se Acabo</span></h2>
+      <p>Ya conoces el plan, los pilares y las herramientas. La diferencia no esta en el carro &mdash; esta en la mentalidad y el socio estrategico que te respalda. Es hora de tomar el volante de tu destino.</p>
+      <div class="final-ctas">
+        <a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20registrarme%20como%20conductor%20en%20Caracas" class="btn-red">&#x1F680; Registrarme en DRIVO PRO</a>
+        <a href="index.html#calculadora" class="btn-outline">&#x1F4B0; Calcular mis ingresos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <a href="index.html" class="logo">DRIVO<span> PRO</span></a>
+      <p style="margin-top:4px">Empresa hermana de <strong style="color:var(--cian)">ZAZ Conductores</strong></p>
+    </div>
+    <div style="text-align:right">
+      <p><a href="legal.html" style="color:var(--gris);text-decoration:none">Terminos y Condiciones</a> &middot; <a href="legal.html" style="color:var(--gris);text-decoration:none">Politica de Privacidad</a></p>
+      <p style="margin-top:4px">&copy; 2026 DRIVO PRO &middot; Caracas, Venezuela</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20info%20para%20manejar%20en%20Caracas" style="position:fixed;bottom:24px;right:24px;z-index:60;width:62px;height:62px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 24px rgba(37,211,102,.5);text-decoration:none;transition:.25s" aria-label="WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+</a>
+
+<script>
+function calcBudget(){
+  const v = +document.getElementById('ingresoSlider').value;
+  document.getElementById('ingresoVal').textContent = '$' + v + ' USD/sem';
+  document.getElementById('ingresoTotal').textContent = '$' + v;
+  document.getElementById('fijosVal').textContent = '$' + Math.round(v * 0.5);
+  document.getElementById('vidaVal').textContent = '$' + Math.round(v * 0.3);
+  document.getElementById('libertadVal').textContent = '$' + Math.round(v * 0.2);
+  const el = document.getElementById('ingresoSlider');
+  const pct = (el.value - el.min) / (el.max - el.min) * 100;
+  el.style.background = 'linear-gradient(90deg, var(--oro) 0%, var(--oro) '+pct+'%, var(--gris-line) '+pct+'%)';
+}
+calcBudget();
+
+document.querySelectorAll('.check-box').forEach(cb => {
+  cb.addEventListener('click', function(){ this.classList.toggle('checked'); });
+});
+</script>
+</body>
+</html>

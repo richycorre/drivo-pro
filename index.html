@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es-VE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DRIVO PRO | Maneja con Yango en Caracas y Gana en Dolares</title>
+<meta name="description" content="Unete a DRIVO PRO, el socio Yango #1 en Venezuela. La app calcula en dolares y te paga en bolivares. Soporte real, pagos seguros y registro rapido en Caracas.">
+<meta name="keywords" content="conductor yango caracas, manejar yango venezuela, drivo pro, ganar dolares caracas, delivery caracas, registro yango">
+<meta name="robots" content="index, follow">
+<meta name="author" content="DRIVO PRO">
+
+<!-- PWA-like -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0D0B0C">
+
+<!-- Open Graph -->
+<meta property="og:title" content="DRIVO PRO | Maneja con Yango en Caracas">
+<meta property="og:description" content="El socio Yango #1 en Venezuela. Ingresos calculados en USD, pago en bolivares, soporte humano y registro rapido.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_VE">
+<!-- TODO: og:image — subir imagen a GCS gs://zaz-public-assets/drivo/ -->
+<!-- TODO: og:url — agregar cuando haya dominio -->
+
+<!-- Google Tag Manager (REEMPLAZAR GTM-XXXXXXX por container VE cuando se cree) -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+
+<!-- Meta Pixel (REEMPLAZAR PIXEL_ID_VE cuando se cree) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'PIXEL_ID_VE');
+fbq('track', 'PageView');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<style>
+:root{
+  --obsidiana:#0D0B0C;
+  --obsidiana-2:#171213;
+  --cian:#FF3333;
+  --cian-soft:#D81E1E;
+  --amarillo:#FF8A3D;
+  --verde:#22C55E;
+  --blanco:#F6F2F2;
+  --gris:#9A8E8F;
+  --gris-line:rgba(255,255,255,.09);
+  --rojo:#FF3333;
+  --radius:18px;
+  --shadow:0 20px 60px rgba(0,0,0,.45);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--obsidiana);
+  color:var(--blanco);
+  overflow-x:hidden;
+  line-height:1.55;
+}
+h1,h2,h3,.bebas{font-family:'Bebas Neue',sans-serif;letter-spacing:.5px;line-height:.95}
+.container{max-width:1180px;margin:0 auto;padding:0 22px}
+.accent{color:var(--cian)}
+.yellow{color:var(--amarillo)}
+.green{color:var(--verde)}
+section{position:relative}
+
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(800px 500px at 85% -5%, rgba(255,51,51,.18), transparent 60%),
+    radial-gradient(700px 500px at -10% 100%, rgba(255,138,61,.10), transparent 55%);
+  pointer-events:none;
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;opacity:.035;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 28px;
+  background:rgba(10,14,20,.72);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--gris-line);
+}
+.logo{font-family:'Bebas Neue';font-size:30px;letter-spacing:2px}
+.logo span{color:var(--cian)}
+.logo small{font-size:11px;letter-spacing:3px;color:var(--gris);display:block;margin-top:-6px;font-family:'DM Sans';font-weight:700}
+.nav-cta{
+  background:var(--cian);color:var(--obsidiana);font-weight:700;
+  padding:11px 22px;border-radius:50px;text-decoration:none;font-size:14px;
+  transition:.25s;border:none;cursor:pointer;
+}
+.nav-cta:hover{background:var(--blanco);transform:translateY(-2px)}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:120px 0 80px;position:relative;
+}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,51,51,.1);border:1px solid rgba(255,51,51,.3);
+  color:var(--cian);padding:7px 16px;border-radius:50px;
+  font-size:13px;font-weight:700;letter-spacing:.5px;margin-bottom:24px;
+  animation:fadeUp .6s ease both;
+}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:var(--cian);box-shadow:0 0 12px var(--cian);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(54px,7vw,92px);margin-bottom:20px;animation:fadeUp .6s .1s ease both}
+.hero h1 .line2{display:block;color:var(--cian)}
+.hero p.sub{font-size:19px;color:var(--gris);max-width:520px;margin-bottom:32px;animation:fadeUp .6s .2s ease both}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .6s .3s ease both}
+.btn-primary{
+  background:var(--cian);color:var(--obsidiana);font-weight:700;font-size:16px;
+  padding:16px 32px;border-radius:50px;text-decoration:none;
+  display:inline-flex;align-items:center;gap:10px;transition:.25s;border:none;cursor:pointer;
+  box-shadow:0 10px 30px rgba(255,51,51,.3);
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(255,51,51,.45)}
+.btn-ghost{
+  background:transparent;color:var(--blanco);font-weight:700;font-size:16px;
+  padding:16px 30px;border-radius:50px;text-decoration:none;
+  border:1px solid var(--gris-line);transition:.25s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-ghost:hover{border-color:var(--cian);color:var(--cian)}
+
+.hero-stats{display:flex;gap:30px;margin-top:42px;animation:fadeUp .6s .4s ease both}
+.hero-stats .stat .n{font-family:'Bebas Neue';font-size:40px;color:var(--cian)}
+.hero-stats .stat .l{font-size:13px;color:var(--gris);margin-top:-4px}
+
+/* Hero card */
+.hero-card{
+  background:linear-gradient(160deg,var(--obsidiana-2),rgba(17,23,34,.4));
+  border:1px solid var(--gris-line);border-radius:24px;padding:32px;
+  box-shadow:var(--shadow);position:relative;overflow:hidden;
+  animation:fadeUp .7s .3s ease both;
+}
+.hero-card::before{content:"";position:absolute;top:-50%;right:-30%;width:300px;height:300px;background:radial-gradient(circle,rgba(255,51,51,.22),transparent 70%)}
+.hero-card .hc-title{font-size:14px;color:var(--gris);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px}
+.hero-card .hc-amount{font-family:'Bebas Neue';font-size:64px;color:var(--blanco)}
+.hero-card .hc-amount .cur{color:var(--cian);font-size:36px;vertical-align:super}
+.hero-card .hc-row{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid var(--gris-line);font-size:15px}
+.hero-card .hc-row span:last-child{color:var(--cian);font-weight:700}
+.hero-card .hc-grow{
+  margin-top:16px;padding:12px 16px;border-radius:12px;
+  background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);
+  font-size:13px;color:var(--verde);text-align:center;
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECCIONES */
+.sec-head{text-align:center;max-width:680px;margin:0 auto 56px}
+.sec-tag{color:var(--cian);font-weight:700;letter-spacing:3px;font-size:13px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(40px,5vw,64px);margin:12px 0}
+.sec-head p{color:var(--gris);font-size:18px}
+.pad{padding:100px 0}
+
+/* BENEFICIOS */
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.bcard{
+  background:var(--obsidiana-2);border:1px solid var(--gris-line);
+  border-radius:var(--radius);padding:34px 28px;transition:.3s;position:relative;overflow:hidden;
+}
+.bcard:hover{transform:translateY(-6px);border-color:rgba(255,51,51,.4)}
+.bcard .ico{width:56px;height:56px;border-radius:14px;background:rgba(255,51,51,.12);display:grid;place-items:center;font-size:26px;margin-bottom:20px}
+.bcard h3{font-size:26px;margin-bottom:10px}
+.bcard p{color:var(--gris);font-size:15px}
+
+/* CALCULADORA */
+.calc-wrap{
+  background:linear-gradient(160deg,var(--obsidiana-2),rgba(17,23,34,.3));
+  border:1px solid var(--gris-line);border-radius:26px;padding:48px;
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;box-shadow:var(--shadow);
+}
+.calc-controls label{display:block;font-size:14px;color:var(--gris);margin:22px 0 10px;font-weight:700;letter-spacing:.5px}
+.vert-tabs{display:flex;gap:10px;flex-wrap:wrap}
+.vert-tabs button{
+  flex:1;min-width:90px;background:transparent;border:1px solid var(--gris-line);color:var(--gris);
+  padding:12px;border-radius:12px;cursor:pointer;font-family:'DM Sans';font-weight:700;font-size:14px;transition:.25s;
+}
+.vert-tabs button.active{background:var(--cian);color:var(--obsidiana);border-color:var(--cian)}
+input[type=range]{
+  -webkit-appearance:none;width:100%;height:6px;border-radius:5px;
+  background:linear-gradient(90deg,var(--cian) 0%,var(--cian) 50%,var(--gris-line) 50%);outline:none;
+}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--cian);cursor:pointer;box-shadow:0 0 0 5px rgba(255,51,51,.2)}
+.range-val{display:flex;justify-content:space-between;font-size:14px;color:var(--blanco);font-weight:700;margin-top:8px}
+.calc-result{text-align:center;background:var(--obsidiana);border-radius:20px;padding:40px 28px;border:1px solid var(--gris-line)}
+.calc-result .rlabel{color:var(--gris);font-size:14px;letter-spacing:2px;text-transform:uppercase}
+.calc-result .ramount{font-family:'Bebas Neue';font-size:84px;color:var(--cian);line-height:1;margin:10px 0}
+.calc-result .ramount .cur{font-size:40px;vertical-align:super;color:var(--blanco)}
+.calc-result .rperiod{color:var(--gris);font-size:15px;margin-bottom:20px}
+.calc-result .breakdown{display:flex;justify-content:space-around;border-top:1px solid var(--gris-line);padding-top:18px;margin-top:8px}
+.calc-result .breakdown div .bn{font-family:'Bebas Neue';font-size:30px;color:var(--blanco)}
+.calc-result .breakdown div .bl{font-size:12px;color:var(--gris)}
+.calc-note{font-size:12px;color:var(--gris);margin-top:18px;font-style:italic}
+.calc-real{margin-top:16px;padding:14px 18px;border-radius:14px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);text-align:left}
+.calc-real .cr-title{font-size:13px;font-weight:700;color:var(--verde);margin-bottom:6px}
+.calc-real .cr-row{display:flex;justify-content:space-between;font-size:13px;color:var(--gris);padding:4px 0}
+.calc-real .cr-row span:last-child{color:var(--blanco);font-weight:700}
+
+/* PASOS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step{text-align:center;position:relative;padding:0 10px}
+.step .num{font-family:'Bebas Neue';font-size:64px;color:var(--cian);opacity:.25;line-height:1}
+.step h3{font-size:22px;margin:8px 0}
+.step p{color:var(--gris);font-size:14px}
+
+/* HORAS PICO */
+.peak-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+.peak-card{background:var(--obsidiana-2);border:1px solid var(--gris-line);border-radius:var(--radius);padding:24px;text-align:center;transition:.3s}
+.peak-card:hover{border-color:rgba(255,138,61,.4);transform:translateY(-4px)}
+.peak-card .pk-icon{font-size:32px;margin-bottom:12px}
+.peak-card .pk-hours{font-family:'Bebas Neue';font-size:28px;color:var(--amarillo)}
+.peak-card .pk-label{font-size:13px;color:var(--gris);margin-top:4px}
+.peak-card .pk-demand{font-size:12px;color:var(--verde);font-weight:700;margin-top:8px}
+
+/* TESTIMONIOS */
+.swiper{padding:10px 4px 50px}
+.tcard{background:var(--obsidiana-2);border:1px solid var(--gris-line);border-radius:var(--radius);padding:30px;height:100%}
+.tcard .stars{color:var(--amarillo);margin-bottom:14px}
+.tcard p{color:var(--blanco);font-size:15px;margin-bottom:20px}
+.tcard .who{display:flex;align-items:center;gap:12px}
+.tcard .who .av{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--cian),var(--cian-soft));display:grid;place-items:center;font-family:'Bebas Neue';font-size:22px;color:var(--obsidiana)}
+.tcard .who .meta b{display:block}
+.tcard .who .meta small{color:var(--gris)}
+.swiper-pagination-bullet{background:var(--gris)}
+.swiper-pagination-bullet-active{background:var(--cian)}
+
+/* CTA FINAL */
+.final-cta{
+  background:linear-gradient(135deg,var(--cian),var(--cian-soft));
+  border-radius:30px;padding:64px 40px;text-align:center;color:var(--obsidiana);position:relative;overflow:hidden;
+}
+.final-cta h2{font-size:clamp(44px,5vw,72px);margin-bottom:14px}
+.final-cta p{font-size:18px;margin-bottom:30px;opacity:.85;font-weight:500}
+.final-cta .btn-dark{background:var(--obsidiana);color:var(--blanco);font-weight:700;padding:18px 42px;border-radius:50px;text-decoration:none;display:inline-block;transition:.25s}
+.final-cta .btn-dark:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--gris-line);padding:20px 0}
+.faq-q{cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Bebas Neue';font-size:24px;letter-spacing:.5px}
+.faq-q .faq-icon{transition:transform .3s;font-size:20px;color:var(--cian)}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--gris);font-size:15px;line-height:1.7}
+.faq-item.open .faq-a{max-height:300px;padding-top:12px}
+
+/* FOOTER */
+footer{padding:50px 0 30px;border-top:1px solid var(--gris-line);margin-top:90px}
+.foot-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+footer .logo{font-size:26px}
+footer p{color:var(--gris);font-size:13px}
+.hermana{color:var(--gris);font-size:12px;margin-top:8px}
+.hermana b{color:var(--cian)}
+
+/* WA FLOAT */
+.wa-float{
+  position:fixed;bottom:24px;right:24px;z-index:60;
+  width:62px;height:62px;border-radius:50%;background:#25D366;
+  display:grid;place-items:center;box-shadow:0 8px 24px rgba(37,211,102,.5);
+  text-decoration:none;transition:.25s;animation:pulse-wa 2.5s infinite;
+}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float svg{width:32px;height:32px;fill:#fff}
+@keyframes pulse-wa{0%{box-shadow:0 8px 24px rgba(37,211,102,.5)}50%{box-shadow:0 8px 24px rgba(37,211,102,.5),0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 8px 24px rgba(37,211,102,.5)}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-grid,.calc-wrap{grid-template-columns:1fr;gap:34px}
+  .benefits,.steps,.peak-grid{grid-template-columns:1fr 1fr}
+  .calc-wrap{padding:30px}
+  nav{padding:14px 18px}
+}
+@media(max-width:560px){
+  .benefits,.steps,.peak-grid{grid-template-columns:1fr}
+  .hero-stats{flex-wrap:wrap;gap:18px}
+  .calc-result .ramount{font-size:64px}
+  .logo small{display:none}
+}
+</style>
+</head>
+<body>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">DRIVO<span> PRO</span><small>YANGO &middot; VENEZUELA</small></div>
+  <a href="#registro" class="nav-cta" onclick="trackCTA('nav')">Quiero Manejar</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge"><span class="dot"></span> SOCIO YANGO #1 EN VENEZUELA</div>
+      <h1>MANEJA EN CARACAS<span class="line2">GANA EN DOLARES</span></h1>
+      <p class="sub">Conviertete en conductor Yango con DRIVO PRO. La app calcula todo en dolares para que tus ingresos no pierdan valor, y te paga en bolivares automaticamente. Tu pones los horarios, nosotros el respaldo.</p>
+      <div class="hero-ctas">
+        <a href="#registro" class="btn-primary" onclick="trackCTA('hero')">Registrarme Gratis &rarr;</a>
+        <a href="#calculadora" class="btn-ghost">Calcular mis ingresos</a>
+        <a href="academia.html" class="btn-ghost">&#x1F4DA; Academia PRO</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="n">USD&rarr;Bs</div><div class="l">Calcula en $, paga en Bs</div></div>
+        <div class="stat"><div class="n">24/7</div><div class="l">Soporte humano</div></div>
+        <div class="stat"><div class="n">0$</div><div class="l">Costo de registro</div></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-title">Conductor top &mdash; semana real</div>
+      <div class="hc-amount"><span class="cur">$</span>100</div>
+      <div class="hc-row"><span>Ordenes completadas / sem</span><span>~18</span></div>
+      <div class="hc-row"><span>Ingreso promedio / orden</span><span>$5.67 USD</span></div>
+      <div class="hc-row"><span>Pago</span><span>USD &rarr; Bs &#x1F1FB;&#x1F1EA;</span></div>
+      <div class="hc-grow">&#x1F4C8; Mercado en crecimiento &mdash; la demanda aumenta cada semana. Mas viajes = mas ingresos.</div>
+    </div>
+  </div>
+</header>
+
+<!-- BENEFICIOS -->
+<section class="pad">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag">POR QUE DRIVO PRO</div>
+      <h2>El respaldo que <span class="accent">ningun conductor solo</span> tiene</h2>
+      <p>No eres un numero. Eres parte de la flota #1. Te damos las herramientas, la tecnologia y el equipo humano para que ganes mas.</p>
+    </div>
+    <div class="benefits">
+      <div class="bcard"><div class="ico">&#x1F4B5;</div><h3>Ingresos en Dolares</h3><p>La app calcula todo en dolares y al pagarte convierte automaticamente a bolivares a la tasa vigente. Cobras en Bs, sin sorpresas.</p></div>
+      <div class="bcard"><div class="ico">&#x1F3A7;</div><h3>Soporte Real 24/7</h3><p>Personas, no robots. Resolvemos bloqueos, dudas y emergencias por WhatsApp al instante.</p></div>
+      <div class="bcard"><div class="ico">&#x26A1;</div><h3>Registro Express</h3><p>Te activamos en Yango rapido y sin vueltas. Manejas esta misma semana.</p></div>
+      <div class="bcard"><div class="ico">&#x1F4C8;</div><h3>Mercado en Crecimiento</h3><p>Yango arranco en Caracas en abril 2026. Los primeros conductores construyen la base &mdash; y ganan reputacion desde el dia uno.</p></div>
+      <div class="bcard"><div class="ico">&#x1F6E1;&#xFE0F;</div><h3>Sin Costos Ocultos</h3><p>Registro gratis. Reglas claras. Lo que ves es lo que hay, siempre.</p></div>
+      <div class="bcard"><div class="ico">&#x1F91D;</div><h3>Comunidad de Flota</h3><p>Eres parte de una red de conductores. Beneficios, acompanamiento y crecimiento real.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HORAS PICO -->
+<section class="pad" style="background:rgba(255,255,255,.015)">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag">HORAS DE ORO EN CARACAS</div>
+      <h2>Cuando hay <span class="accent">mas demanda</span></h2>
+      <p>Datos reales de Caracas. Conectate en estas franjas para maximizar tus viajes.</p>
+    </div>
+    <div class="peak-grid">
+      <div class="peak-card">
+        <div class="pk-icon">&#x1F305;</div>
+        <div class="pk-hours">7:00 &mdash; 9:00 AM</div>
+        <div class="pk-label">Hora pico manana</div>
+        <div class="pk-demand">&#x2B06;&#xFE0F; Alta demanda</div>
+      </div>
+      <div class="peak-card">
+        <div class="pk-icon">&#x2600;&#xFE0F;</div>
+        <div class="pk-hours">12:00 &mdash; 2:00 PM</div>
+        <div class="pk-label">Hora almuerzo</div>
+        <div class="pk-demand">&#x2B06;&#xFE0F; Pico delivery</div>
+      </div>
+      <div class="peak-card">
+        <div class="pk-icon">&#x1F307;</div>
+        <div class="pk-hours">4:00 &mdash; 8:00 PM</div>
+        <div class="pk-label">Hora pico tarde-noche</div>
+        <div class="pk-demand">&#x1F525; Maxima demanda</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULADORA -->
+<section class="pad" id="calculadora">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag">CALCULA TU POTENCIAL</div>
+      <h2>&#191;Cuanto puedes ganar <span class="accent">en dolares</span>?</h2>
+      <p>Estimado basado en datos reales de conductores DRIVO PRO en Caracas. Mayo 2026.</p>
+    </div>
+    <div class="calc-wrap">
+      <div class="calc-controls">
+        <label>&#191;Que vehiculo tienes?</label>
+        <div class="vert-tabs" id="vertTabs">
+          <button class="active" data-rate="2.5" onclick="setVert(this,2.5,'carro')">&#x1F697; Carro &middot; Pasajeros</button>
+          <button data-rate="1.8" onclick="setVert(this,1.8,'moto')">&#x1F3CD;&#xFE0F; Moto &middot; Delivery</button>
+        </div>
+
+        <label>Horas que manejas al dia</label>
+        <input type="range" id="horas" min="2" max="12" value="5" oninput="calc()">
+        <div class="range-val"><span>2 h</span><span id="horasVal">5 horas</span><span>12 h</span></div>
+
+        <label>Dias que trabajas a la semana</label>
+        <input type="range" id="dias" min="1" max="7" value="5" oninput="calc()">
+        <div class="range-val"><span>1 dia</span><span id="diasVal">5 dias</span><span>7 dias</span></div>
+      </div>
+
+      <div class="calc-result">
+        <div class="rlabel">Tu potencial mensual</div>
+        <div class="ramount"><span class="cur">$</span><span id="resultado">0</span></div>
+        <div class="rperiod">USD/mes estimados &middot; se pagan en Bs</div>
+        <div class="breakdown">
+          <div><div class="bn" id="semanal">$0</div><div class="bl">por semana</div></div>
+          <div><div class="bn" id="diario">$0</div><div class="bl">por dia</div></div>
+        </div>
+        <div class="calc-real">
+          <div class="cr-title">&#x1F4CA; Referencia real &mdash; Mayo 2026</div>
+          <div class="cr-row"><span>Top conductor semanal</span><span>$100 USD</span></div>
+          <div class="cr-row"><span>Promedio por orden</span><span>$3.60 USD</span></div>
+          <div class="cr-row"><span>Conductores activos</span><span>124</span></div>
+        </div>
+        <p class="calc-note">*Estimado en USD basado en datos reales de Caracas (Mayo 2026). La app calcula en dolares y convierte automaticamente a bolivares al pagarte. El mercado crece cada semana &mdash; mas pasajeros = mas viajes disponibles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PASOS -->
+<section class="pad">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag">EMPEZAR ES FACIL</div>
+      <h2>De cero a manejando en <span class="accent">4 pasos</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><h3>Registrate</h3><p>Escribenos por WhatsApp con tus datos. Toma menos de 2 minutos.</p></div>
+      <div class="step"><div class="num">02</div><h3>Te contactamos</h3><p>Nuestro equipo te guia con los siguientes pasos.</p></div>
+      <div class="step"><div class="num">03</div><h3>Activacion</h3><p>Te ayudamos a completar tu perfil en la app de Yango.</p></div>
+      <div class="step"><div class="num">04</div><h3>&#161;A ganar!</h3><p>Enciende la app, recibe viajes y empieza a generar ingresos en dolares que llegan a tu bolsillo en bolivares.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="pad" style="background:rgba(255,255,255,.015)">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag">PREGUNTAS FRECUENTES</div>
+      <h2>Lo que todo conductor <span class="accent">quiere saber</span></h2>
+    </div>
+    <div style="max-width:760px;margin:0 auto">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">&#191;Cuanto cuesta registrarse?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Nada. El registro es 100% gratis. No cobramos inscripcion ni cuota mensual. Tu unico compromiso es manejar.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">&#191;Como me pagan?<span class="faq-icon">+</span></div>
+        <div class="faq-a">La app de Yango calcula todo en dolares (USD). Al momento del pago, convierte automaticamente a bolivares a la tasa vigente. Cobras en Bs directamente, sin intermediarios.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">&#191;Necesito carro propio?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Puedes manejar con carro (pasajeros) o moto (delivery). El vehiculo puede ser propio o prestado, siempre que este en buen estado y con documentos al dia.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">&#191;Que documentos necesito?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Cedula vigente, licencia de conducir, documentos del vehiculo (certificado de circulacion) y una foto de perfil. Nuestro equipo te guia paso a paso por WhatsApp.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">&#191;Puedo elegir mis horarios?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Si, tu decides cuando conectarte y cuando parar. No hay horarios fijos ni jornada minima. Recomendamos las horas pico (7-9 AM y 4-8 PM) para mas viajes.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">&#191;Que es DRIVO PRO?<span class="faq-icon">+</span></div>
+        <div class="faq-a">DRIVO PRO es el socio operador #1 de Yango en Venezuela. Somos la empresa que te respalda: soporte 24/7, gestion de flota y acompanamiento para que maximices tus ingresos. Empresa hermana de ZAZ Conductores, el socio #1 de Yango en Colombia.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">&#191;Yango es seguro?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Yango es una plataforma global de movilidad presente en mas de 20 paises. Es subsidiaria de un grupo tecnologico internacional con millones de usuarios. Tu y tus pasajeros estan respaldados.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="pad">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag">CONDUCTORES DRIVO PRO</div>
+      <h2>Lo dicen <span class="accent">los que ya manejan</span></h2>
+    </div>
+    <div class="swiper" id="testiSwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><div class="tcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Lo mejor es el soporte. Tuve un bloqueo y me lo resolvieron el mismo dia por WhatsApp. Con eso me ganaron."</p><div class="who"><div class="av">JM</div><div class="meta"><b>Jose M.</b><small>Caracas &middot; Pasajeros</small></div></div></div></div>
+        <div class="swiper-slide"><div class="tcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Que la app calcule en dolares me da tranquilidad: lo que gano no se desvaloriza. Manejo medio tiempo y me alcanza."</p><div class="who"><div class="av">AR</div><div class="meta"><b>Andrea R.</b><small>Caracas &middot; Delivery</small></div></div></div></div>
+        <div class="swiper-slide"><div class="tcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"El registro fue rapidisimo. En la misma semana ya estaba recibiendo viajes. Recomendado 100%."</p><div class="who"><div class="av">LP</div><div class="meta"><b>Luis P.</b><small>Caracas &middot; Pasajeros</small></div></div></div></div>
+        <div class="swiper-slide"><div class="tcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Me gusta que no me tratan como un numero. Hay un equipo detras que de verdad te acompana."</p><div class="who"><div class="av">CG</div><div class="meta"><b>Carlos G.</b><small>Caracas &middot; Carro</small></div></div></div></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="pad" id="registro">
+  <div class="container">
+    <div class="final-cta">
+      <h2>TU PROXIMO VIAJE EMPIEZA HOY</h2>
+      <p>Unete a la flota Yango #1 de Venezuela. Elige tu vehiculo y registrate gratis, sin compromiso.</p>
+      <div class="final-ctas">
+        <a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20manejar%20en%20CARRO%20%28pasajeros%29%20con%20Yango%20en%20Caracas" class="btn-dark" onclick="trackCTA('registro_carro')">&#x1F697; Registrarme con Carro</a>
+        <a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20manejar%20en%20MOTO%20%28delivery%29%20con%20Yango%20en%20Caracas" class="btn-dark" onclick="trackCTA('registro_moto')">&#x1F3CD;&#xFE0F; Registrarme con Moto</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container foot-grid">
+    <div>
+      <div class="logo">DRIVO<span> PRO</span></div>
+      <p class="hermana">Empresa hermana de <b>ZAZ Conductores</b> &middot; Socio oficial Yango</p>
+    </div>
+    <div style="text-align:right">
+      <p><a href="legal.html" style="color:var(--gris);text-decoration:none;font-size:13px">Terminos y Condiciones</a> &middot; <a href="legal.html" onclick="localStorage.setItem('drivo-tab','privacy')" style="color:var(--gris);text-decoration:none;font-size:13px">Politica de Privacidad</a></p>
+      <p style="margin-top:6px">&copy; 2026 DRIVO PRO &middot; Caracas, Venezuela</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20info%20para%20manejar%20en%20Caracas" class="wa-float" aria-label="WhatsApp" onclick="trackCTA('wa_float')">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+</a>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+let tarifa = 2.5;
+let vertical = 'carro';
+
+function setVert(btn, rate, name){
+  document.querySelectorAll('#vertTabs button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  tarifa = rate; vertical = name;
+  calc();
+}
+
+function fillRange(el){
+  const pct = (el.value - el.min) / (el.max - el.min) * 100;
+  el.style.background = 'linear-gradient(90deg, var(--cian) 0%, var(--cian) '+pct+'%, var(--gris-line) '+pct+'%)';
+}
+
+function calc(){
+  const horas = +document.getElementById('horas').value;
+  const dias  = +document.getElementById('dias').value;
+  document.getElementById('horasVal').textContent = horas + ' horas';
+  document.getElementById('diasVal').textContent  = dias + (dias===1?' dia':' dias');
+  fillRange(document.getElementById('horas'));
+  fillRange(document.getElementById('dias'));
+
+  const diario   = Math.round(horas * tarifa);
+  const semanal  = diario * dias;
+  const mensual  = semanal * 4;
+
+  animateNum('resultado', mensual);
+  document.getElementById('semanal').textContent = '$' + semanal;
+  document.getElementById('diario').textContent  = '$' + diario;
+}
+
+function animateNum(id, target){
+  const el = document.getElementById(id);
+  const start = +el.textContent.replace(/[^0-9]/g,'') || 0;
+  const dur = 500; const t0 = performance.now();
+  function frame(t){
+    const p = Math.min((t - t0)/dur, 1);
+    el.textContent = Math.round(start + (target-start)*p).toLocaleString('en-US');
+    if(p<1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+new Swiper('#testiSwiper', {
+  slidesPerView:1, spaceBetween:20, loop:true,
+  autoplay:{delay:4000}, pagination:{el:'.swiper-pagination',clickable:true},
+  breakpoints:{ 700:{slidesPerView:2}, 1000:{slidesPerView:3} }
+});
+
+function toggleFaq(item){
+  item.classList.toggle('open');
+}
+
+function trackCTA(origen){
+  if(window.dataLayer) window.dataLayer.push({event:'cta_click', cta_origen:origen, vertical:vertical});
+  if(window.fbq) fbq('track','Lead',{content_name:origen});
+}
+
+calc();
+</script>
+</body>
+</html>
