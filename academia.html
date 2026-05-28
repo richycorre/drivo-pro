@@ -16,72 +16,27 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="es_VE">
 
+<link rel="canonical" href="https://richycorre.github.io/drivo-pro/academia.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-system.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Academia DRIVO PRO — De Conductor a Empresario",
+  "description": "El plan paso a paso para maximizar tus ingresos en dólares manejando con Yango en Caracas.",
+  "author": {"@type": "Organization", "name": "DRIVO PRO"},
+  "publisher": {"@type": "Organization", "name": "DRIVO PRO"}
+}
+</script>
 
 <style>
-:root{
-  --obsidiana:#0D0B0C;
-  --obsidiana-2:#171213;
-  --obsidiana-3:#1E1A1B;
-  --cian:#FF3333;
-  --cian-soft:#D81E1E;
-  --amarillo:#FF8A3D;
-  --verde:#22C55E;
-  --azul:#3B82F6;
-  --violeta:#A78BFA;
-  --oro:#F59E0B;
-  --blanco:#F6F2F2;
-  --gris:#9A8E8F;
-  --gris-line:rgba(255,255,255,.09);
-  --radius:18px;
-  --shadow:0 20px 60px rgba(0,0,0,.45);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  font-family:'DM Sans',sans-serif;
-  background:var(--obsidiana);
-  color:var(--blanco);
-  overflow-x:hidden;
-  line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-}
-h1,h2,h3,h4,.bebas{font-family:'Bebas Neue',sans-serif;letter-spacing:.5px;line-height:1}
-.accent{color:var(--cian)}
-.gold{color:var(--oro)}
-.green{color:var(--verde)}
-.container{max-width:1100px;margin:0 auto;padding:0 22px}
-
-/* Atmosphere */
-body::before{
-  content:"";position:fixed;inset:0;z-index:-2;
-  background:
-    radial-gradient(700px 500px at 85% 0%, rgba(245,158,11,.10), transparent 60%),
-    radial-gradient(600px 400px at 0% 80%, rgba(255,51,51,.08), transparent 55%);
-  pointer-events:none;
-}
-
-/* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:50;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:16px 28px;
-  background:rgba(10,14,20,.82);backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--gris-line);
-}
-.logo{font-family:'Bebas Neue';font-size:30px;letter-spacing:2px;text-decoration:none;color:var(--blanco)}
-.logo span{color:var(--cian)}
-.logo small{font-size:11px;letter-spacing:3px;color:var(--gris);display:block;margin-top:-6px;font-family:'DM Sans';font-weight:700}
-.nav-cta{
-  background:var(--cian);color:var(--obsidiana);font-weight:700;
-  padding:11px 22px;border-radius:50px;text-decoration:none;font-size:14px;
-  transition:.25s;
-}
-.nav-cta:hover{background:var(--blanco);transform:translateY(-2px)}
-.nav-link{color:var(--gris);text-decoration:none;font-size:13px;letter-spacing:.5px;transition:color .2s}
-.nav-link:hover{color:var(--blanco)}
+/* ── Page-specific: academia.html ── */
+body{line-height:1.65}
+.container{max-width:1100px}
 
 /* HERO */
 .hero-academia{
@@ -101,7 +56,6 @@ nav{
   font-size:13px;font-weight:700;letter-spacing:1px;margin-bottom:28px;
 }
 .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--oro);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .hero-academia h1{font-size:clamp(48px,7vw,88px);margin-bottom:20px;line-height:.95}
 .hero-academia h1 .line2{display:block;color:var(--oro)}
 .hero-sub{font-size:20px;color:var(--gris);max-width:640px;margin:0 auto 16px}
@@ -113,30 +67,7 @@ nav{
 }
 .hero-quote cite{display:block;margin-top:8px;font-style:normal;font-size:13px;color:var(--oro);font-weight:700}
 .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn-gold{
-  background:linear-gradient(135deg,var(--oro),#FBBF24);color:var(--obsidiana);font-weight:700;font-size:16px;
-  padding:16px 32px;border-radius:50px;text-decoration:none;
-  display:inline-flex;align-items:center;gap:10px;transition:.25s;
-  box-shadow:0 10px 30px rgba(245,158,11,.25);
-}
-.btn-gold:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(245,158,11,.4)}
-.btn-outline{
-  background:transparent;color:var(--blanco);font-weight:700;font-size:16px;
-  padding:16px 30px;border-radius:50px;text-decoration:none;
-  border:1px solid var(--gris-line);transition:.25s;display:inline-flex;align-items:center;gap:8px;
-}
-.btn-outline:hover{border-color:var(--oro);color:var(--oro)}
-
-/* SECTIONS */
-.pad{padding:100px 0}
-.sec-head{text-align:center;max-width:700px;margin:0 auto 56px}
-.sec-tag{font-weight:700;letter-spacing:3px;font-size:13px;text-transform:uppercase}
-.sec-tag.red{color:var(--cian)}
-.sec-tag.gold{color:var(--oro)}
-.sec-tag.green{color:var(--verde)}
-.sec-tag.blue{color:var(--azul)}
-.sec-head h2{font-size:clamp(40px,5vw,64px);margin:12px 0}
-.sec-head p{color:var(--gris);font-size:18px}
+.sec-head{max-width:700px}
 
 /* MANIFESTO CARDS */
 .manifesto-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
@@ -292,30 +223,19 @@ nav{
 .final-cta h2{font-size:clamp(42px,5vw,68px);margin-bottom:14px}
 .final-cta p{font-size:18px;color:var(--gris);margin-bottom:30px;max-width:600px;margin-left:auto;margin-right:auto}
 .final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn-red{
-  background:var(--cian);color:var(--blanco);font-weight:700;font-size:16px;
-  padding:16px 36px;border-radius:50px;text-decoration:none;
-  display:inline-flex;align-items:center;gap:10px;transition:.25s;
-}
-.btn-red:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(255,51,51,.4)}
 
-/* FOOTER */
-footer{padding:40px 22px 30px;border-top:1px solid var(--gris-line);margin-top:80px}
-.foot-grid{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-footer .logo{font-size:24px}
-footer p{color:var(--gris);font-size:13px}
-
-/* RESPONSIVE */
+/* RESPONSIVE — page-specific */
 @media(max-width:900px){
   .manifesto-grid,.pilares-grid,.honor-grid,.finance-wrap{grid-template-columns:1fr}
   .hours-grid{grid-template-columns:1fr 1fr}
-  nav{padding:14px 16px}
 }
 @media(max-width:560px){
   .hours-grid{grid-template-columns:1fr}
   .hero-ctas{flex-direction:column;align-items:center}
-  .logo small{display:none}
-  .hide-mobile{display:none}
+  .final-ctas{flex-direction:column;align-items:center}
+  .checklist-card+.checklist-card{margin-top:0}
+  div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
+  div[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
 }
 </style>
 </head>
@@ -328,7 +248,7 @@ footer p{color:var(--gris);font-size:13px}
     <a href="index.html" class="nav-link hide-mobile">Inicio</a>
     <a href="roadmap.html" class="nav-link hide-mobile">Tu Nivel</a>
     <a href="legal.html" class="nav-link hide-mobile">Legal</a>
-    <a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20manejar%20con%20Yango" class="nav-cta">&#x1F4F2; WhatsApp</a>
+    <a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20manejar%20con%20Yango" rel="noopener noreferrer" class="nav-cta">&#x1F4F2; WhatsApp</a>
   </div>
 </nav>
 
@@ -356,7 +276,7 @@ footer p{color:var(--gris);font-size:13px}
 ════════════════════════════════════════════════ -->
 <section class="pad" id="fases">
   <div class="container">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="sec-tag gold">TU PLAN DE NEGOCIOS</div>
       <h2>De Conductor Reactivo a <span class="gold">Empresario Soberano</span></h2>
       <p>Un plan en 4 fases con acciones concretas. Sin teoria vacia &mdash; solo lo que funciona en la calle.</p>
@@ -429,7 +349,7 @@ footer p{color:var(--gris);font-size:13px}
 ════════════════════════════════════════════════ -->
 <section class="pad" style="background:rgba(255,255,255,.015)">
   <div class="container">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="sec-tag red">OPERACIÓN DIARIA</div>
       <h2>Los 4 Pilares del <span class="accent">Conductor PRO</span></h2>
       <p>Domina estos pilares y transforma tu vehículo en un negocio de alta rentabilidad.</p>
@@ -500,7 +420,7 @@ footer p{color:var(--gris);font-size:13px}
 ════════════════════════════════════════════════ -->
 <section class="pad">
   <div class="container">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="sec-tag gold">INTELIGENCIA DE CALLE</div>
       <h2>Horas de Oro en <span class="gold">Caracas</span></h2>
       <p>Datos reales de demanda en la plataforma. Conéctate en estas franjas para maximizar tus viajes y tus dólares.</p>
@@ -534,7 +454,7 @@ footer p{color:var(--gris);font-size:13px}
 ════════════════════════════════════════════════ -->
 <section class="pad" id="finanzas" style="background:rgba(255,255,255,.015)">
   <div class="container">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="sec-tag green">FINANZAS PERSONALES</div>
       <h2>Tu Presupuesto <span class="green">Soberano</span></h2>
       <p>La regla 50/30/20 en dólares. Ingresa lo que ganas y mira como distribuirlo para construir tu libertad financiera.</p>
@@ -583,7 +503,7 @@ footer p{color:var(--gris);font-size:13px}
 ════════════════════════════════════════════════ -->
 <section class="pad">
   <div class="container">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="sec-tag red">COMPROMISO</div>
       <h2>El Código de Honor <span class="accent">DRIVO PRO</span></h2>
       <p>Las reglas que separan a los conductores exitosos de los que se estancan.</p>
@@ -620,7 +540,7 @@ footer p{color:var(--gris);font-size:13px}
 ════════════════════════════════════════════════ -->
 <section class="pad" style="background:rgba(255,255,255,.015)">
   <div class="container">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="sec-tag gold">TU CAJA DE HERRAMIENTAS</div>
       <h2>Checklist del <span class="gold">Conductor Empresario</span></h2>
       <p>Completa estos pasos cada mañana antes de encender el motor. Los mejores conductores son los más organizados.</p>
@@ -658,7 +578,7 @@ footer p{color:var(--gris);font-size:13px}
 ════════════════════════════════════════════════ -->
 <section class="pad">
   <div class="container">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="sec-tag blue" style="color:var(--azul)">YANGO PRO</div>
       <h2>Lo que la App te <span style="color:var(--azul)">Ofrece</span></h2>
       <p>Yango Pro es tu herramienta de trabajo. Conoce sus beneficios y como sacarle el máximo provecho.</p>
@@ -713,7 +633,7 @@ footer p{color:var(--gris);font-size:13px}
       <h2>El Piloto Automático <span class="gold">se Acabo</span></h2>
       <p>Ya conoces el plan, los pilares y las herramientas. La diferencia no esta en el carro &mdash; esta en la mentalidad y el socio estratégico que te respalda. Es hora de tomar el volante de tu destino.</p>
       <div class="final-ctas">
-        <a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20registrarme%20como%20conductor%20en%20Caracas" class="btn-red">&#x1F680; Registrarme en DRIVO PRO</a>
+        <a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20registrarme%20como%20conductor%20en%20Caracas" rel="noopener noreferrer" class="btn-red">&#x1F680; Registrarme en DRIVO PRO</a>
         <a href="index.html#calculadora" class="btn-outline">&#x1F4B0; Calcular mis ingresos</a>
       </div>
     </div>
@@ -722,21 +642,25 @@ footer p{color:var(--gris);font-size:13px}
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-grid">
+  <div class="container foot-grid">
     <div>
-      <a href="index.html" class="logo">DRIVO<span> PRO</span></a>
-      <p style="margin-top:4px">Empresa hermana de <strong style="color:var(--cian)">ZAZ Conductores</strong></p>
+      <div class="logo">DRIVO<span> PRO</span></div>
+      <p class="hermana">Empresa hermana de <b>ZAZ Conductores</b> &middot; Socio oficial Yango</p>
     </div>
-    <div style="text-align:right">
-      <p><a href="roadmap.html" style="color:var(--gris);text-decoration:none">Tu Nivel</a> &middot; <a href="legal.html" style="color:var(--gris);text-decoration:none">Términos y Condiciones</a> &middot; <a href="legal.html" style="color:var(--gris);text-decoration:none">Política de Privacidad</a></p>
-      <p style="margin-top:4px">&copy; 2026 DRIVO PRO &middot; Caracas, Venezuela</p>
+    <div>
+      <div class="foot-links">
+        <a href="index.html">Inicio</a>
+        <a href="roadmap.html">Tu Nivel</a>
+        <a href="legal.html">Legal</a>
+      </div>
+      <p style="margin-top:6px">&copy; 2026 DRIVO PRO &middot; Caracas, Venezuela</p>
     </div>
   </div>
 </footer>
 
 <!-- WA FLOAT -->
-<a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20info%20para%20manejar%20en%20Caracas" style="position:fixed;bottom:24px;right:24px;z-index:60;width:62px;height:62px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 24px rgba(37,211,102,.5);text-decoration:none;transition:.25s" aria-label="WhatsApp">
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+<a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20info%20para%20manejar%20en%20Caracas" rel="noopener noreferrer" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
 </a>
 
 <script>
@@ -756,6 +680,19 @@ calcBudget();
 document.querySelectorAll('.check-box').forEach(cb => {
   cb.addEventListener('click', function(){ this.classList.toggle('checked'); });
 });
+
+// Scroll Reveal
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); revealObs.unobserve(e.target); }});
+}, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// Nav scroll
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if(window.scrollY > 80) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+}, {passive: true});
 </script>
 </body>
 </html>
