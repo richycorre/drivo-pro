@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DRIVO PRO | Terminos, Condiciones y Politica de Privacidad</title>
-<meta name="description" content="Consulta los Terminos y Condiciones y la Politica de Privacidad de DRIVO PRO Venezuela. Transparencia total sobre tu relacion como conductor independiente.">
+<title>DRIVO PRO | Términos, Condiciones y Política de Privacidad</title>
+<meta name="description" content="Consulta los Términos y Condiciones y la Política de Privacidad de DRIVO PRO Venezuela. Transparencia total sobre tu relación como conductor independiente.">
 <meta name="robots" content="index, follow">
 
 <meta name="theme-color" content="#0D0B0C">
@@ -69,6 +69,8 @@ nav{
   transition:.25s;border:none;cursor:pointer;
 }
 .nav-cta:hover{background:var(--blanco);transform:translateY(-2px)}
+.nav-link{color:var(--gris);text-decoration:none;font-size:13px;letter-spacing:.5px;transition:color .2s}
+.nav-link:hover{color:var(--blanco)}
 
 /* HEADER */
 .legal-header{
@@ -217,6 +219,7 @@ footer p{color:var(--gris);font-size:13px}
   .section-header{flex-direction:column;gap:10px}
   .contact-card{grid-template-columns:1fr}
   .logo small{display:none}
+  .hide-mobile{display:none}
   nav{padding:14px 16px}
 }
 </style>
@@ -226,21 +229,26 @@ footer p{color:var(--gris);font-size:13px}
 <!-- NAV -->
 <nav>
   <a href="index.html" class="logo">DRIVO<span> PRO</span><small>YANGO &middot; VENEZUELA</small></a>
-  <a href="index.html#registro" class="nav-cta">Quiero Manejar</a>
+  <div style="display:flex;gap:16px;align-items:center">
+    <a href="index.html" class="nav-link hide-mobile">Inicio</a>
+    <a href="roadmap.html" class="nav-link hide-mobile">Tu Nivel</a>
+    <a href="academia.html" class="nav-link hide-mobile">Academia</a>
+    <a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20manejar%20con%20Yango" class="nav-cta">&#x1F4F2; WhatsApp</a>
+  </div>
 </nav>
 
 <!-- HEADER -->
 <header class="legal-header">
   <h1>Marco Legal <span class="accent">DRIVO PRO</span></h1>
-  <p>Transparencia y confianza son la base de nuestra alianza. Aqui encuentras todo lo que rige nuestra relacion.</p>
-  <div class="updated">&#x1F4C5; Ultima actualizacion: Mayo 2026</div>
+  <p>Transparencia y confianza son la base de nuestra alianza. Aquí encuentras todo lo que rige nuestra relación.</p>
+  <div class="updated">&#x1F4C5; Última actualización: Mayo 2026</div>
 </header>
 
 <!-- TABS -->
 <div class="tabs-wrap">
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('terms')">Terminos y Condiciones</button>
-    <button class="tab-btn" onclick="switchTab('privacy')">Politica de Privacidad</button>
+    <button class="tab-btn active" onclick="switchTab('terms')">Términos y Condiciones</button>
+    <button class="tab-btn" onclick="switchTab('privacy')">Política de Privacidad</button>
   </div>
 </div>
 
@@ -248,28 +256,28 @@ footer p{color:var(--gris);font-size:13px}
 <div class="legal-content">
 
   <!-- ═══════════════════════════════════════════════
-       TERMINOS Y CONDICIONES
+       TÉRMINOS Y CONDICIONES
   ════════════════════════════════════════════════ -->
   <div id="tab-terms" class="tab-panel active">
 
-    <!-- 1. Naturaleza de la Relacion -->
+    <!-- 1. Naturaleza de la Relación -->
     <div class="legal-section">
       <div class="section-header">
         <div class="section-icon red">&#x1F4DC;</div>
         <div>
           <span class="section-num">ARTICULO 1</span>
-          <h2>Naturaleza de la Relacion</h2>
+          <h2>Naturaleza de la Relación</h2>
         </div>
       </div>
       <ul class="legal-list">
-        <li><strong>DRIVO PRO</strong> es un socio operador autorizado de Yango en Venezuela. Actuamos como intermediarios para facilitar tu vinculacion a la plataforma Yango y brindarte soporte operativo.</li>
-        <li><strong>DRIVO PRO es una empresa de tecnologia.</strong> NO es una empresa de transporte ni funciona como tal. Los servicios de transporte son prestados exclusivamente por conductores independientes, quienes no son empleados de DRIVO PRO ni de Yango.</li>
-        <li><strong>No existe relacion laboral.</strong> Eres un <strong>trabajador no dependiente</strong> conforme al Articulo 36 de la LOTTT. No hay subordinacion, horario fijo ni exclusividad.</li>
+        <li><strong>DRIVO PRO</strong> es un socio operador autorizado de Yango en Venezuela. Actuamos como intermediarios para facilitar tu vinculación a la plataforma Yango y brindarte soporte operativo.</li>
+        <li><strong>DRIVO PRO es una empresa de tecnología.</strong> NO es una empresa de transporte ni funciona como tal. Los servicios de transporte son prestados exclusivamente por conductores independientes, quienes no son empleados de DRIVO PRO ni de Yango.</li>
+        <li><strong>No existe relación laboral.</strong> Eres un <strong>trabajador no dependiente</strong> conforme al Articulo 36 de la LOTTT. No hay subordinacion, horario fijo ni exclusividad.</li>
         <li>Tu decides <strong>cuando conectarte, cuantas horas trabajar y cuando parar</strong>. DRIVO PRO no controla tu jornada ni te impone rutas.</li>
-        <li>DRIVO PRO es empresa hermana de <strong>ZAZ Conductores</strong>, socio operador #1 de Yango en Colombia con mas de 3,000 conductores activos.</li>
+        <li>DRIVO PRO es empresa hermana de <strong>ZAZ Conductores</strong>, socio operador #1 de Yango en Colombia con más de 3,000 conductores activos.</li>
       </ul>
       <div class="highlight-box amber">
-        <p>&#x26A0;&#xFE0F; <strong>Importante:</strong> Conforme a los Articulos 35 y 36 de la LOTTT (Ley Organica del Trabajo, 2012), la relacion de trabajo se define por la subordinacion y dependencia. Al operar con DRIVO PRO, tu operas de forma autonoma, sin subordinacion, y bajo tu propio riesgo comercial.</p>
+        <p>&#x26A0;&#xFE0F; <strong>Importante:</strong> Conforme a los Articulos 35 y 36 de la LOTTT (Ley Organica del Trabajo, 2012), la relación de trabajo se define por la subordinacion y dependencia. Al operar con DRIVO PRO, tu operas de forma autonoma, sin subordinacion, y bajo tu propio riesgo comercial.</p>
       </div>
       <div style="margin-top:12px">
         <span class="law-ref">&#x2696;&#xFE0F; LOTTT Art. 35 — Trabajador dependiente</span>
@@ -287,9 +295,9 @@ footer p{color:var(--gris);font-size:13px}
         </div>
       </div>
       <ul class="legal-list">
-        <li><strong>Documentacion vigente:</strong> Cedula de identidad venezolana, licencia de conducir vigente y documentos del vehiculo (certificado de circulacion, seguro) al dia.</li>
-        <li><strong>Vehiculo en condiciones:</strong> Tu vehiculo debe cumplir con las normas de transito vigentes en Venezuela y estar en condiciones mecanicas adecuadas para operar.</li>
-        <li><strong>Conducta profesional:</strong> Trato respetuoso con pasajeros y usuarios. El incumplimiento puede resultar en la suspension o desvinculacion de la plataforma por parte de Yango.</li>
+        <li><strong>Documentacion vigente:</strong> Cedula de identidad venezolana, licencia de conducir vigente y documentos del vehículo (certificado de circulacion, seguro) al día.</li>
+        <li><strong>Vehículo en condiciones:</strong> Tu vehículo debe cumplir con las normas de transito vigentes en Venezuela y estar en condiciones mecanicas adecuadas para operar.</li>
+        <li><strong>Conducta profesional:</strong> Trato respetuoso con pasajeros y usuarios. El incumplimiento puede resultar en la suspension o desvinculación de la plataforma por parte de Yango.</li>
         <li><strong>Cumplimiento legal:</strong> Eres responsable de cumplir con todas las leyes y regulaciones aplicables en la Republica Bolivariana de Venezuela.</li>
       </ul>
     </div>
@@ -305,7 +313,7 @@ footer p{color:var(--gris);font-size:13px}
       </div>
       <ul class="legal-list">
         <li><strong>Responsabilidad tributaria (SENIAT):</strong> Eres 100% responsable de declarar y pagar tus impuestos. DRIVO PRO no retiene ni declara impuestos en tu nombre.</li>
-        <li><strong>RIF (Registro de Informacion Fiscal):</strong> Debes contar con tu RIF vigente inscrito ante el SENIAT como persona natural.</li>
+        <li><strong>RIF (Registro de Información Fiscal):</strong> Debes contar con tu RIF vigente inscrito ante el SENIAT como persona natural.</li>
         <li><strong>ISLR (Impuesto Sobre La Renta):</strong> Los ingresos que percibas por tu actividad como conductor estan sujetos al ISLR. Debes presentar tu declaracion anual.</li>
         <li><strong>IVA:</strong> Si superas el umbral establecido por el SENIAT, eres responsable de cumplir con las obligaciones del IVA (16%).</li>
       </ul>
@@ -314,7 +322,7 @@ footer p{color:var(--gris);font-size:13px}
       </div>
       <div style="margin-top:12px">
         <span class="law-ref">&#x2696;&#xFE0F; Ley de ISLR — Impuesto Sobre la Renta</span>
-        <span class="law-ref">&#x2696;&#xFE0F; SENIAT — Administracion Tributaria</span>
+        <span class="law-ref">&#x2696;&#xFE0F; SENIAT — Administración Tributaria</span>
       </div>
     </div>
 
@@ -330,7 +338,7 @@ footer p{color:var(--gris);font-size:13px}
       <ul class="legal-list">
         <li><strong>IVSS (Instituto Venezolano de los Seguros Sociales):</strong> Como trabajador no dependiente, puedes afiliarte voluntariamente al IVSS para acceder a prestaciones de salud y pensiones.</li>
         <li>DRIVO PRO <strong>no es responsable</strong> de tu afiliacion ni cotizacion al sistema de seguridad social. La responsabilidad recae integramente en ti.</li>
-        <li>Recomendamos que mantengas un seguro de salud y aportes a la seguridad social para tu proteccion y la de tu familia.</li>
+        <li>Recomendamos que mantengas un seguro de salud y aportes a la seguridad social para tu protección y la de tu familia.</li>
       </ul>
       <div style="margin-top:12px">
         <span class="law-ref">&#x2696;&#xFE0F; Ley del Seguro Social (2012) — Arts. 2-4</span>
@@ -347,13 +355,13 @@ footer p{color:var(--gris);font-size:13px}
         </div>
       </div>
       <ul class="legal-list">
-        <li><strong>Calculo en USD:</strong> La plataforma Yango calcula las tarifas y comisiones en dolares estadounidenses (USD) como referencia de valor estable.</li>
+        <li><strong>Cálculo en USD:</strong> La plataforma Yango calcula las tarifas y comisiones en dólares estadounidenses (USD) como referencia de valor estable.</li>
         <li><strong>Pago en Bolivares:</strong> Los pagos se realizan en Bolivares (VES) al tipo de cambio publicado por el Banco Central de Venezuela (BCV) vigente al momento de la transaccion.</li>
-        <li><strong>Sin garantia de ingresos:</strong> DRIVO PRO no garantiza un nivel minimo de ingresos. Tus ganancias dependen de la demanda, zona, horarios y tu dedicacion.</li>
-        <li><strong>Comisiones Yango:</strong> Yango aplica comisiones sobre cada viaje completado conforme a sus terminos de uso. DRIVO PRO no establece ni modifica dichas tarifas.</li>
+        <li><strong>Sin garantía de ingresos:</strong> DRIVO PRO no garantiza un nivel mínimo de ingresos. Tus ganancias dependen de la demanda, zona, horarios y tu dedicacion.</li>
+        <li><strong>Comisiones Yango:</strong> Yango aplica comisiones sobre cada viaje completado conforme a sus términos de uso. DRIVO PRO no establece ni modifica dichas tarifas.</li>
       </ul>
       <div class="highlight-box green">
-        <p>&#x2705; <strong>Transparencia:</strong> El uso del dolar como referencia busca proteger el valor de tus ingresos frente a la inflacion. Siempre recibiras el equivalente en bolivares a tasa BCV.</p>
+        <p>&#x2705; <strong>Transparencia:</strong> El uso del dolar como referencia busca proteger el valor de tus ingresos frente a la inflacion. Siempre recibiras el equivalente en bolívares a tasa BCV.</p>
       </div>
       <div style="margin-top:12px">
         <span class="law-ref">&#x2696;&#xFE0F; Ley del BCV Art. 128 — Bolivar como moneda de curso legal</span>
@@ -370,10 +378,10 @@ footer p{color:var(--gris);font-size:13px}
         </div>
       </div>
       <ul class="legal-list">
-        <li>Las <strong>suspensiones de cuenta</strong> en la plataforma Yango son decision exclusiva de Yango, no de DRIVO PRO.</li>
-        <li>DRIVO PRO puede desvincular a un conductor de su flota por <strong>conducta inapropiada, fraude o incumplimiento</strong> de estos terminos.</li>
+        <li>Las <strong>suspensiones de cuenta</strong> en la plataforma Yango son decisión exclusiva de Yango, no de DRIVO PRO.</li>
+        <li>DRIVO PRO puede desvincular a un conductor de su flota por <strong>conducta inapropiada, fraude o incumplimiento</strong> de estos términos.</li>
         <li>Puedes <strong>desvincularte voluntariamente</strong> en cualquier momento notificando a DRIVO PRO por WhatsApp. No hay penalidades por retiro.</li>
-        <li>Al desvincularte, se eliminaran tus datos personales conforme a la Politica de Privacidad, salvo los que debamos conservar por obligaciones legales.</li>
+        <li>Al desvincularte, se eliminarán tus datos personales conforme a la Política de Privacidad, salvo los que debamos conservar por obligaciones legales.</li>
       </ul>
     </div>
 
@@ -389,10 +397,10 @@ footer p{color:var(--gris);font-size:13px}
       <p class="legal-text" style="margin-bottom:16px">Al registrarte y operar con DRIVO PRO, <strong>declaras y aceptas expresamente</strong> que:</p>
       <ul class="legal-list">
         <li>Eres un <strong>trabajador no dependiente</strong> (Art. 36 LOTTT) y no un empleado de DRIVO PRO ni de Yango.</li>
-        <li>Eres el <strong>unico responsable</strong> de tus obligaciones tributarias ante el SENIAT y de tus aportes al sistema de seguridad social.</li>
-        <li><strong>Exoneras a DRIVO PRO</strong> de cualquier responsabilidad laboral, de seguridad social o de garantia de ingresos.</li>
+        <li>Eres el <strong>único responsable</strong> de tus obligaciones tributarias ante el SENIAT y de tus aportes al sistema de seguridad social.</li>
+        <li><strong>Exoneras a DRIVO PRO</strong> de cualquier responsabilidad laboral, de seguridad social o de garantía de ingresos.</li>
         <li>Entiendes que DRIVO PRO <strong>no garantiza ingresos</strong> y que las decisiones sobre tu cuenta en Yango son potestad exclusiva de Yango.</li>
-        <li>Toda la informacion que proporcionas es <strong>veraz y completa</strong>. Datos falsos son causal de desvinculacion inmediata.</li>
+        <li>Toda la información que proporcionas es <strong>veraz y completa</strong>. Datos falsos son causal de desvinculación inmediata.</li>
       </ul>
     </div>
 
@@ -407,7 +415,7 @@ footer p{color:var(--gris);font-size:13px}
       </div>
       <ul class="legal-list">
         <li>DRIVO PRO opera una <strong>plataforma tecnologica</strong> que conecta conductores independientes con la plataforma de movilidad Yango. DRIVO PRO <strong>no presta servicios de transporte</strong> de personas ni de mercancias.</li>
-        <li>Los servicios de transporte son prestados exclusivamente por <strong>conductores independientes</strong> bajo su propia responsabilidad, utilizando sus propios vehiculos y bajo su propio riesgo comercial.</li>
+        <li>Los servicios de transporte son prestados exclusivamente por <strong>conductores independientes</strong> bajo su propia responsabilidad, utilizando sus propios vehículos y bajo su propio riesgo comercial.</li>
         <li>El conductor reconoce que DRIVO PRO es un <strong>intermediario tecnologico</strong> y que no tiene responsabilidad alguna sobre los servicios de transporte realizados.</li>
         <li>DRIVO PRO ofrece herramientas de <strong>soporte operativo, capacitacion y analisis de datos</strong> para optimizar la experiencia del conductor en la plataforma Yango.</li>
       </ul>
@@ -422,13 +430,13 @@ footer p{color:var(--gris);font-size:13px}
         <div class="section-icon green">&#x1F4E8;</div>
         <div>
           <span class="section-num">ARTICULO 9</span>
-          <h2>Comunicaciones Electronicas y Verificacion</h2>
+          <h2>Comunicaciones Electronicas y Verificación</h2>
         </div>
       </div>
       <ul class="legal-list">
-        <li>DRIVO PRO utiliza <strong>WhatsApp</strong> como canal principal de comunicacion. Los mensajes enviados y recibidos a traves de este canal pueden ser almacenados para control de calidad y resolucion de disputas.</li>
-        <li>Para la verificacion de identidad, DRIVO PRO puede enviar <strong>codigos de un solo uso (OTP)</strong> via WhatsApp. El ingreso del codigo constituye tu aceptacion electronica del proceso correspondiente.</li>
-        <li>El conductor se compromete a mantener la <strong>confidencialidad</strong> de los codigos de verificacion recibidos y a no compartirlos con terceros.</li>
+        <li>DRIVO PRO utiliza <strong>WhatsApp</strong> como canal principal de comunicación. Los mensajes enviados y recibidos a traves de este canal pueden ser almacenados para control de calidad y resolucion de disputas.</li>
+        <li>Para la verificación de identidad, DRIVO PRO puede enviar <strong>codigos de un solo uso (OTP)</strong> via WhatsApp. El ingreso del código constituye tu aceptación electrónica del proceso correspondiente.</li>
+        <li>El conductor se compromete a mantener la <strong>confidencialidad</strong> de los codigos de verificación recibidos y a no compartirlos con terceros.</li>
         <li>El conductor acepta recibir <strong>mensajes informativos y promocionales</strong> de DRIVO PRO. Puede darse de baja escribiendo "STOP" al WhatsApp de soporte.</li>
       </ul>
     </div>
@@ -445,22 +453,22 @@ footer p{color:var(--gris);font-size:13px}
       <ul class="legal-list">
         <li>DRIVO PRO es titular de todos los derechos de propiedad intelectual sobre su <strong>marca, logotipo, sitio web, contenido, herramientas y materiales de capacitacion</strong>.</li>
         <li>El conductor no puede reproducir, distribuir, modificar ni utilizar con fines comerciales ningun contenido de DRIVO PRO sin autorizacion expresa por escrito.</li>
-        <li>Estos Terminos no transfieren al conductor ningun derecho de propiedad intelectual sobre la plataforma, la marca DRIVO PRO ni los materiales asociados.</li>
+        <li>Estos Términos no transfieren al conductor ningun derecho de propiedad intelectual sobre la plataforma, la marca DRIVO PRO ni los materiales asociados.</li>
       </ul>
     </div>
 
-    <!-- 11. Limitacion de Responsabilidad -->
+    <!-- 11. Limitación de Responsabilidad -->
     <div class="legal-section">
       <div class="section-header">
         <div class="section-icon amber">&#x26A0;&#xFE0F;</div>
         <div>
           <span class="section-num">ARTICULO 11</span>
-          <h2>Limitacion de Responsabilidad</h2>
+          <h2>Limitación de Responsabilidad</h2>
         </div>
       </div>
       <ul class="legal-list">
         <li>La plataforma y los servicios de DRIVO PRO se proporcionan <strong>"tal cual" (AS IS)</strong>, sin garantias de ningun tipo, expresas o implicitas.</li>
-        <li>DRIVO PRO <strong>no sera responsable</strong> de danos directos, indirectos, incidentales, especiales o emergentes, incluidos lucro cesante, perdida de datos, lesion personal o dano a la propiedad derivados del uso de la plataforma.</li>
+        <li>DRIVO PRO <strong>no sera responsable</strong> de danos directos, indirectos, incidentales, especiales o emergentes, incluidos lucro cesante, pérdida de datos, lesion personal o dano a la propiedad derivados del uso de la plataforma.</li>
         <li>DRIVO PRO <strong>no garantiza</strong> el funcionamiento ininterrumpido de la plataforma Yango ni de sus propios servicios tecnologicos.</li>
         <li>DRIVO PRO <strong>no tiene responsabilidad</strong> sobre los servicios de transporte realizados por los conductores, ni sobre incidentes, accidentes o disputas entre conductores y pasajeros.</li>
       </ul>
@@ -476,40 +484,40 @@ footer p{color:var(--gris);font-size:13px}
         </div>
       </div>
       <ul class="legal-list">
-        <li>El conductor acuerda <strong>mantener indemne</strong> a DRIVO PRO, sus directivos, empleados y empresas vinculadas frente a cualquier reclamo, demanda, perdida o responsabilidad derivada de:</li>
+        <li>El conductor acuerda <strong>mantener indemne</strong> a DRIVO PRO, sus directivos, empleados y empresas vinculadas frente a cualquier reclamo, demanda, pérdida o responsabilidad derivada de:</li>
         <li>Servicios de transporte prestados por el conductor a usuarios de la plataforma Yango.</li>
-        <li>Incumplimiento de estos Terminos y Condiciones por parte del conductor.</li>
+        <li>Incumplimiento de estos Términos y Condiciones por parte del conductor.</li>
         <li>Violacion de leyes, regulaciones o derechos de terceros por parte del conductor.</li>
-        <li>Informacion falsa o inexacta proporcionada por el conductor.</li>
+        <li>Información falsa o inexacta proporcionada por el conductor.</li>
       </ul>
     </div>
 
-    <!-- 13. Jurisdiccion y Ley Aplicable -->
+    <!-- 13. Jurisdicción y Ley Aplicable -->
     <div class="legal-section" style="border-color:rgba(59,130,246,.3)">
       <div class="section-header">
         <div class="section-icon blue">&#x2696;&#xFE0F;</div>
         <div>
           <span class="section-num">ARTICULO 13</span>
-          <h2>Jurisdiccion y Ley Aplicable</h2>
+          <h2>Jurisdicción y Ley Aplicable</h2>
         </div>
       </div>
       <ul class="legal-list">
-        <li>Estos Terminos y Condiciones se rigen e interpretan conforme a las <strong>leyes de la Republica Bolivariana de Venezuela</strong>.</li>
-        <li>Toda controversia derivada de la aplicacion, interpretacion, ejecucion o validez de estos Terminos sera resuelta por los <strong>tribunales ordinarios competentes de la jurisdiccion del Area Metropolitana de Caracas</strong>.</li>
-        <li>Si alguna disposicion de estos Terminos resultare nula o inaplicable, las demas disposiciones mantendran su plena vigencia y efecto.</li>
+        <li>Estos Términos y Condiciones se rigen e interpretan conforme a las <strong>leyes de la Republica Bolivariana de Venezuela</strong>.</li>
+        <li>Toda controversia derivada de la aplicacion, interpretacion, ejecución o validez de estos Términos sera resuelta por los <strong>tribunales ordinarios competentes de la jurisdicción del Area Metropolitana de Caracas</strong>.</li>
+        <li>Si alguna disposición de estos Términos resultare nula o inaplicable, las demas disposiciones mantendran su plena vigencia y efecto.</li>
         <li>La falta de ejercicio de un derecho por parte de DRIVO PRO no constituira renuncia al mismo.</li>
       </ul>
       <div style="margin-top:12px">
         <span class="law-ref">&#x2696;&#xFE0F; Constitucion RBV — Republica Bolivariana de Venezuela</span>
         <span class="law-ref">&#x2696;&#xFE0F; LOTTT (2012) — Ley Organica del Trabajo</span>
-        <span class="law-ref">&#x2696;&#xFE0F; Codigo de Procedimiento Civil — Jurisdiccion</span>
+        <span class="law-ref">&#x2696;&#xFE0F; Código de Procedimiento Civil — Jurisdicción</span>
       </div>
     </div>
 
   </div>
 
   <!-- ═══════════════════════════════════════════════
-       POLITICA DE PRIVACIDAD
+       POLÍTICA DE PRIVACIDAD
   ════════════════════════════════════════════════ -->
   <div id="tab-privacy" class="tab-panel">
 
@@ -524,7 +532,7 @@ footer p{color:var(--gris);font-size:13px}
       </div>
       <ul class="legal-list">
         <li><strong>DRIVO PRO</strong>, operando como socio autorizado de Yango en Venezuela, es responsable del tratamiento de los datos personales que nos proporcionas.</li>
-        <li>Nos comprometemos a proteger tu informacion personal conforme al <strong>Articulo 28</strong> (habeas data) y <strong>Articulo 60</strong> (derecho a la privacidad) de la Constitucion de la Republica Bolivariana de Venezuela.</li>
+        <li>Nos comprometemos a proteger tu información personal conforme al <strong>Articulo 28</strong> (habeas data) y <strong>Articulo 60</strong> (derecho a la privacidad) de la Constitucion de la Republica Bolivariana de Venezuela.</li>
       </ul>
       <div style="margin-top:12px">
         <span class="law-ref">&#x2696;&#xFE0F; Constitucion RBV Art. 28 — Habeas Data</span>
@@ -538,16 +546,16 @@ footer p{color:var(--gris);font-size:13px}
         <div class="section-icon green">&#x1F4CB;</div>
         <div>
           <span class="section-num">ARTICULO 2</span>
-          <h2>Informacion que Recopilamos</h2>
+          <h2>Información que Recopilamos</h2>
         </div>
       </div>
       <ul class="legal-list">
-        <li><strong>Datos de identificacion:</strong> Nombre completo, cedula de identidad, numero de telefono, correo electronico.</li>
-        <li><strong>Datos del vehiculo:</strong> Placa, marca, modelo, ano, tipo de vehiculo (carro/moto).</li>
-        <li><strong>Datos de operacion:</strong> Historial de viajes, ordenes completadas, horarios de conexion y actividad en la plataforma Yango.</li>
-        <li><strong>Datos financieros:</strong> Informacion de pagos, balance de cuenta, transacciones.</li>
-        <li><strong>Datos de comunicacion:</strong> Mensajes enviados a nuestro equipo de soporte via WhatsApp o cualquier otro canal. Las conversaciones pueden ser almacenadas para control de calidad.</li>
-        <li><strong>Datos del dispositivo:</strong> Sistema operativo, version del navegador, identificador del dispositivo, direccion IP y datos de ubicacion cuando uses servicios basados en geolocalizacion.</li>
+        <li><strong>Datos de identificacion:</strong> Nombre completo, cedula de identidad, número de telefono, correo electrónico.</li>
+        <li><strong>Datos del vehículo:</strong> Placa, marca, modelo, año, tipo de vehículo (carro/moto).</li>
+        <li><strong>Datos de operación:</strong> Historial de viajes, ordenes completadas, horarios de conexion y actividad en la plataforma Yango.</li>
+        <li><strong>Datos financieros:</strong> Información de pagos, balance de cuenta, transacciones.</li>
+        <li><strong>Datos de comunicación:</strong> Mensajes enviados a nuestro equipo de soporte via WhatsApp o cualquier otro canal. Las conversaciones pueden ser almacenadas para control de calidad.</li>
+        <li><strong>Datos del dispositivo:</strong> Sistema operativo, version del navegador, identificador del dispositivo, direccion IP y datos de ubicación cuando uses servicios basados en geolocalizacion.</li>
         <li><strong>Datos de uso:</strong> Interacciones con nuestro sitio web, paginas visitadas, tiempo de navegacion, funciones utilizadas y patrones de uso.</li>
       </ul>
     </div>
@@ -561,13 +569,13 @@ footer p{color:var(--gris);font-size:13px}
           <h2>Finalidad y Uso de tus Datos</h2>
         </div>
       </div>
-      <p class="legal-text" style="margin-bottom:16px">Utilizamos tu informacion personal exclusivamente para:</p>
+      <p class="legal-text" style="margin-bottom:16px">Utilizamos tu información personal exclusivamente para:</p>
       <ul class="legal-list">
-        <li><strong>Gestion operativa:</strong> Registrarte y vincularte a la plataforma Yango, gestionar tu perfil de conductor y procesar tus pagos.</li>
-        <li><strong>Soporte y comunicacion:</strong> Contactarte para resolver dudas, incidencias o brindarte informacion relevante sobre la plataforma.</li>
-        <li><strong>Mejora del servicio:</strong> Analizar datos de operacion de forma agregada (anonimizada) para mejorar la experiencia de todos los conductores.</li>
+        <li><strong>Gestión operativa:</strong> Registrarte y vincularte a la plataforma Yango, gestionar tu perfil de conductor y procesar tus pagos.</li>
+        <li><strong>Soporte y comunicación:</strong> Contactarte para resolver dudas, incidencias o brindarte información relevante sobre la plataforma.</li>
+        <li><strong>Mejora del servicio:</strong> Analizar datos de operación de forma agregada (anonimizada) para mejorar la experiencia de todos los conductores.</li>
         <li><strong>Cumplimiento legal:</strong> Atender requerimientos de autoridades competentes conforme a la legislacion venezolana vigente.</li>
-        <li><strong>Marketing:</strong> Enviarte informacion sobre beneficios, promociones y actualizaciones de DRIVO PRO. Puedes optar por no recibir estas comunicaciones en cualquier momento.</li>
+        <li><strong>Marketing:</strong> Enviarte información sobre beneficios, promociones y actualizaciones de DRIVO PRO. Puedes optar por no recibir estas comunicaciones en cualquier momento.</li>
       </ul>
       <div class="highlight-box green">
         <p>&#x2705; <strong>Compromiso:</strong> Nunca vendemos, alquilamos ni compartimos tus datos personales con terceros para fines comerciales ajenos a nuestro servicio.</p>
@@ -585,8 +593,8 @@ footer p{color:var(--gris);font-size:13px}
       </div>
       <p class="legal-text" style="margin-bottom:16px">Podemos compartir tus datos unicamente con:</p>
       <ul class="legal-list">
-        <li><strong>Yango:</strong> Para gestionar tu vinculacion como conductor en la plataforma. Yango tiene su propia politica de privacidad que te recomendamos consultar.</li>
-        <li><strong>Proveedores de tecnologia:</strong> Servicios de almacenamiento en la nube (Google Cloud Platform), comunicacion (WhatsApp Business) y analisis, siempre bajo acuerdos de confidencialidad.</li>
+        <li><strong>Yango:</strong> Para gestionar tu vinculación como conductor en la plataforma. Yango tiene su propia política de privacidad que te recomendamos consultar.</li>
+        <li><strong>Proveedores de tecnología:</strong> Servicios de almacenamiento en la nube (Google Cloud Platform), comunicación (WhatsApp Business) y analisis, siempre bajo acuerdos de confidencialidad.</li>
         <li><strong>Autoridades:</strong> Cuando sea requerido por ley, orden judicial o autoridad competente de la Republica Bolivariana de Venezuela.</li>
       </ul>
     </div>
@@ -602,11 +610,11 @@ footer p{color:var(--gris);font-size:13px}
       </div>
       <ul class="legal-list">
         <li>Tus datos pueden ser transferidos y procesados en servidores ubicados fuera de Venezuela, particularmente en infraestructura de <strong>Google Cloud Platform</strong> (Estados Unidos / Sudamerica).</li>
-        <li>Los datos operativos de la plataforma Yango son procesados por <strong>RideTechnology Global FZ-LLC</strong> y sus afiliados, incluyendo <strong>MLU Europe B.V.</strong> (Paises Bajos), quienes actuan como procesadores de datos bajo acuerdos de proteccion de datos.</li>
-        <li>Garantizamos que toda transferencia internacional se realiza bajo <strong>medidas de seguridad adecuadas</strong> y acuerdos de procesamiento de datos que protegen tu informacion conforme a la Constitucion de la Republica Bolivariana de Venezuela.</li>
+        <li>Los datos operativos de la plataforma Yango son procesados por <strong>RideTechnology Global FZ-LLC</strong> y sus afiliados, incluyendo <strong>MLU Europe B.V.</strong> (Paises Bajos), quienes actuan como procesadores de datos bajo acuerdos de protección de datos.</li>
+        <li>Garantizamos que toda transferencia internacional se realiza bajo <strong>medidas de seguridad adecuadas</strong> y acuerdos de procesamiento de datos que protegen tu información conforme a la Constitucion de la Republica Bolivariana de Venezuela.</li>
       </ul>
       <div class="highlight-box blue">
-        <p>&#x1F4A1; <strong>Transparencia:</strong> La tecnologia detras de Yango es desarrollada por un grupo tecnologico global. Tus datos se procesan con los mismos estandares de seguridad aplicados en los mas de 20 paises donde opera Yango.</p>
+        <p>&#x1F4A1; <strong>Transparencia:</strong> La tecnología detras de Yango es desarrollada por un grupo tecnologico global. Tus datos se procesan con los mismos estandares de seguridad aplicados en los más de 20 países donde opera Yango.</p>
       </div>
     </div>
 
@@ -621,7 +629,7 @@ footer p{color:var(--gris);font-size:13px}
       </div>
       <ul class="legal-list">
         <li>Tus datos se almacenan en infraestructura de <strong>Google Cloud Platform</strong> con cifrado en transito y en reposo.</li>
-        <li>Implementamos controles de acceso basados en roles: solo personal autorizado puede acceder a tu informacion personal.</li>
+        <li>Implementamos controles de acceso basados en roles: solo personal autorizado puede acceder a tu información personal.</li>
         <li>Utilizamos <strong>Google Secret Manager</strong> para proteger credenciales y tokens de acceso.</li>
         <li>Ningun sistema es 100% infalible. En caso de brecha de seguridad, te notificaremos oportunamente conforme a las mejores practicas.</li>
       </ul>
@@ -642,7 +650,7 @@ footer p{color:var(--gris);font-size:13px}
       </div>
       <p class="legal-text" style="margin-bottom:16px">Conforme al Articulo 28 de la Constitucion (habeas data), tienes derecho a:</p>
       <ul class="legal-list">
-        <li><strong>Acceso:</strong> Solicitar informacion sobre que datos personales tenemos sobre ti.</li>
+        <li><strong>Acceso:</strong> Solicitar información sobre que datos personales tenemos sobre ti.</li>
         <li><strong>Rectificacion:</strong> Corregir datos inexactos o desactualizados.</li>
         <li><strong>Eliminacion:</strong> Solicitar la eliminacion de tus datos personales cuando ya no sean necesarios para los fines para los que fueron recopilados.</li>
         <li><strong>Revocacion:</strong> Revocar tu consentimiento para el tratamiento de tus datos en cualquier momento.</li>
@@ -655,11 +663,11 @@ footer p{color:var(--gris);font-size:13px}
         </div>
         <div class="contact-item">
           <div class="ci-label">Solicitudes de datos</div>
-          <div class="ci-value">Escribenos por WhatsApp con el asunto "Mis Datos"</div>
+          <div class="ci-value">Escríbenos por WhatsApp con el asunto "Mis Datos"</div>
         </div>
       </div>
       <div class="highlight-box blue" style="margin-top:16px">
-        <p>&#x23F0; <strong>Plazo de respuesta:</strong> Atenderemos tu solicitud en un plazo maximo de 15 dias habiles.</p>
+        <p>&#x23F0; <strong>Plazo de respuesta:</strong> Atenderemos tu solicitud en un plazo máximo de 15 días habiles.</p>
       </div>
     </div>
 
@@ -690,9 +698,9 @@ footer p{color:var(--gris);font-size:13px}
         </div>
       </div>
       <ul class="legal-list">
-        <li>Conservamos tus datos personales mientras mantengas una relacion activa con DRIVO PRO.</li>
-        <li>Tras tu desvinculacion, conservamos datos financieros y fiscales por un periodo de <strong>5 anos</strong> conforme a las obligaciones tributarias del SENIAT.</li>
-        <li>Los datos de operacion se anonimizan despues de <strong>12 meses</strong> de inactividad.</li>
+        <li>Conservamos tus datos personales mientras mantengas una relación activa con DRIVO PRO.</li>
+        <li>Tras tu desvinculación, conservamos datos financieros y fiscales por un periodo de <strong>5 años</strong> conforme a las obligaciones tributarias del SENIAT.</li>
+        <li>Los datos de operación se anonimizan despues de <strong>12 meses</strong> de inactividad.</li>
         <li>Puedes solicitar la eliminacion anticipada de tus datos en cualquier momento, sujeto a las excepciones legales mencionadas.</li>
       </ul>
     </div>
@@ -703,13 +711,13 @@ footer p{color:var(--gris);font-size:13px}
         <div class="section-icon red">&#x1F4DD;</div>
         <div>
           <span class="section-num">ARTICULO 10</span>
-          <h2>Modificaciones a esta Politica</h2>
+          <h2>Modificaciones a esta Política</h2>
         </div>
       </div>
       <ul class="legal-list">
-        <li>DRIVO PRO se reserva el derecho de modificar esta Politica de Privacidad en cualquier momento.</li>
+        <li>DRIVO PRO se reserva el derecho de modificar esta Política de Privacidad en cualquier momento.</li>
         <li>Te notificaremos de cambios significativos via WhatsApp o mediante aviso en nuestro sitio web.</li>
-        <li>El uso continuado de nuestros servicios despues de la notificacion constituye tu aceptacion de la politica actualizada.</li>
+        <li>El uso continuado de nuestros servicios despues de la notificación constituye tu aceptación de la política actualizada.</li>
       </ul>
     </div>
 
@@ -725,19 +733,19 @@ footer p{color:var(--gris);font-size:13px}
       <span class="law-ref">&#x2696;&#xFE0F; LOTTT Art. 35 — Trabajador dependiente</span>
       <span class="law-ref">&#x2696;&#xFE0F; LOTTT Art. 36 — No dependiente</span>
       <span class="law-ref">&#x2696;&#xFE0F; Ley ISLR — Impuesto Sobre la Renta</span>
-      <span class="law-ref">&#x2696;&#xFE0F; SENIAT — Administracion Tributaria</span>
+      <span class="law-ref">&#x2696;&#xFE0F; SENIAT — Administración Tributaria</span>
       <span class="law-ref">&#x2696;&#xFE0F; Ley del Seguro Social (IVSS)</span>
       <span class="law-ref">&#x2696;&#xFE0F; Ley contra Delitos Informaticos</span>
       <span class="law-ref">&#x2696;&#xFE0F; Ley BCV Art. 128 — Moneda legal</span>
-      <span class="law-ref">&#x2696;&#xFE0F; Codigo de Procedimiento Civil</span>
+      <span class="law-ref">&#x2696;&#xFE0F; Código de Procedimiento Civil</span>
       <span class="law-ref">&#x2696;&#xFE0F; Ley de Infogobierno (2013)</span>
     </div>
   </div>
 
   <!-- ACEPTACION -->
   <div class="acceptance-box">
-    <h3>&#x2705; Aceptacion</h3>
-    <p>Al registrarte, operar o continuar activo con DRIVO PRO, aceptas de manera firme y voluntaria todos los puntos de estos Terminos y Condiciones y de la Politica de Privacidad.</p>
+    <h3>&#x2705; Aceptación</h3>
+    <p>Al registrarte, operar o continuar activo con DRIVO PRO, aceptas de manera firme y voluntaria todos los puntos de estos Términos y Condiciones y de la Política de Privacidad.</p>
     <a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20registrarme%20como%20conductor%20en%20Caracas" class="btn-wa">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
       Registrarme en DRIVO PRO

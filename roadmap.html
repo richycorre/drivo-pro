@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tu Nivel DRIVO PRO — De Aprendiz a Leyenda | DRIVO PRO Caracas</title>
-<meta name="description" content="Tu hoja de ruta paso a paso de Aprendiz a Leyenda. Tutorial semana por semana con metas concretas para maximizar tus ingresos en dolares manejando con Yango en Caracas.">
-<meta name="keywords" content="nivel drivo pro, roadmap conductor yango caracas, tutorial conductor venezuela, ganar mas dolares yango, tier leyenda drivo">
+<meta name="description" content="Tu hoja de ruta paso a paso de Aprendiz a Leyenda. Tutorial semana por semana con metas concretas para maximizar tus ingresos en dólares manejando con Yango en Caracas.">
+<meta name="keywords" content="nivel drivo pro, roadmap conductor yango caracas, tutorial conductor venezuela, ganar más dólares yango, tier leyenda drivo">
 <meta name="robots" content="index, follow">
 <meta name="author" content="DRIVO PRO">
 
@@ -138,14 +138,21 @@ body::before{
 .result-total{background:linear-gradient(135deg,var(--rojo),#FF6655);color:#fff;border-radius:14px;padding:24px;text-align:center}
 
 /* ── Nav ── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(13,11,12,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--gris-line);padding:12px 0}
-.nav-links a{color:var(--gris);text-decoration:none;font-size:.85rem;transition:color .2s}
-.nav-links a:hover{color:var(--blanco)}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(10,14,20,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--gris-line)}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;text-decoration:none;color:var(--blanco)}
+.logo span{color:var(--rojo)}
+.logo small{font-size:11px;letter-spacing:3px;color:var(--gris);display:block;margin-top:-6px;font-family:'DM Sans',sans-serif;font-weight:700}
+.nav-cta{background:var(--rojo);color:var(--obsidiana);font-weight:700;padding:11px 22px;border-radius:50px;text-decoration:none;font-size:14px;transition:.25s;border:none;cursor:pointer}
+.nav-cta:hover{background:var(--blanco);transform:translateY(-2px)}
+.nav-link{color:var(--gris);text-decoration:none;font-size:13px;letter-spacing:.5px;transition:color .2s}
+.nav-link:hover{color:var(--blanco)}
 
 /* ── Mobile ── */
 @media(max-width:640px){
   .hero-h1{font-size:2.4rem!important}
   .week-card{padding:20px}
+  .hide-mobile{display:none}
+  .logo small{display:none}
   .nav-links{display:none}
 }
 </style>
@@ -153,25 +160,14 @@ body::before{
 
 <body>
 
-<!-- ── NAV ── -->
-<nav class="nav">
-  <div class="container" style="display:flex;align-items:center;justify-content:space-between">
-    <a href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:10px">
-      <span class="bebas" style="font-size:1.6rem;color:var(--rojo)">DRIVO</span>
-      <span class="bebas" style="font-size:1.6rem;color:var(--blanco)">PRO</span>
-    </a>
-    <div class="nav-links" style="display:flex;gap:24px;align-items:center">
-      <a href="index.html">Inicio</a>
-      <a href="#niveles">Niveles</a>
-      <a href="#como-funciona">Score</a>
-      <a href="#tutorial">Tutorial</a>
-      <a href="#simulador">Simulador</a>
-      <a href="academia.html">Academia</a>
-    </div>
-    <a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20saber%20mi%20nivel" class="btn-wa" style="padding:8px 18px;font-size:.9rem">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.344 0-4.508-.81-6.218-2.164l-.435-.346-3.04 1.02 1.02-3.04-.346-.435A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-      Mi Nivel
-    </a>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">DRIVO<span> PRO</span><small>YANGO &middot; VENEZUELA</small></a>
+  <div style="display:flex;gap:16px;align-items:center">
+    <a href="index.html" class="nav-link hide-mobile">Inicio</a>
+    <a href="academia.html" class="nav-link hide-mobile">Academia</a>
+    <a href="legal.html" class="nav-link hide-mobile">Legal</a>
+    <a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20manejar%20con%20Yango" class="nav-cta">&#x1F4F2; WhatsApp</a>
   </div>
 </nav>
 
@@ -194,14 +190,14 @@ body::before{
 
     <h1 class="hero-h1 bebas reveal" style="font-size:clamp(2.4rem,7vw,5.5rem);margin-bottom:24px">
       DE APRENDIZ A LEYENDA<br>
-      <span class="grad-gold">EN DOLARES.</span>
+      <span class="grad-gold">EN DÓLARES.</span>
     </h1>
 
     <div class="reveal" style="margin-bottom:32px;transition-delay:.08s">
       <div style="display:inline-flex;flex-direction:column;align-items:center;gap:6px;border-radius:16px;padding:24px 40px;background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(255,51,51,.08));border:1px solid rgba(245,158,11,.4);box-shadow:0 0 40px rgba(245,158,11,.15)">
         <span style="font-size:.75rem;color:#F59E0B;letter-spacing:2px;text-transform:uppercase;font-weight:500">476 conductores activos en Caracas</span>
         <span class="bebas grad-gold" style="font-size:3.5rem">GANA EN USD · COBRA EN Bs</span>
-        <span style="font-size:.85rem;color:var(--gris)">Tu ingreso se calcula en dolares · Yango te paga en bolivares al cambio del dia</span>
+        <span style="font-size:.85rem;color:var(--gris)">Tu ingreso se calcula en dólares · Yango te paga en bolívares al cambio del día</span>
       </div>
     </div>
 
@@ -210,7 +206,7 @@ body::before{
       <strong style="color:var(--blanco)">Es el sistema — y ahora tienes uno a tu favor.</strong>
     </p>
     <p style="font-size:.95rem;color:var(--gris);max-width:500px;margin:0 auto 40px" class="reveal" style="transition-delay:.18s">
-      Aqui te explico el camino — paso a paso, como si fueras un familiar.
+      Aquí te explico el camino — paso a paso, como si fueras un familiar.
     </p>
 
     <div class="reveal" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-bottom:48px;transition-delay:.32s">
@@ -228,12 +224,12 @@ body::before{
         <div style="font-size:.75rem;color:var(--gris);margin-top:4px">conductores DRIVO PRO</div>
       </div>
       <div style="background:rgba(255,255,255,.05);border-radius:12px;padding:16px;text-align:center">
-        <div class="bebas" style="font-size:2rem;color:var(--dorado)">3×/dia</div>
+        <div class="bebas" style="font-size:2rem;color:var(--dorado)">3×/día</div>
         <div style="font-size:.75rem;color:var(--gris);margin-top:4px">se actualiza tu nivel</div>
       </div>
       <div style="background:rgba(255,255,255,.05);border-radius:12px;padding:16px;text-align:center">
         <div class="bebas" style="font-size:2rem;color:var(--dorado)">90</div>
-        <div style="font-size:.75rem;color:var(--gris);margin-top:4px">dias al maximo</div>
+        <div style="font-size:.75rem;color:var(--gris);margin-top:4px">días al máximo</div>
       </div>
     </div>
   </div>
@@ -254,7 +250,7 @@ body::before{
       <p style="font-size:.8rem;color:var(--rojo);letter-spacing:3px;text-transform:uppercase;font-weight:500;margin-bottom:12px">El camino</p>
       <h2 class="bebas" style="font-size:clamp(2.5rem,5vw,4rem);margin-bottom:16px">5 NIVELES. <span class="grad-gold">UN SOLO CAMINO.</span></h2>
       <p style="color:var(--gris);max-width:500px;margin:0 auto">
-        Datos reales de los <strong style="color:var(--blanco)">476 conductores DRIVO PRO</strong> activos en Caracas. Todo en dolares.
+        Datos reales de los <strong style="color:var(--blanco)">476 conductores DRIVO PRO</strong> activos en Caracas. Todo en dólares.
       </p>
     </div>
 
@@ -264,7 +260,7 @@ body::before{
         <div class="tier-name bebas" style="font-size:1.5rem">Aprendiz</div>
         <div style="font-size:.75rem;color:var(--gris);margin-bottom:12px">Score 0–19 · 453 cond.</div>
         <div class="tier-name bebas" style="font-size:2.2rem">-$1</div>
-        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">limite USD</div>
+        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">límite USD</div>
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(110,231,183,.2);font-size:.7rem;color:var(--gris)">&lt;10 viajes/mes</div>
       </div>
       <div class="tier-card tier-novato reveal" style="padding:20px;text-align:center;transition-delay:.08s">
@@ -272,7 +268,7 @@ body::before{
         <div class="tier-name bebas" style="font-size:1.5rem">Novato</div>
         <div style="font-size:.75rem;color:var(--gris);margin-bottom:12px">Score 20–39 · 19 cond.</div>
         <div class="tier-name bebas" style="font-size:2.2rem">-$1</div>
-        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">limite USD</div>
+        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">límite USD</div>
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(205,127,50,.2);font-size:.7rem;color:var(--gris)">10–40 viajes/mes</div>
       </div>
       <div class="tier-card tier-master reveal" style="padding:20px;text-align:center;transition-delay:.16s">
@@ -280,7 +276,7 @@ body::before{
         <div class="tier-name bebas" style="font-size:1.5rem">Master</div>
         <div style="font-size:.75rem;color:var(--gris);margin-bottom:12px">Score 40–59 · 3 cond.</div>
         <div class="tier-name bebas" style="font-size:2.2rem">-$3</div>
-        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">limite USD</div>
+        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">límite USD</div>
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(156,163,175,.2);font-size:.7rem;color:var(--gris)">40–100 viajes/mes</div>
       </div>
       <div class="tier-card tier-experto reveal" style="padding:20px;text-align:center;transition-delay:.24s">
@@ -288,7 +284,7 @@ body::before{
         <div class="tier-name bebas" style="font-size:1.5rem">Experto</div>
         <div style="font-size:.75rem;color:var(--gris);margin-bottom:12px">Score 60–79 · 1 cond.</div>
         <div class="tier-name bebas" style="font-size:2.2rem">-$4</div>
-        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">limite USD</div>
+        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">límite USD</div>
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(252,211,77,.2);font-size:.7rem;color:var(--gris)">100–200 viajes/mes</div>
       </div>
       <div class="tier-card tier-leyenda reveal glow-amber" style="padding:20px;text-align:center;transition-delay:.32s">
@@ -296,7 +292,7 @@ body::before{
         <div class="tier-name bebas" style="font-size:1.5rem">Leyenda</div>
         <div style="font-size:.75rem;color:var(--gris);margin-bottom:12px">Score 80–100 · Se tu el primero</div>
         <div class="tier-name bebas" style="font-size:2.2rem">-$5</div>
-        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">limite USD</div>
+        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">límite USD</div>
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(245,158,11,.2);font-size:.7rem;color:var(--gris)">200+ viajes/mes</div>
       </div>
     </div>
@@ -324,7 +320,7 @@ body::before{
       <p style="font-size:.8rem;color:var(--rojo);letter-spacing:3px;text-transform:uppercase;font-weight:500;margin-bottom:12px">El sistema</p>
       <h2 class="bebas" style="font-size:clamp(2.5rem,5vw,4rem);margin-bottom:16px">COMO SE CALCULA <span class="grad-gold">TU NIVEL?</span></h2>
       <p style="color:var(--gris);max-width:500px;margin:0 auto">
-        Un puntaje de <strong style="color:var(--blanco)">0 a 100</strong> que se recalcula 3 veces al dia. Cinco habitos que ya puedes controlar hoy.
+        Un puntaje de <strong style="color:var(--blanco)">0 a 100</strong> que se recalcula 3 veces al día. Cinco habitos que ya puedes controlar hoy.
       </p>
     </div>
 
@@ -338,7 +334,7 @@ body::before{
               <h3 class="bebas" style="font-size:1.3rem;color:var(--dorado)">Actividad</h3>
               <span class="bebas" style="font-size:1.8rem;color:var(--dorado)">40%</span>
             </div>
-            <p style="font-size:.82rem;color:var(--gris);margin-bottom:12px">Viajes completados en 30 dias. Un Leyenda hace 200+ viajes al mes. Mas viajes = mas puntaje.</p>
+            <p style="font-size:.82rem;color:var(--gris);margin-bottom:12px">Viajes completados en 30 días. Un Leyenda hace 200+ viajes al mes. Más viajes = más puntaje.</p>
             <div style="height:8px;background:#2A2A2A;border-radius:4px;overflow:hidden"><div style="width:40%;height:100%;background:linear-gradient(90deg,#F59E0B,#FBBF24)"></div></div>
           </div>
         </div>
@@ -352,7 +348,7 @@ body::before{
               <h3 class="bebas" style="font-size:1.3rem;color:var(--azul)">Continuidad</h3>
               <span class="bebas" style="font-size:1.8rem;color:var(--azul)">25%</span>
             </div>
-            <p style="font-size:.82rem;color:var(--gris);margin-bottom:12px">0–7 dias sin salir: sin penalidad. Desde el dia 8 el puntaje baja. A los 30 dias, cae al 10%.</p>
+            <p style="font-size:.82rem;color:var(--gris);margin-bottom:12px">0–7 días sin salir: sin penalidad. Desde el día 8 el puntaje baja. A los 30 días, cae al 10%.</p>
             <div style="height:8px;background:#2A2A2A;border-radius:4px;overflow:hidden"><div style="width:25%;height:100%;background:linear-gradient(90deg,#3B82F6,#60A5FA)"></div></div>
           </div>
         </div>
@@ -366,7 +362,7 @@ body::before{
               <h3 class="bebas" style="font-size:1.3rem;color:var(--verde)">Bonos Yango</h3>
               <span class="bebas" style="font-size:1.8rem;color:var(--verde)">20%</span>
             </div>
-            <p style="font-size:.82rem;color:var(--gris);margin-bottom:12px">Si Yango te bonifica, DRIVO PRO tambien te recompensa. Mas bonos = mas puntos en tu score.</p>
+            <p style="font-size:.82rem;color:var(--gris);margin-bottom:12px">Si Yango te bonifica, DRIVO PRO también te recompensa. Más bonos = más puntos en tu score.</p>
             <div style="height:8px;background:#2A2A2A;border-radius:4px;overflow:hidden"><div style="width:20%;height:100%;background:linear-gradient(90deg,#22C55E,#4ADE80)"></div></div>
           </div>
         </div>
@@ -380,7 +376,7 @@ body::before{
               <h3 class="bebas" style="font-size:1.3rem;color:#A78BFA">Calidad</h3>
               <span class="bebas" style="font-size:1.8rem;color:#A78BFA">10%</span>
             </div>
-            <p style="font-size:.82rem;color:var(--gris);margin-bottom:12px">Ejecucion >70% y cancelaciones <15%. No necesitas ser perfecto — solo consistente.</p>
+            <p style="font-size:.82rem;color:var(--gris);margin-bottom:12px">Ejecución >70% y cancelaciones <15%. No necesitas ser perfecto — solo consistente.</p>
             <div style="height:8px;background:#2A2A2A;border-radius:4px;overflow:hidden"><div style="width:10%;height:100%;background:linear-gradient(90deg,#8B5CF6,#A78BFA)"></div></div>
           </div>
         </div>
@@ -404,7 +400,7 @@ body::before{
       <div class="reveal glow-amber" style="transition-delay:.4s;border:1px solid rgba(245,158,11,.35);border-radius:14px;padding:24px;display:flex;flex-direction:column;justify-content:center">
         <p style="font-size:.82rem;color:var(--gris);margin-bottom:4px">Tu puntaje total</p>
         <div class="bebas grad-gold" style="font-size:4.5rem;margin-bottom:4px">0–100</div>
-        <p style="font-size:.75rem;color:var(--gris);margin-bottom:16px">actualizado 3x al dia automaticamente</p>
+        <p style="font-size:.75rem;color:var(--gris);margin-bottom:16px">actualizado 3x al día automáticamente</p>
         <div style="display:flex;flex-direction:column;gap:4px">
           <div class="bebas" style="font-size:.9rem;color:#F59E0B">80–100 → ⭐ Leyenda</div>
           <div class="bebas" style="font-size:.9rem;color:#FCD34D">60–79 → 🥇 Experto</div>
@@ -425,12 +421,12 @@ body::before{
       <div style="background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:12px;padding:16px;text-align:center">
         <div style="font-size:1.5rem;margin-bottom:8px">🛡️</div>
         <h4 class="bebas" style="font-size:1.1rem;color:var(--azul);margin-bottom:4px">Caida max. 1 nivel/ciclo</h4>
-        <p style="font-size:.75rem;color:var(--gris)">Nunca caes mas de un tier por ciclo. Tienes margen para recuperarte.</p>
+        <p style="font-size:.75rem;color:var(--gris)">Nunca caes más de un tier por ciclo. Tienes margen para recuperarte.</p>
       </div>
       <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:12px;padding:16px;text-align:center">
         <div style="font-size:1.5rem;margin-bottom:8px">🔄</div>
         <h4 class="bebas" style="font-size:1.1rem;color:var(--dorado);margin-bottom:4px">Welcome Back x1.20</h4>
-        <p style="font-size:.75rem;color:var(--gris)">Si vuelves despues de +15 dias, tu limite sube 20% por 7 dias.</p>
+        <p style="font-size:.75rem;color:var(--gris)">Si vuelves despues de +15 días, tu límite sube 20% por 7 días.</p>
       </div>
     </div>
   </div>
@@ -444,10 +440,10 @@ body::before{
 <section style="padding:96px 0;background:var(--obsidiana-2)">
   <div class="container">
     <div style="text-align:center;margin-bottom:32px" class="reveal">
-      <p style="font-size:.8rem;color:var(--rojo);letter-spacing:3px;text-transform:uppercase;font-weight:500;margin-bottom:12px">Tu margen en dolares</p>
-      <h2 class="bebas" style="font-size:clamp(2.5rem,5vw,4rem);margin-bottom:16px">TU LIMITE DE OPERACION <span class="grad-gold">POR NIVEL</span></h2>
+      <p style="font-size:.8rem;color:var(--rojo);letter-spacing:3px;text-transform:uppercase;font-weight:500;margin-bottom:12px">Tu margen en dólares</p>
+      <h2 class="bebas" style="font-size:clamp(2.5rem,5vw,4rem);margin-bottom:16px">TU LIMITE DE OPERACIÓN <span class="grad-gold">POR NIVEL</span></h2>
       <p style="color:var(--gris);max-width:550px;margin:0 auto 24px">
-        El limite es cuanto puede bajar tu balance en Yango antes de bloquearte. Mas nivel = mas margen = menos interrupciones.
+        El límite es cuanto puede bajar tu balance en Yango antes de bloquearte. Más nivel = más margen = menos interrupciones.
       </p>
       <div style="display:inline-flex;gap:12px;align-items:flex-start;border-radius:12px;padding:16px 24px;text-align:left;max-width:600px;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2)">
         <span style="font-size:1.3rem;flex-shrink:0">💡</span>
@@ -457,14 +453,14 @@ body::before{
       </div>
     </div>
 
-    <!-- Tabla visual de limites -->
+    <!-- Tabla visual de límites -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px" class="reveal">
       <div class="tier-card tier-leyenda" style="padding:24px;text-align:center">
         <div style="font-size:2rem;margin-bottom:8px">⭐</div>
         <div class="tier-name bebas" style="font-size:1.5rem">Leyenda</div>
         <div style="font-size:.75rem;color:var(--gris);margin-bottom:12px">Score 80–100</div>
         <div class="tier-name bebas" style="font-size:3rem">-$5</div>
-        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">limite USD</div>
+        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">límite USD</div>
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(245,158,11,.2);font-size:.7rem;color:var(--gris)">200+ viajes/mes</div>
       </div>
       <div class="tier-card tier-experto" style="padding:24px;text-align:center">
@@ -472,7 +468,7 @@ body::before{
         <div class="tier-name bebas" style="font-size:1.5rem">Experto</div>
         <div style="font-size:.75rem;color:var(--gris);margin-bottom:12px">Score 60–79</div>
         <div class="tier-name bebas" style="font-size:3rem">-$4</div>
-        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">limite USD</div>
+        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">límite USD</div>
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(252,211,77,.2);font-size:.7rem;color:var(--gris)">100–200 viajes/mes</div>
       </div>
       <div class="tier-card tier-master" style="padding:24px;text-align:center">
@@ -480,7 +476,7 @@ body::before{
         <div class="tier-name bebas" style="font-size:1.5rem">Master</div>
         <div style="font-size:.75rem;color:var(--gris);margin-bottom:12px">Score 40–59</div>
         <div class="tier-name bebas" style="font-size:3rem">-$3</div>
-        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">limite USD</div>
+        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">límite USD</div>
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(156,163,175,.2);font-size:.7rem;color:var(--gris)">40–100 viajes/mes</div>
       </div>
       <div class="tier-card tier-novato" style="padding:24px;text-align:center">
@@ -488,7 +484,7 @@ body::before{
         <div class="tier-name bebas" style="font-size:1.5rem">Novato</div>
         <div style="font-size:.75rem;color:var(--gris);margin-bottom:12px">Score 20–39</div>
         <div class="tier-name bebas" style="font-size:3rem">-$1</div>
-        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">limite USD</div>
+        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">límite USD</div>
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(205,127,50,.2);font-size:.7rem;color:var(--gris)">10–40 viajes/mes</div>
       </div>
       <div class="tier-card tier-aprendiz" style="padding:24px;text-align:center">
@@ -496,7 +492,7 @@ body::before{
         <div class="tier-name bebas" style="font-size:1.5rem">Aprendiz</div>
         <div style="font-size:.75rem;color:var(--gris);margin-bottom:12px">Score 0–19</div>
         <div class="tier-name bebas" style="font-size:3rem">-$1</div>
-        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">limite USD</div>
+        <div style="font-size:.7rem;color:var(--gris);margin-top:4px">límite USD</div>
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(110,231,183,.2);font-size:.7rem;color:var(--gris)">&lt;10 viajes/mes</div>
       </div>
     </div>
@@ -506,8 +502,8 @@ body::before{
       <div style="display:inline-flex;align-items:center;gap:12px;background:rgba(255,51,51,.06);border:1px solid rgba(255,51,51,.2);border-radius:12px;padding:16px 24px">
         <span style="font-size:1.3rem">💵</span>
         <p style="font-size:.82rem;color:var(--gris)">
-          <strong style="color:var(--rojo)">Recuerda:</strong> Yango calcula todo en USD pero te paga en bolivares al cambio del BCV del dia.
-          Tu limite opera en dolares — no importa la tasa, tu margen es el mismo.
+          <strong style="color:var(--rojo)">Recuerda:</strong> Yango calcula todo en USD pero te paga en bolívares al cambio del BCV del día.
+          Tu límite opera en dólares — no importa la tasa, tu margen es el mismo.
         </p>
       </div>
     </div>
@@ -526,7 +522,7 @@ body::before{
       <h2 class="bebas" style="font-size:clamp(2.5rem,5vw,4rem);margin-bottom:16px">SEMANA POR SEMANA — <span class="grad-gold">COMO SUBIR</span></h2>
       <p style="color:var(--gris);max-width:650px;margin:0 auto">
         Te lo explico como se lo explicaria a un familiar nuevo en Caracas.
-        <strong style="color:var(--blanco)">Si cumples cada checklist, en 90 dias eres Master. En 6 meses, Leyenda.</strong>
+        <strong style="color:var(--blanco)">Si cumples cada checklist, en 90 días eres Master. En 6 meses, Leyenda.</strong>
       </p>
     </div>
 
@@ -538,8 +534,8 @@ body::before{
         Tu meta esta semana NO es ganar mucho — es <strong style="color:var(--blanco)">entender como funciona Yango + DRIVO PRO en Caracas</strong>. No te frustres si haces pocos viajes.
       </p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px">
-        <div class="check-item">⏱️ <strong>5 dias activo minimo</strong> — descansa 2</div>
-        <div class="check-item">🚗 <strong>15–25 viajes</strong> en total (3–5 por dia)</div>
+        <div class="check-item">⏱️ <strong>5 días activo mínimo</strong> — descansa 2</div>
+        <div class="check-item">🚗 <strong>15–25 viajes</strong> en total (3–5 por día)</div>
         <div class="check-item">⭐ <strong>Rating ≥ 4.0</strong> — saluda, carro limpio, aire</div>
         <div class="check-item">❌ <strong>Cancelaciones &lt; 20%</strong></div>
         <div class="check-item">💰 <strong>Balance positivo</strong> al cerrar la semana</div>
@@ -552,12 +548,12 @@ body::before{
       <span class="week-pill">SEMANA 2 · 🌱 RUMBO A NOVATO</span>
       <h3 class="bebas" style="font-size:1.8rem;color:#6EE7B7;margin-bottom:8px">Sube el ritmo. Conoce las horas pico.</h3>
       <p style="font-size:.85rem;color:var(--gris);margin-bottom:20px">
-        Ya conoces la app. Ahora aumenta el volumen. Las <strong style="color:var(--blanco)">horas pico en Caracas (6–9 AM y 5–9 PM)</strong> tienen mas viajes y mejores tarifas.
+        Ya conoces la app. Ahora aumenta el volumen. Las <strong style="color:var(--blanco)">horas pico en Caracas (6–9 AM y 5–9 PM)</strong> tienen más viajes y mejores tarifas.
       </p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px">
-        <div class="check-item">⏱️ <strong>6 dias activo minimo</strong></div>
-        <div class="check-item">🚗 <strong>30+ viajes</strong> (al menos 5 por dia)</div>
-        <div class="check-item">🌅 <strong>Trabaja al menos 1 hora pico/dia</strong></div>
+        <div class="check-item">⏱️ <strong>6 días activo mínimo</strong></div>
+        <div class="check-item">🚗 <strong>30+ viajes</strong> (al menos 5 por día)</div>
+        <div class="check-item">🌅 <strong>Trabaja al menos 1 hora pico/día</strong></div>
         <div class="check-item">⭐ <strong>Rating ≥ 4.3</strong> — sube tu calidad</div>
         <div class="check-item">❌ <strong>Cancelaciones &lt; 15%</strong></div>
         <div class="check-item">💰 <strong>Balance positivo</strong> siempre</div>
@@ -572,12 +568,12 @@ body::before{
         Mes 1 cerrado. Tu Score ya subio. Ahora a <strong style="color:var(--blanco)">consolidar</strong>: salir en ruta con disciplina y administrar bien tu plata. Paga siempre tus comisiones.
       </p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px">
-        <div class="check-item">⏱️ <strong>6 dias/semana, 8 horas/dia</strong></div>
+        <div class="check-item">⏱️ <strong>6 días/semana, 8 horas/día</strong></div>
         <div class="check-item">🚗 <strong>40–60 viajes/semana</strong></div>
         <div class="check-item">🌅 <strong>Horas pico AM y PM</strong></div>
         <div class="check-item">⭐ <strong>Rating ≥ 4.5</strong></div>
         <div class="check-item">❌ <strong>Cancelaciones &lt; 10%</strong></div>
-        <div class="check-item">💳 <strong>Acepta viajes con tarjeta</strong> (cashless = mas bono)</div>
+        <div class="check-item">💳 <strong>Acepta viajes con tarjeta</strong> (cashless = más bono)</div>
         <div class="check-item">🚫 <strong>NO andes en negativo</strong> — pierdes tu cupo</div>
         <div class="check-item">💵 <strong>Balance positivo</strong> — a -$1 te bloqueas</div>
       </div>
@@ -586,18 +582,18 @@ body::before{
     <!-- SEMANAS 5-8 -->
     <div class="week-card reveal" style="transition-delay:.24s">
       <span class="week-pill" style="background:rgba(156,163,175,.15);border-color:#9CA3AF;color:#D1D5DB">SEMANAS 5–8 · 🥈 MASTER</span>
-      <h3 class="bebas" style="font-size:1.8rem;color:#D1D5DB;margin-bottom:8px">Tu limite sube. Mas margen para trabajar.</h3>
+      <h3 class="bebas" style="font-size:1.8rem;color:#D1D5DB;margin-bottom:8px">Tu límite sube. Más margen para trabajar.</h3>
       <p style="font-size:.85rem;color:var(--gris);margin-bottom:20px">
-        Llegaste a Master. Tu limite pasa de <strong style="color:var(--verde)">-$1 a -$3 USD</strong>. Eso significa mas margen para estar en ruta sin interrupciones. Solo 3 conductores en Caracas estan aqui.
+        Llegaste a Master. Tu límite pasa de <strong style="color:var(--verde)">-$1 a -$3 USD</strong>. Eso significa más margen para estar en ruta sin interrupciones. Solo 3 conductores en Caracas estan aquí.
       </p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px">
-        <div class="check-item">⏱️ <strong>20–22 dias activos/mes</strong></div>
+        <div class="check-item">⏱️ <strong>20–22 días activos/mes</strong></div>
         <div class="check-item">🚗 <strong>80–120 viajes/mes</strong></div>
         <div class="check-item">⭐ <strong>Rating ≥ 4.6</strong></div>
         <div class="check-item">❌ <strong>Cancelaciones &lt; 8%</strong></div>
         <div class="check-item">💵 <strong>Balance siempre positivo</strong></div>
-        <div class="check-item">💳 <strong>50% cashless minimo</strong></div>
-        <div class="check-item">🌅 <strong>Horas pico todos los dias</strong></div>
+        <div class="check-item">💳 <strong>50% cashless mínimo</strong></div>
+        <div class="check-item">🌅 <strong>Horas pico todos los días</strong></div>
         <div class="check-item">📊 <strong>Revisa tu Score</strong> por WhatsApp</div>
       </div>
     </div>
@@ -605,18 +601,18 @@ body::before{
     <!-- SEMANAS 9-16 -->
     <div class="week-card reveal" style="transition-delay:.32s">
       <span class="week-pill" style="background:rgba(252,211,77,.15);border-color:#FCD34D;color:#FCD34D">SEMANAS 9–16 · 🥇 EXPERTO</span>
-      <h3 class="bebas" style="font-size:1.8rem;color:#FCD34D;margin-bottom:8px">Elite de Caracas. Tu limite: -$4 USD.</h3>
+      <h3 class="bebas" style="font-size:1.8rem;color:#FCD34D;margin-bottom:8px">Elite de Caracas. Tu límite: -$4 USD.</h3>
       <p style="font-size:.85rem;color:var(--gris);margin-bottom:20px">
-        Solo <strong style="color:var(--blanco)">1 conductor</strong> en toda Caracas ha llegado aqui. Tu volumen y calidad te ponen en el top. Limite -$4 USD — casi no te bloqueas nunca.
+        Solo <strong style="color:var(--blanco)">1 conductor</strong> en toda Caracas ha llegado aquí. Tu volumen y calidad te ponen en el top. Límite -$4 USD — casi no te bloqueas nunca.
       </p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px">
-        <div class="check-item">⏱️ <strong>24+ dias activos/mes</strong></div>
-        <div class="check-item">🚗 <strong>150–220 viajes/mes</strong> (5–7/dia)</div>
+        <div class="check-item">⏱️ <strong>24+ días activos/mes</strong></div>
+        <div class="check-item">🚗 <strong>150–220 viajes/mes</strong> (5–7/día)</div>
         <div class="check-item">⭐ <strong>Rating ≥ 4.7</strong></div>
         <div class="check-item">❌ <strong>Cancelaciones &lt; 5%</strong></div>
         <div class="check-item">💵 <strong>Balance positivo sostenido</strong></div>
         <div class="check-item">💳 <strong>60%+ cashless</strong></div>
-        <div class="check-item">🌅 <strong>Horas pico todos los dias</strong></div>
+        <div class="check-item">🌅 <strong>Horas pico todos los días</strong></div>
         <div class="check-item">🏆 <strong>Soporte prioritario DRIVO PRO</strong></div>
       </div>
     </div>
@@ -626,10 +622,10 @@ body::before{
       <span class="week-pill" style="background:rgba(245,158,11,.15);border-color:var(--dorado);color:var(--dorado)">SEMANA 17+ · ⭐ LEYENDA · HALL OF FAME</span>
       <h3 class="bebas" style="font-size:1.8rem;color:var(--dorado);margin-bottom:8px">Tu nombre va al Hall of Fame DRIVO PRO.</h3>
       <p style="font-size:.85rem;color:var(--gris);margin-bottom:20px">
-        <strong style="color:var(--dorado)">Todavia nadie en Caracas ha llegado a Leyenda.</strong> El primer conductor que lo logre se lleva reconocimiento especial. Limite maximo: -$5 USD. Soporte VIP. Prioridad en todo.
+        <strong style="color:var(--dorado)">Todavia nadie en Caracas ha llegado a Leyenda.</strong> El primer conductor que lo logre se lleva reconocimiento especial. Límite máximo: -$5 USD. Soporte VIP. Prioridad en todo.
       </p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px">
-        <div class="check-item">⏱️ <strong>26+ dias activos/mes</strong></div>
+        <div class="check-item">⏱️ <strong>26+ días activos/mes</strong></div>
         <div class="check-item">🚗 <strong>220+ viajes/mes</strong></div>
         <div class="check-item">⭐ <strong>Rating ≥ 4.8</strong></div>
         <div class="check-item">❌ <strong>Cancelaciones &lt; 3%</strong></div>
@@ -650,10 +646,10 @@ body::before{
 <section style="padding:96px 0">
   <div class="container" style="max-width:900px">
     <div style="text-align:center;margin-bottom:56px" class="reveal">
-      <p style="font-size:.8rem;color:var(--rojo);letter-spacing:3px;text-transform:uppercase;font-weight:500;margin-bottom:12px">Accion inmediata</p>
+      <p style="font-size:.8rem;color:var(--rojo);letter-spacing:3px;text-transform:uppercase;font-weight:500;margin-bottom:12px">Acción inmediata</p>
       <h2 class="bebas" style="font-size:clamp(2.5rem,5vw,4rem);margin-bottom:16px">SUBE DE NIVEL <span class="grad-gold">ESTA SEMANA</span></h2>
       <p style="color:var(--gris);max-width:500px;margin:0 auto">
-        Cinco habitos concretos. Impacto en el proximo ciclo de actualizacion (max 8 horas).
+        Cinco habitos concretos. Impacto en el proximo ciclo de actualización (max 8 horas).
       </p>
     </div>
 
@@ -661,9 +657,9 @@ body::before{
       <div class="card reveal" style="display:flex;gap:20px;align-items:flex-start">
         <div style="flex-shrink:0;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--rojo),#FF6655);color:#fff" class="bebas" style="font-size:1.8rem">1</div>
         <div>
-          <h3 class="bebas" style="font-size:1.4rem;color:var(--dorado);margin-bottom:8px">Sal todos los dias, aunque sea poco</h3>
+          <h3 class="bebas" style="font-size:1.4rem;color:var(--dorado);margin-bottom:8px">Sal todos los días, aunque sea poco</h3>
           <p style="font-size:.85rem;color:var(--gris)">
-            La continuidad vale <strong style="color:var(--blanco)">25% del puntaje</strong>. Un solo viaje al dia evita la penalidad por inactividad. Los mejores conductores no son los que trabajan 14 horas un dia — son los que <strong style="color:var(--blanco)">salen en ruta todos los dias</strong>.
+            La continuidad vale <strong style="color:var(--blanco)">25% del puntaje</strong>. Un solo viaje al día evita la penalidad por inactividad. Los mejores conductores no son los que trabajan 14 horas un día — son los que <strong style="color:var(--blanco)">salen en ruta todos los días</strong>.
           </p>
         </div>
       </div>
@@ -673,7 +669,7 @@ body::before{
         <div>
           <h3 class="bebas" style="font-size:1.4rem;color:var(--dorado);margin-bottom:8px">Trabaja las horas pico de Caracas</h3>
           <p style="font-size:.85rem;color:var(--gris)">
-            <strong style="color:var(--blanco)">6–9 AM</strong> (todo el mundo va al trabajo) y <strong style="color:var(--blanco)">5–9 PM</strong> (regreso + salidas nocturnas). Esas horas generan mas viajes, mejores tarifas, y bonos de Yango.
+            <strong style="color:var(--blanco)">6–9 AM</strong> (todo el mundo va al trabajo) y <strong style="color:var(--blanco)">5–9 PM</strong> (regreso + salidas nocturnas). Esas horas generan más viajes, mejores tarifas, y bonos de Yango.
           </p>
         </div>
       </div>
@@ -683,7 +679,7 @@ body::before{
         <div>
           <h3 class="bebas" style="font-size:1.4rem;color:var(--dorado);margin-bottom:8px">No canceles viajes</h3>
           <p style="font-size:.85rem;color:var(--gris)">
-            Cada cancelacion baja tu calidad. Mantener cancelaciones <strong style="color:var(--blanco)">por debajo del 10%</strong> te suma puntos. Acepta y completa — si no puedes, es mejor no estar en linea.
+            Cada cancelación baja tu calidad. Mantener cancelaciones <strong style="color:var(--blanco)">por debajo del 10%</strong> te suma puntos. Acepta y completa — si no puedes, es mejor no estar en linea.
           </p>
         </div>
       </div>
@@ -693,7 +689,7 @@ body::before{
         <div>
           <h3 class="bebas" style="font-size:1.4rem;color:var(--dorado);margin-bottom:8px">Acepta viajes con tarjeta</h3>
           <p style="font-size:.85rem;color:var(--gris)">
-            Los viajes digitales (tarjeta, cashless) valen mas para tu Score. <strong style="color:var(--blanco)">60% o mas en cashless</strong> te da un bonus en el componente de pago. Ademas, los pasajeros que pagan con tarjeta cancelan menos.
+            Los viajes digitales (tarjeta, cashless) valen más para tu Score. <strong style="color:var(--blanco)">60% o más en cashless</strong> te da un bonus en el componente de pago. Ademas, los pasajeros que pagan con tarjeta cancelan menos.
           </p>
         </div>
       </div>
@@ -703,7 +699,7 @@ body::before{
         <div>
           <h3 class="bebas" style="font-size:1.4rem;color:var(--dorado);margin-bottom:8px">Nunca dejes tu balance en negativo</h3>
           <p style="font-size:.85rem;color:var(--gris)">
-            En Venezuela el bloqueo es a <strong style="color:var(--rojo)">-$1 USD</strong>. Si tu balance baja de ahi, te bloqueas automaticamente. Paga tus comisiones rapido. Un balance positivo = mas dias en la calle ganando plata.
+            En Venezuela el bloqueo es a <strong style="color:var(--rojo)">-$1 USD</strong>. Si tu balance baja de ahi, te bloqueas automáticamente. Paga tus comisiones rápido. Un balance positivo = más días en la calle ganando plata.
           </p>
         </div>
       </div>
@@ -722,7 +718,7 @@ body::before{
       <p style="font-size:.8rem;color:var(--rojo);letter-spacing:3px;text-transform:uppercase;font-weight:500;margin-bottom:12px">Calcula tus ingresos</p>
       <h2 class="bebas" style="font-size:clamp(2.5rem,5vw,4rem);margin-bottom:16px">SIMULADOR <span class="grad-gold">DE INGRESOS USD</span></h2>
       <p style="color:var(--gris);max-width:500px;margin:0 auto">
-        Mueve el slider o selecciona un perfil. Todos los calculos en dolares.
+        Mueve el slider o selecciona un perfil. Todos los calculos en dólares.
       </p>
     </div>
 
@@ -730,22 +726,22 @@ body::before{
 
       <!-- Presets -->
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;justify-content:center">
-        <button class="preset-btn" onclick="setPreset(3,5)">😴 Minimo</button>
+        <button class="preset-btn" onclick="setPreset(3,5)">😴 Mínimo</button>
         <button class="preset-btn" onclick="setPreset(5,20)">🚶 Casual</button>
         <button class="preset-btn active" onclick="setPreset(6,25)">💪 Regular</button>
         <button class="preset-btn" onclick="setPreset(6,35)">🔥 Dedicado</button>
         <button class="preset-btn" onclick="setPreset(7,50)">⭐ Leyenda</button>
       </div>
 
-      <!-- Slider dias -->
+      <!-- Slider días -->
       <div style="margin-bottom:28px">
         <div style="display:flex;justify-content:space-between;margin-bottom:8px">
-          <label class="bebas" style="font-size:1rem;color:var(--dorado)">Dias activos por semana</label>
+          <label class="bebas" style="font-size:1rem;color:var(--dorado)">Días activos por semana</label>
           <span id="dias-val" class="bebas" style="font-size:1.2rem;color:var(--blanco)">6</span>
         </div>
         <input type="range" min="1" max="7" value="6" class="slider" id="slider-dias" oninput="calcular()">
         <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--gris);margin-top:4px">
-          <span>1 dia</span><span>7 dias</span>
+          <span>1 día</span><span>7 días</span>
         </div>
       </div>
 
@@ -799,7 +795,7 @@ body::before{
   <div class="container" style="max-width:800px">
     <div style="text-align:center;margin-bottom:48px" class="reveal">
       <p style="font-size:.8rem;color:var(--rojo);letter-spacing:3px;text-transform:uppercase;font-weight:500;margin-bottom:12px">Preguntas frecuentes</p>
-      <h2 class="bebas" style="font-size:clamp(2.5rem,5vw,4rem)">LO QUE MAS <span class="grad-gold">NOS PREGUNTAN</span></h2>
+      <h2 class="bebas" style="font-size:clamp(2.5rem,5vw,4rem)">LO QUE MÁS <span class="grad-gold">NOS PREGUNTAN</span></h2>
     </div>
 
     <div class="reveal">
@@ -819,17 +815,17 @@ body::before{
           <span class="faq-icon" style="font-size:1.5rem;color:var(--rojo)">+</span>
         </div>
         <div class="faq-a" style="font-size:.85rem;color:var(--gris)">
-          <strong style="color:var(--blanco)">3 veces al dia</strong>, automaticamente. Analizamos tus viajes, continuidad, bonos, calidad y perfil de pago. No tienes que hacer nada — el sistema te evalua solo.
+          <strong style="color:var(--blanco)">3 veces al día</strong>, automáticamente. Analizamos tus viajes, continuidad, bonos, calidad y perfil de pago. No tienes que hacer nada — el sistema te evalua solo.
         </div>
       </div>
 
       <div class="faq-item" style="padding:20px 0">
         <div class="faq-q" onclick="toggleFaq(this)" style="display:flex;justify-content:space-between;align-items:center">
-          <span style="font-size:1rem;font-weight:700">Que pasa si dejo de manejar unos dias?</span>
+          <span style="font-size:1rem;font-weight:700">Que pasa si dejo de manejar unos días?</span>
           <span class="faq-icon" style="font-size:1.5rem;color:var(--rojo)">+</span>
         </div>
         <div class="faq-a" style="font-size:.85rem;color:var(--gris)">
-          Tienes <strong style="color:var(--blanco)">7 dias de gracia</strong> sin penalidad. Desde el dia 8 tu puntaje de continuidad empieza a bajar. A los 30 dias cae al 10%. Si vuelves despues de 15+ dias, te damos un <strong style="color:var(--dorado)">Welcome Back x1.20</strong> en tu limite por 7 dias.
+          Tienes <strong style="color:var(--blanco)">7 días de gracia</strong> sin penalidad. Desde el día 8 tu puntaje de continuidad empieza a bajar. A los 30 días cae al 10%. Si vuelves despues de 15+ días, te damos un <strong style="color:var(--dorado)">Welcome Back x1.20</strong> en tu límite por 7 días.
         </div>
       </div>
 
@@ -839,27 +835,27 @@ body::before{
           <span class="faq-icon" style="font-size:1.5rem;color:var(--rojo)">+</span>
         </div>
         <div class="faq-a" style="font-size:.85rem;color:var(--gris)">
-          En Venezuela el limite minimo es <strong style="color:var(--rojo)">-$1 USD</strong>. Si tu balance (lo que debes en comisiones) baja de -$1, el sistema te bloquea automaticamente hasta que pagues. La solucion: paga tu comision y tu balance vuelve a positivo. Mientras mas alto tu nivel, mas margen tienes (hasta -$5 USD como Leyenda).
+          En Venezuela el límite mínimo es <strong style="color:var(--rojo)">-$1 USD</strong>. Si tu balance (lo que debes en comisiones) baja de -$1, el sistema te bloquea automáticamente hasta que pagues. La solución: paga tu comisión y tu balance vuelve a positivo. Mientras más alto tu nivel, más margen tienes (hasta -$5 USD como Leyenda).
         </div>
       </div>
 
       <div class="faq-item" style="padding:20px 0">
         <div class="faq-q" onclick="toggleFaq(this)" style="display:flex;justify-content:space-between;align-items:center">
-          <span style="font-size:1rem;font-weight:700">Puedo bajar mas de un nivel de golpe?</span>
+          <span style="font-size:1rem;font-weight:700">Puedo bajar más de un nivel de golpe?</span>
           <span class="faq-icon" style="font-size:1.5rem;color:var(--rojo)">+</span>
         </div>
         <div class="faq-a" style="font-size:.85rem;color:var(--gris)">
-          <strong style="color:var(--verde)">No.</strong> El sistema tiene una proteccion: maximo <strong style="color:var(--blanco)">1 tier de caida por ciclo</strong>. Si eres Experto, lo peor que te puede pasar es caer a Master — nunca a Novato de golpe.
+          <strong style="color:var(--verde)">No.</strong> El sistema tiene una protección: máximo <strong style="color:var(--blanco)">1 tier de caida por ciclo</strong>. Si eres Experto, lo peor que te puede pasar es caer a Master — nunca a Novato de golpe.
         </div>
       </div>
 
       <div class="faq-item" style="padding:20px 0">
         <div class="faq-q" onclick="toggleFaq(this)" style="display:flex;justify-content:space-between;align-items:center">
-          <span style="font-size:1rem;font-weight:700">Me pagan en dolares o en bolivares?</span>
+          <span style="font-size:1rem;font-weight:700">Me pagan en dólares o en bolívares?</span>
           <span class="faq-icon" style="font-size:1.5rem;color:var(--rojo)">+</span>
         </div>
         <div class="faq-a" style="font-size:.85rem;color:var(--gris)">
-          Yango <strong style="color:var(--blanco)">calcula todo en dolares</strong> (tarifas, comisiones, limites). Pero el pago lo recibes en <strong style="color:var(--blanco)">bolivares</strong> al cambio del BCV del dia. Tu nivel, limites y Score siempre operan en USD.
+          Yango <strong style="color:var(--blanco)">calcula todo en dólares</strong> (tarifas, comisiones, límites). Pero el pago lo recibes en <strong style="color:var(--blanco)">bolívares</strong> al cambio del BCV del día. Tu nivel, límites y Score siempre operan en USD.
         </div>
       </div>
     </div>
@@ -876,7 +872,7 @@ body::before{
     <div class="reveal">
       <h2 class="bebas" style="font-size:clamp(2.5rem,5vw,4rem);margin-bottom:16px">LISTO PARA <span class="grad-gold">SUBIR DE NIVEL?</span></h2>
       <p style="color:var(--gris);margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto">
-        Escribenos por WhatsApp. Te decimos tu nivel actual y te armamos un plan personalizado para subir.
+        Escríbenos por WhatsApp. Te decimos tu nivel actual y te armamos un plan personalizado para subir.
       </p>
       <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center">
         <a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20saber%20mi%20nivel%20y%20como%20subir" class="btn-wa" style="font-size:1.2rem;padding:18px 36px">

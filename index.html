@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DRIVO PRO | Maneja con Yango en Caracas y Gana en Dolares</title>
-<meta name="description" content="Unete a DRIVO PRO, el socio Yango #1 en Venezuela. La app calcula en dolares y te paga en bolivares. Soporte real, pagos seguros y registro rapido en Caracas.">
-<meta name="keywords" content="conductor yango caracas, manejar yango venezuela, drivo pro, ganar dolares caracas, delivery caracas, registro yango">
+<title>DRIVO PRO | Maneja con Yango en Caracas y Gana M&aacute;s</title>
+<meta name="description" content="Únete a DRIVO PRO, el socio Yango #1 en Venezuela. La app calcula en dólares y te paga en bolívares. Soporte real, pagos seguros y registro rápido en Caracas.">
+<meta name="keywords" content="conductor yango caracas, manejar yango venezuela, drivo pro, ganar dólares caracas, delivery caracas, registro yango">
 <meta name="robots" content="index, follow">
 <meta name="author" content="DRIVO PRO">
 
@@ -16,7 +16,7 @@
 
 <!-- Open Graph -->
 <meta property="og:title" content="DRIVO PRO | Maneja con Yango en Caracas">
-<meta property="og:description" content="El socio Yango #1 en Venezuela. Ingresos calculados en USD, pago en bolivares, soporte humano y registro rapido.">
+<meta property="og:description" content="El socio Yango #1 en Venezuela. Ingresos calculados en USD, pago en bolívares, soporte humano y registro rápido.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_VE">
 <!-- TODO: og:image — subir imagen a GCS gs://zaz-public-assets/drivo/ -->
@@ -96,7 +96,7 @@ nav{
   background:rgba(10,14,20,.72);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--gris-line);
 }
-.logo{font-family:'Bebas Neue';font-size:30px;letter-spacing:2px}
+.logo{font-family:'Bebas Neue';font-size:30px;letter-spacing:2px;text-decoration:none;color:var(--blanco)}
 .logo span{color:var(--cian)}
 .logo small{font-size:11px;letter-spacing:3px;color:var(--gris);display:block;margin-top:-6px;font-family:'DM Sans';font-weight:700}
 .nav-cta{
@@ -105,6 +105,8 @@ nav{
   transition:.25s;border:none;cursor:pointer;
 }
 .nav-cta:hover{background:var(--blanco);transform:translateY(-2px)}
+.nav-link{color:var(--gris);text-decoration:none;font-size:13px;letter-spacing:.5px;transition:color .2s}
+.nav-link:hover{color:var(--blanco)}
 
 /* HERO */
 .hero{
@@ -281,6 +283,94 @@ footer p{color:var(--gris);font-size:13px}
 .wa-float svg{width:32px;height:32px;fill:#fff}
 @keyframes pulse-wa{0%{box-shadow:0 8px 24px rgba(37,211,102,.5)}50%{box-shadow:0 8px 24px rgba(37,211,102,.5),0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 8px 24px rgba(37,211,102,.5)}}
 
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.on{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
+.reveal-d3{transition-delay:.3s}
+.reveal-d4{transition-delay:.4s}
+.reveal-d5{transition-delay:.5s}
+
+/* ── GLASSMORPHISM CARDS ── */
+.bcard{
+  background:rgba(23,18,19,.55);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.06);
+}
+.bcard::after{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);
+}
+.bcard:hover{border-color:rgba(255,51,51,.35);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.bcard .ico{
+  background:rgba(255,51,51,.08);
+  border:1px solid rgba(255,51,51,.15);
+  box-shadow:0 0 20px rgba(255,51,51,.08);
+}
+
+/* ── GLOW CTA ── */
+.btn-primary{animation:glow-cta 3s ease-in-out infinite}
+@keyframes glow-cta{
+  0%,100%{box-shadow:0 10px 30px rgba(255,51,51,.3)}
+  50%{box-shadow:0 10px 30px rgba(255,51,51,.3),0 0 50px rgba(255,51,51,.12)}
+}
+
+/* ── HERO GRID PATTERN ── */
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(ellipse at 60% 40%,black 20%,transparent 70%);
+  -webkit-mask-image:radial-gradient(ellipse at 60% 40%,black 20%,transparent 70%);
+}
+
+/* ── HERO CARD GLOW ── */
+.hero-card{
+  border:1px solid rgba(255,51,51,.15);
+  box-shadow:0 20px 60px rgba(0,0,0,.45),0 0 80px rgba(255,51,51,.06);
+}
+.hero-card:hover{border-color:rgba(255,51,51,.3);box-shadow:0 24px 70px rgba(0,0,0,.5),0 0 100px rgba(255,51,51,.1)}
+
+/* ── NAV SCROLL ── */
+nav{transition:padding .3s,background .3s}
+nav.scrolled{padding:10px 28px;background:rgba(10,14,20,.95)}
+
+/* ── SECTION DIVIDERS ── */
+.section-divider{
+  height:1px;max-width:800px;margin:0 auto;
+  background:linear-gradient(90deg,transparent,rgba(255,51,51,.2),rgba(255,138,61,.15),transparent);
+}
+
+/* ── CALC UPGRADE ── */
+.calc-wrap{
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:0 24px 60px rgba(0,0,0,.4);
+}
+.calc-result{
+  background:rgba(13,11,12,.8);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+
+/* ── PEAK CARDS GLASSMORPHISM ── */
+.peak-card{
+  background:rgba(23,18,19,.55);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+
+/* ── STEP NUMBERS GLOW ── */
+.step .num{
+  background:linear-gradient(180deg,rgba(255,51,51,.25),transparent);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* ── TCARD HOVER ── */
+.tcard{transition:transform .3s,border-color .3s}
+.tcard:hover{transform:translateY(-6px);border-color:rgba(255,51,51,.25)}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .hero-grid,.calc-wrap{grid-template-columns:1fr;gap:34px}
@@ -293,6 +383,7 @@ footer p{color:var(--gris);font-size:13px}
   .hero-stats{flex-wrap:wrap;gap:18px}
   .calc-result .ramount{font-size:64px}
   .logo small{display:none}
+  .hide-mobile{display:none}
 }
 </style>
 </head>
@@ -302,11 +393,12 @@ footer p{color:var(--gris);font-size:13px}
 
 <!-- NAV -->
 <nav>
-  <div class="logo">DRIVO<span> PRO</span><small>YANGO &middot; VENEZUELA</small></div>
-  <div style="display:flex;gap:12px;align-items:center">
-    <a href="roadmap.html" style="color:var(--gris);text-decoration:none;font-size:13px;letter-spacing:.5px">Tu Nivel</a>
-    <a href="academia.html" style="color:var(--gris);text-decoration:none;font-size:13px;letter-spacing:.5px">Academia</a>
-    <a href="#registro" class="nav-cta" onclick="trackCTA('nav')">Quiero Manejar</a>
+  <a href="index.html" class="logo">DRIVO<span> PRO</span><small>YANGO &middot; VENEZUELA</small></a>
+  <div style="display:flex;gap:16px;align-items:center">
+    <a href="roadmap.html" class="nav-link hide-mobile">Tu Nivel</a>
+    <a href="academia.html" class="nav-link hide-mobile">Academia</a>
+    <a href="legal.html" class="nav-link hide-mobile">Legal</a>
+    <a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20manejar%20con%20Yango" class="nav-cta" onclick="trackCTA('nav')">&#x1F4F2; WhatsApp</a>
   </div>
 </nav>
 
@@ -315,8 +407,8 @@ footer p{color:var(--gris);font-size:13px}
   <div class="container hero-grid">
     <div>
       <div class="badge"><span class="dot"></span> SOCIO YANGO #1 EN VENEZUELA</div>
-      <h1>MANEJA EN CARACAS<span class="line2">GANA EN DOLARES</span></h1>
-      <p class="sub">Conviertete en conductor Yango con DRIVO PRO. La app calcula todo en dolares para que tus ingresos no pierdan valor, y te paga en bolivares automaticamente. Tu pones los horarios, nosotros el respaldo.</p>
+      <h1>MANEJA EN CARACAS<span class="line2">GANA EN DÓLARES</span></h1>
+      <p class="sub">Conviértete en conductor Yango con DRIVO PRO. La app calcula todo en dólares para que tus ingresos no pierdan valor, y te paga en bolívares automáticamente. Tu pones los horarios, nosotros el respaldo.</p>
       <div class="hero-ctas">
         <a href="#registro" class="btn-primary" onclick="trackCTA('hero')">Registrarme Gratis &rarr;</a>
         <a href="#calculadora" class="btn-ghost">Calcular mis ingresos</a>
@@ -329,31 +421,34 @@ footer p{color:var(--gris);font-size:13px}
       </div>
     </div>
     <div class="hero-card">
-      <div class="hc-title">Conductor top &mdash; semana real</div>
-      <div class="hc-amount"><span class="cur">$</span>100</div>
-      <div class="hc-row"><span>Ordenes completadas / sem</span><span>~18</span></div>
-      <div class="hc-row"><span>Ingreso promedio / orden</span><span>$5.67 USD</span></div>
+      <div class="hc-title">Conductor #1 &mdash; esta semana</div>
+      <div class="hc-amount"><span class="cur">$</span>278</div>
+      <div class="hc-row"><span>&Oacute;rdenes completadas / sem</span><span>73</span></div>
+      <div class="hc-row"><span>Ingreso promedio / orden</span><span>$3.81 USD</span></div>
       <div class="hc-row"><span>Pago</span><span>USD &rarr; Bs &#x1F1FB;&#x1F1EA;</span></div>
-      <div class="hc-grow">&#x1F4C8; Mercado en crecimiento &mdash; la demanda aumenta cada semana. Mas viajes = mas ingresos.</div>
+      <div class="hc-grow">&#x1F4C8; 476 conductores en la flota &mdash; 82 activos esta semana. El mercado crece cada d&iacute;a.</div>
     </div>
   </div>
 </header>
 
+<!-- DIVIDER -->
+<div class="section-divider"></div>
+
 <!-- BENEFICIOS -->
 <section class="pad">
   <div class="container">
-    <div class="sec-head">
-      <div class="sec-tag">POR QUE DRIVO PRO</div>
+    <div class="sec-head reveal">
+      <div class="sec-tag">POR QUÉ DRIVO PRO</div>
       <h2>El respaldo que <span class="accent">ningun conductor solo</span> tiene</h2>
-      <p>No eres un numero. Eres parte de la flota #1. Te damos las herramientas, la tecnologia y el equipo humano para que ganes mas.</p>
+      <p>No eres un número. Eres parte de la flota #1. Te damos las herramientas, la tecnología y el equipo humano para que ganes más.</p>
     </div>
     <div class="benefits">
-      <div class="bcard"><div class="ico">&#x1F4B5;</div><h3>Ingresos en Dolares</h3><p>La app calcula todo en dolares y al pagarte convierte automaticamente a bolivares a la tasa vigente. Cobras en Bs, sin sorpresas.</p></div>
-      <div class="bcard"><div class="ico">&#x1F3A7;</div><h3>Soporte Real 24/7</h3><p>Personas, no robots. Resolvemos bloqueos, dudas y emergencias por WhatsApp al instante.</p></div>
-      <div class="bcard"><div class="ico">&#x26A1;</div><h3>Registro Express</h3><p>Te activamos en Yango rapido y sin vueltas. Manejas esta misma semana.</p></div>
-      <div class="bcard"><div class="ico">&#x1F4C8;</div><h3>Mercado en Crecimiento</h3><p>Yango arranco en Caracas en abril 2026. Los primeros conductores construyen la base &mdash; y ganan reputacion desde el dia uno.</p></div>
-      <div class="bcard"><div class="ico">&#x1F6E1;&#xFE0F;</div><h3>Sin Costos Ocultos</h3><p>Registro gratis. Reglas claras. Lo que ves es lo que hay, siempre.</p></div>
-      <div class="bcard"><div class="ico">&#x1F91D;</div><h3>Comunidad de Flota</h3><p>Eres parte de una red de conductores. Beneficios, acompanamiento y crecimiento real.</p></div>
+      <div class="bcard reveal"><div class="ico">&#x1F4B5;</div><h3>Ingresos en Dólares</h3><p>La app calcula todo en dólares y al pagarte convierte automáticamente a bolívares a la tasa vigente. Cobras en Bs, sin sorpresas.</p></div>
+      <div class="bcard reveal reveal-d1"><div class="ico">&#x1F3A7;</div><h3>Soporte Real 24/7</h3><p>Personas, no robots. Resolvemos bloqueos, dudas y emergencias por WhatsApp al instante.</p></div>
+      <div class="bcard reveal reveal-d2"><div class="ico">&#x26A1;</div><h3>Registro Express</h3><p>Te activamos en Yango rápido y sin vueltas. Manejas esta misma semana.</p></div>
+      <div class="bcard reveal reveal-d3"><div class="ico">&#x1F4C8;</div><h3>Mercado en Crecimiento</h3><p>Yango arranco en Caracas en abril 2026. Los primeros conductores construyen la base &mdash; y ganan reputacion desde el día uno.</p></div>
+      <div class="bcard reveal reveal-d4"><div class="ico">&#x1F6E1;&#xFE0F;</div><h3>Sin Costos Ocultos</h3><p>Registro gratis. Reglas claras. Lo que ves es lo que hay, siempre.</p></div>
+      <div class="bcard reveal reveal-d5"><div class="ico">&#x1F91D;</div><h3>Comunidad de Flota</h3><p>Eres parte de una red de conductores. Beneficios, acompañamiento y crecimiento real.</p></div>
     </div>
   </div>
 </section>
@@ -361,29 +456,29 @@ footer p{color:var(--gris);font-size:13px}
 <!-- HORAS PICO -->
 <section class="pad" style="background:rgba(255,255,255,.015)">
   <div class="container">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="sec-tag">HORAS DE ORO EN CARACAS</div>
-      <h2>Cuando hay <span class="accent">mas demanda</span></h2>
-      <p>Datos reales de Caracas. Conectate en estas franjas para maximizar tus viajes.</p>
+      <h2>Cuando hay <span class="accent">más demanda</span></h2>
+      <p>Datos reales de Caracas. Conéctate en estas franjas para maximizar tus viajes.</p>
     </div>
     <div class="peak-grid">
-      <div class="peak-card">
+      <div class="peak-card reveal">
         <div class="pk-icon">&#x1F305;</div>
         <div class="pk-hours">7:00 &mdash; 9:00 AM</div>
-        <div class="pk-label">Hora pico manana</div>
+        <div class="pk-label">Hora pico mañana</div>
         <div class="pk-demand">&#x2B06;&#xFE0F; Alta demanda</div>
       </div>
-      <div class="peak-card">
+      <div class="peak-card reveal reveal-d1">
         <div class="pk-icon">&#x2600;&#xFE0F;</div>
         <div class="pk-hours">12:00 &mdash; 2:00 PM</div>
         <div class="pk-label">Hora almuerzo</div>
         <div class="pk-demand">&#x2B06;&#xFE0F; Pico delivery</div>
       </div>
-      <div class="peak-card">
+      <div class="peak-card reveal reveal-d2">
         <div class="pk-icon">&#x1F307;</div>
         <div class="pk-hours">4:00 &mdash; 8:00 PM</div>
         <div class="pk-label">Hora pico tarde-noche</div>
-        <div class="pk-demand">&#x1F525; Maxima demanda</div>
+        <div class="pk-demand">&#x1F525; Máxima demanda</div>
       </div>
     </div>
   </div>
@@ -392,26 +487,26 @@ footer p{color:var(--gris);font-size:13px}
 <!-- CALCULADORA -->
 <section class="pad" id="calculadora">
   <div class="container">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="sec-tag">CALCULA TU POTENCIAL</div>
-      <h2>&#191;Cuanto puedes ganar <span class="accent">en dolares</span>?</h2>
-      <p>Estimado basado en datos reales de conductores DRIVO PRO en Caracas. Mayo 2026.</p>
+      <h2>&#191;Cuanto puedes ganar <span class="accent">en dólares</span>?</h2>
+      <p>Estimado basado en datos reales de 476 conductores DRIVO PRO en Caracas. Mayo 2026.</p>
     </div>
-    <div class="calc-wrap">
+    <div class="calc-wrap reveal">
       <div class="calc-controls">
-        <label>&#191;Que vehiculo tienes?</label>
+        <label>&#191;Que vehículo tienes?</label>
         <div class="vert-tabs" id="vertTabs">
           <button class="active" data-rate="2.5" onclick="setVert(this,2.5,'carro')">&#x1F697; Carro &middot; Pasajeros</button>
           <button data-rate="1.8" onclick="setVert(this,1.8,'moto')">&#x1F3CD;&#xFE0F; Moto &middot; Delivery</button>
         </div>
 
-        <label>Horas que manejas al dia</label>
+        <label>Horas que manejas al día</label>
         <input type="range" id="horas" min="2" max="12" value="5" oninput="calc()">
         <div class="range-val"><span>2 h</span><span id="horasVal">5 horas</span><span>12 h</span></div>
 
-        <label>Dias que trabajas a la semana</label>
+        <label>Días que trabajas a la semana</label>
         <input type="range" id="dias" min="1" max="7" value="5" oninput="calc()">
-        <div class="range-val"><span>1 dia</span><span id="diasVal">5 dias</span><span>7 dias</span></div>
+        <div class="range-val"><span>1 día</span><span id="diasVal">5 días</span><span>7 días</span></div>
       </div>
 
       <div class="calc-result">
@@ -420,15 +515,15 @@ footer p{color:var(--gris);font-size:13px}
         <div class="rperiod">USD/mes estimados &middot; se pagan en Bs</div>
         <div class="breakdown">
           <div><div class="bn" id="semanal">$0</div><div class="bl">por semana</div></div>
-          <div><div class="bn" id="diario">$0</div><div class="bl">por dia</div></div>
+          <div><div class="bn" id="diario">$0</div><div class="bl">por día</div></div>
         </div>
         <div class="calc-real">
           <div class="cr-title">&#x1F4CA; Referencia real &mdash; Mayo 2026</div>
-          <div class="cr-row"><span>Top conductor semanal</span><span>$100 USD</span></div>
+          <div class="cr-row"><span>Top conductor semanal</span><span>$278 USD</span></div>
           <div class="cr-row"><span>Promedio por orden</span><span>$3.60 USD</span></div>
-          <div class="cr-row"><span>Conductores activos</span><span>124</span></div>
+          <div class="cr-row"><span>Conductores activos</span><span>476</span></div>
         </div>
-        <p class="calc-note">*Estimado en USD basado en datos reales de Caracas (Mayo 2026). La app calcula en dolares y convierte automaticamente a bolivares al pagarte. El mercado crece cada semana &mdash; mas pasajeros = mas viajes disponibles.</p>
+        <p class="calc-note">*Estimado en USD basado en datos reales de Caracas (Mayo 2026). La app calcula en dólares y convierte automáticamente a bolívares al pagarte. El mercado crece cada semana &mdash; más pasajeros = más viajes disponibles.</p>
       </div>
     </div>
   </div>
@@ -437,15 +532,15 @@ footer p{color:var(--gris);font-size:13px}
 <!-- PASOS -->
 <section class="pad">
   <div class="container">
-    <div class="sec-head">
-      <div class="sec-tag">EMPEZAR ES FACIL</div>
+    <div class="sec-head reveal">
+      <div class="sec-tag">EMPEZAR ES FÁCIL</div>
       <h2>De cero a manejando en <span class="accent">4 pasos</span></h2>
     </div>
     <div class="steps">
-      <div class="step"><div class="num">01</div><h3>Registrate</h3><p>Escribenos por WhatsApp con tus datos. Toma menos de 2 minutos.</p></div>
-      <div class="step"><div class="num">02</div><h3>Te contactamos</h3><p>Nuestro equipo te guia con los siguientes pasos.</p></div>
-      <div class="step"><div class="num">03</div><h3>Activacion</h3><p>Te ayudamos a completar tu perfil en la app de Yango.</p></div>
-      <div class="step"><div class="num">04</div><h3>&#161;A ganar!</h3><p>Enciende la app, recibe viajes y empieza a generar ingresos en dolares que llegan a tu bolsillo en bolivares.</p></div>
+      <div class="step reveal"><div class="num">01</div><h3>Regístrate</h3><p>Escríbenos por WhatsApp con tus datos. Toma menos de 2 minutos.</p></div>
+      <div class="step reveal reveal-d1"><div class="num">02</div><h3>Te contactamos</h3><p>Nuestro equipo te guía con los siguientes pasos.</p></div>
+      <div class="step reveal reveal-d2"><div class="num">03</div><h3>Activación</h3><p>Te ayudamos a completar tu perfil en la app de Yango.</p></div>
+      <div class="step reveal reveal-d3"><div class="num">04</div><h3>&#161;A ganar!</h3><p>Enciende la app, recibe viajes y empieza a generar ingresos en dólares que llegan a tu bolsillo en bolívares.</p></div>
     </div>
   </div>
 </section>
@@ -453,38 +548,38 @@ footer p{color:var(--gris);font-size:13px}
 <!-- FAQ -->
 <section class="pad" style="background:rgba(255,255,255,.015)">
   <div class="container">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="sec-tag">PREGUNTAS FRECUENTES</div>
       <h2>Lo que todo conductor <span class="accent">quiere saber</span></h2>
     </div>
     <div style="max-width:760px;margin:0 auto">
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q">&#191;Cuanto cuesta registrarse?<span class="faq-icon">+</span></div>
-        <div class="faq-a">Nada. El registro es 100% gratis. No cobramos inscripcion ni cuota mensual. Tu unico compromiso es manejar.</div>
+        <div class="faq-a">Nada. El registro es 100% gratis. No cobramos inscripción ni cuota mensual. Tu único compromiso es manejar.</div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q">&#191;Como me pagan?<span class="faq-icon">+</span></div>
-        <div class="faq-a">La app de Yango calcula todo en dolares (USD). Al momento del pago, convierte automaticamente a bolivares a la tasa vigente. Cobras en Bs directamente, sin intermediarios.</div>
+        <div class="faq-a">La app de Yango calcula todo en dólares (USD). Al momento del pago, convierte automáticamente a bolívares a la tasa vigente. Cobras en Bs directamente, sin intermediarios.</div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q">&#191;Necesito carro propio?<span class="faq-icon">+</span></div>
-        <div class="faq-a">Puedes manejar con carro (pasajeros) o moto (delivery). El vehiculo puede ser propio o prestado, siempre que este en buen estado y con documentos al dia.</div>
+        <div class="faq-a">Puedes manejar con carro (pasajeros) o moto (delivery). El vehículo puede ser propio o prestado, siempre que este en buen estado y con documentos al día.</div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q">&#191;Que documentos necesito?<span class="faq-icon">+</span></div>
-        <div class="faq-a">Cedula vigente, licencia de conducir, documentos del vehiculo (certificado de circulacion) y una foto de perfil. Nuestro equipo te guia paso a paso por WhatsApp.</div>
+        <div class="faq-a">Cedula vigente, licencia de conducir, documentos del vehículo (certificado de circulacion) y una foto de perfil. Nuestro equipo te guia paso a paso por WhatsApp.</div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q">&#191;Puedo elegir mis horarios?<span class="faq-icon">+</span></div>
-        <div class="faq-a">Si, tu decides cuando conectarte y cuando parar. No hay horarios fijos ni jornada minima. Recomendamos las horas pico (7-9 AM y 4-8 PM) para mas viajes.</div>
+        <div class="faq-a">Si, tu decides cuando conectarte y cuando parar. No hay horarios fijos ni jornada mínima. Recomendamos las horas pico (7-9 AM y 4-8 PM) para más viajes.</div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q">&#191;Que es DRIVO PRO?<span class="faq-icon">+</span></div>
-        <div class="faq-a">DRIVO PRO es el socio operador #1 de Yango en Venezuela. Somos la empresa que te respalda: soporte 24/7, gestion de flota y acompanamiento para que maximices tus ingresos. Empresa hermana de ZAZ Conductores, el socio #1 de Yango en Colombia.</div>
+        <div class="faq-a">DRIVO PRO es el socio operador #1 de Yango en Venezuela. Somos la empresa que te respalda: soporte 24/7, gestión de flota y acompanamiento para que maximices tus ingresos. Empresa hermana de ZAZ Conductores, el socio #1 de Yango en Colombia.</div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q">&#191;Yango es seguro?<span class="faq-icon">+</span></div>
-        <div class="faq-a">Yango es una plataforma global de movilidad presente en mas de 20 paises. Es subsidiaria de un grupo tecnologico internacional con millones de usuarios. Tu y tus pasajeros estan respaldados.</div>
+        <div class="faq-a">Yango es una plataforma global de movilidad presente en más de 20 países. Es subsidiaria de un grupo tecnologico internacional con millones de usuarios. Tu y tus pasajeros estan respaldados.</div>
       </div>
     </div>
   </div>
@@ -493,16 +588,16 @@ footer p{color:var(--gris);font-size:13px}
 <!-- TESTIMONIOS -->
 <section class="pad">
   <div class="container">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="sec-tag">CONDUCTORES DRIVO PRO</div>
       <h2>Lo dicen <span class="accent">los que ya manejan</span></h2>
     </div>
     <div class="swiper" id="testiSwiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><div class="tcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Lo mejor es el soporte. Tuve un bloqueo y me lo resolvieron el mismo dia por WhatsApp. Con eso me ganaron."</p><div class="who"><div class="av">JM</div><div class="meta"><b>Jose M.</b><small>Caracas &middot; Pasajeros</small></div></div></div></div>
-        <div class="swiper-slide"><div class="tcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Que la app calcule en dolares me da tranquilidad: lo que gano no se desvaloriza. Manejo medio tiempo y me alcanza."</p><div class="who"><div class="av">AR</div><div class="meta"><b>Andrea R.</b><small>Caracas &middot; Delivery</small></div></div></div></div>
-        <div class="swiper-slide"><div class="tcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"El registro fue rapidisimo. En la misma semana ya estaba recibiendo viajes. Recomendado 100%."</p><div class="who"><div class="av">LP</div><div class="meta"><b>Luis P.</b><small>Caracas &middot; Pasajeros</small></div></div></div></div>
-        <div class="swiper-slide"><div class="tcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Me gusta que no me tratan como un numero. Hay un equipo detras que de verdad te acompana."</p><div class="who"><div class="av">CG</div><div class="meta"><b>Carlos G.</b><small>Caracas &middot; Carro</small></div></div></div></div>
+        <div class="swiper-slide"><div class="tcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Lo mejor es el soporte. Tuve un bloqueo y me lo resolvieron el mismo día por WhatsApp. Con eso me ganaron."</p><div class="who"><div class="av">JM</div><div class="meta"><b>Jose M.</b><small>Caracas &middot; Pasajeros</small></div></div></div></div>
+        <div class="swiper-slide"><div class="tcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Que la app calcule en dólares me da tranquilidad: lo que gano no se desvaloriza. Manejo medio tiempo y me alcanza."</p><div class="who"><div class="av">AR</div><div class="meta"><b>Andrea R.</b><small>Caracas &middot; Delivery</small></div></div></div></div>
+        <div class="swiper-slide"><div class="tcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"El registro fue rapidísimo. En la misma semana ya estaba recibiendo viajes. Recomendado 100%."</p><div class="who"><div class="av">LP</div><div class="meta"><b>Luis P.</b><small>Caracas &middot; Pasajeros</small></div></div></div></div>
+        <div class="swiper-slide"><div class="tcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Me gusta que no me tratan como un número. Hay un equipo detras que de verdad te acompana."</p><div class="who"><div class="av">CG</div><div class="meta"><b>Carlos G.</b><small>Caracas &middot; Carro</small></div></div></div></div>
       </div>
       <div class="swiper-pagination"></div>
     </div>
@@ -512,9 +607,9 @@ footer p{color:var(--gris);font-size:13px}
 <!-- CTA FINAL -->
 <section class="pad" id="registro">
   <div class="container">
-    <div class="final-cta">
-      <h2>TU PROXIMO VIAJE EMPIEZA HOY</h2>
-      <p>Unete a la flota Yango #1 de Venezuela. Elige tu vehiculo y registrate gratis, sin compromiso.</p>
+    <div class="final-cta reveal">
+      <h2>TU PRÓXIMO VIAJE EMPIEZA HOY</h2>
+      <p>Únete a la flota Yango #1 de Venezuela. Elige tu vehículo y regístrate gratis, sin compromiso.</p>
       <div class="final-ctas">
         <a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20manejar%20en%20CARRO%20%28pasajeros%29%20con%20Yango%20en%20Caracas" class="btn-dark" onclick="trackCTA('registro_carro')">&#x1F697; Registrarme con Carro</a>
         <a href="https://wa.me/584223748677?text=Hola%20DRIVO%20PRO%2C%20quiero%20manejar%20en%20MOTO%20%28delivery%29%20con%20Yango%20en%20Caracas" class="btn-dark" onclick="trackCTA('registro_moto')">&#x1F3CD;&#xFE0F; Registrarme con Moto</a>
@@ -531,7 +626,7 @@ footer p{color:var(--gris);font-size:13px}
       <p class="hermana">Empresa hermana de <b>ZAZ Conductores</b> &middot; Socio oficial Yango</p>
     </div>
     <div style="text-align:right">
-      <p><a href="roadmap.html" style="color:var(--gris);text-decoration:none;font-size:13px">Tu Nivel</a> &middot; <a href="academia.html" style="color:var(--gris);text-decoration:none;font-size:13px">Academia</a> &middot; <a href="legal.html" style="color:var(--gris);text-decoration:none;font-size:13px">Terminos y Condiciones</a> &middot; <a href="legal.html" onclick="localStorage.setItem('drivo-tab','privacy')" style="color:var(--gris);text-decoration:none;font-size:13px">Politica de Privacidad</a></p>
+      <p><a href="roadmap.html" style="color:var(--gris);text-decoration:none;font-size:13px">Tu Nivel</a> &middot; <a href="academia.html" style="color:var(--gris);text-decoration:none;font-size:13px">Academia</a> &middot; <a href="legal.html" style="color:var(--gris);text-decoration:none;font-size:13px">Términos y Condiciones</a> &middot; <a href="legal.html" onclick="localStorage.setItem('drivo-tab','privacy')" style="color:var(--gris);text-decoration:none;font-size:13px">Política de Privacidad</a></p>
       <p style="margin-top:6px">&copy; 2026 DRIVO PRO &middot; Caracas, Venezuela</p>
     </div>
   </div>
@@ -564,7 +659,7 @@ function calc(){
   const horas = +document.getElementById('horas').value;
   const dias  = +document.getElementById('dias').value;
   document.getElementById('horasVal').textContent = horas + ' horas';
-  document.getElementById('diasVal').textContent  = dias + (dias===1?' dia':' dias');
+  document.getElementById('diasVal').textContent  = dias + (dias===1?' día':' días');
   fillRange(document.getElementById('horas'));
   fillRange(document.getElementById('dias'));
 
@@ -605,6 +700,21 @@ function trackCTA(origen){
 }
 
 calc();
+
+// ── SCROLL REVEAL ──
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); revealObs.unobserve(e.target); }});
+}, {threshold: 0.15, rootMargin: '0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// ── NAV SCROLL ──
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if(window.scrollY > 80) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+  lastScroll = window.scrollY;
+}, {passive: true});
 </script>
 </body>
 </html>
