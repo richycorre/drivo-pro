@@ -3,1386 +3,647 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZAZ × Terpel — Alianza Estratégica</title>
+<title>ZAZ × Terpel — Alianza Estratégica 2026</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap');
 
 :root {
-  --bg: #06080d;
-  --surface: #0d1117;
-  --surface2: #161b22;
-  --border: #21262d;
-  --text: #e6edf3;
-  --muted: #7d8590;
+  --bg: #070b14;
+  --surface: #0f1420;
+  --surface2: #171d2b;
+  --border: #1e2638;
+  --text: #eaf0f6;
+  --muted: #6b7a8d;
   --accent: #f0a500;
   --accent2: #ff6b35;
-  --terpel: #dc2626;
-  --green: #2ea043;
-  --blue: #388bfd;
-  --purple: #a371f7;
+  --eco: #059669;
+  --eco-light: #34d399;
+  --terpel: #ef4444;
+  --blue: #3b82f6;
+  --purple: #8b5cf6;
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Manrope', -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-}
-
-/* ═══════════════ SLIDE SYSTEM ═══════════════ */
-.slide {
-  min-height: 100vh;
-  padding: 4rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.slide-inner {
-  max-width: 1200px;
-  width: 100%;
-  z-index: 2;
-  position: relative;
-}
-
-/* ═══════════════ NAV DOTS ═══════════════ */
-.nav-dots {
-  position: fixed;
-  right: 1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.nav-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--border);
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s;
-  position: relative;
-}
-
-.nav-dot.active {
-  background: var(--accent);
-  box-shadow: 0 0 12px rgba(240,165,0,0.5);
-  transform: scale(1.3);
-}
-
-.nav-dot:hover { background: var(--accent); transform: scale(1.2); }
-
-.nav-dot .tooltip {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--surface2);
-  color: var(--text);
-  padding: 0.3rem 0.7rem;
-  border-radius: 6px;
-  font-size: 0.7rem;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s;
-  border: 1px solid var(--border);
-}
-
-.nav-dot:hover .tooltip { opacity: 1; }
-
-/* ═══════════════ SLIDE 0: HERO ═══════════════ */
-.slide-hero {
-  background: radial-gradient(ellipse at 30% 50%, rgba(240,165,0,0.08) 0%, transparent 60%),
-              radial-gradient(ellipse at 70% 30%, rgba(220,38,38,0.06) 0%, transparent 50%),
-              var(--bg);
-}
-
-.hero-badge {
-  display: inline-block;
-  background: rgba(240,165,0,0.12);
-  color: var(--accent);
-  padding: 0.4rem 1rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 2rem;
-  border: 1px solid rgba(240,165,0,0.2);
-}
-
-.hero-title {
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 800;
-  line-height: 1.05;
-  margin-bottom: 1.5rem;
-}
-
-.hero-title .zaz { color: var(--accent); }
-.hero-title .x { color: var(--muted); font-weight: 300; }
-.hero-title .terpel { color: var(--terpel); }
-
-.hero-sub {
-  font-size: 1.25rem;
-  color: var(--muted);
-  max-width: 600px;
-  line-height: 1.6;
-  margin-bottom: 3rem;
-}
-
-.hero-stats {
-  display: flex;
-  gap: 3rem;
-  flex-wrap: wrap;
-}
-
-.hero-stat .number {
-  font-size: 2.5rem;
-  font-weight: 800;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.hero-stat .number.gold { color: var(--accent); }
-.hero-stat .number.red { color: var(--terpel); }
-.hero-stat .number.green { color: var(--green); }
-
-.hero-stat .label {
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin-top: 0.25rem;
-}
-
-/* ═══════════════ SLIDE 1: PROBLEMA ═══════════════ */
-.slide-problem {
-  background: radial-gradient(ellipse at 70% 50%, rgba(220,38,38,0.06) 0%, transparent 50%),
-              var(--bg);
-}
-
-.section-tag {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1rem;
-}
-
-.section-title {
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 800;
-  margin-bottom: 2rem;
-  line-height: 1.15;
-}
-
-.problem-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.problem-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: all 0.3s;
-}
-
-.problem-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(240,165,0,0.08);
-}
-
-.problem-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.problem-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.75rem;
-  color: var(--text);
-}
-
-.problem-card p {
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.problem-card .stat {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-top: 1rem;
-}
-
-/* ═══════════════ SLIDE 2: SOLUCION ═══════════════ */
-.slide-solution {
-  background: radial-gradient(ellipse at 30% 60%, rgba(46,160,67,0.06) 0%, transparent 50%),
-              var(--bg);
-}
-
-.solution-flow {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin: 2rem 0;
-}
-
-.flow-step {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.25rem 1.5rem;
-  text-align: center;
-  flex: 1;
-  min-width: 180px;
-  transition: all 0.3s;
-}
-
-.flow-step:hover { border-color: var(--green); }
-
-.flow-step .step-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-.flow-step .step-label { font-size: 0.8rem; font-weight: 600; }
-.flow-step .step-detail { font-size: 0.7rem; color: var(--muted); margin-top: 0.25rem; }
-
-.flow-arrow {
-  color: var(--accent);
-  font-size: 1.5rem;
-  font-weight: 800;
-}
-
-.xp-table {
-  width: 100%;
-  margin-top: 2rem;
-  border-collapse: collapse;
-}
-
-.xp-table th {
-  text-align: left;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.xp-table td {
-  padding: 0.75rem 1rem;
-  font-size: 0.9rem;
-  border-bottom: 1px solid rgba(33,38,45,0.5);
-}
-
-.xp-table .positive { color: var(--green); font-weight: 600; }
-.xp-table .negative { color: var(--terpel); font-weight: 600; }
-
-/* ═══════════════ SLIDE 3: DATA ═══════════════ */
-.slide-data {
-  background: radial-gradient(ellipse at 50% 50%, rgba(56,139,253,0.05) 0%, transparent 50%),
-              var(--bg);
-}
-
-.chart-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.chart-card h3 {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-.chart-wrap { position: relative; height: 300px; }
-
-.kpi-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.kpi {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.25rem;
-  text-align: center;
-}
-
-.kpi .kpi-value {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.8rem;
-  font-weight: 700;
-}
-
-.kpi .kpi-value.gold { color: var(--accent); }
-.kpi .kpi-value.green { color: var(--green); }
-.kpi .kpi-value.blue { color: var(--blue); }
-.kpi .kpi-value.red { color: var(--terpel); }
-
-.kpi .kpi-label {
-  font-size: 0.7rem;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-top: 0.3rem;
-}
-
-.kpi .kpi-sub {
-  font-size: 0.75rem;
-  color: var(--muted);
-  margin-top: 0.15rem;
-}
-
-/* ═══════════════ SLIDE 4: COSTO ═══════════════ */
-.slide-cost {
-  background: radial-gradient(ellipse at 60% 40%, rgba(240,165,0,0.06) 0%, transparent 50%),
-              var(--bg);
-}
-
-.cost-comparison {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 2rem;
-  align-items: center;
-  margin: 2rem 0;
-}
-
-.cost-box {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 2.5rem;
-  text-align: center;
-}
-
-.cost-box .cost-label {
-  font-size: 0.8rem;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 1rem;
-}
-
-.cost-box .cost-value {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 2.5rem;
-  font-weight: 800;
-}
-
-.cost-box .cost-detail {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-top: 0.75rem;
-  line-height: 1.5;
-}
-
-.cost-box.safe { border-color: var(--green); }
-.cost-box.safe .cost-value { color: var(--green); }
-.cost-box.cap { border-color: var(--accent); }
-.cost-box.cap .cost-value { color: var(--accent); }
-
-.cost-vs {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--muted);
-}
-
-.margin-bar {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem 2rem;
-  margin-top: 2rem;
-}
-
-.margin-bar h4 {
-  font-size: 0.85rem;
-  margin-bottom: 1rem;
-  color: var(--muted);
-}
-
-.bar-track {
-  background: var(--surface2);
-  border-radius: 8px;
-  height: 40px;
-  position: relative;
-  overflow: hidden;
-}
-
-.bar-fill {
-  background: linear-gradient(90deg, var(--green), var(--accent));
-  height: 100%;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 700;
-  transition: width 1.5s ease;
-}
-
-.bar-cap {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  padding-right: 1rem;
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-
-/* ═══════════════ SLIDE 5: SCORE GUARDIAN ═══════════════ */
-.slide-guardian {
-  background: radial-gradient(ellipse at 40% 60%, rgba(163,113,247,0.06) 0%, transparent 50%),
-              var(--bg);
-}
-
-.tier-row {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin: 2rem 0;
-}
-
-.tier-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.25rem;
-  flex: 1;
-  min-width: 150px;
-  text-align: center;
-  transition: all 0.3s;
-}
-
-.tier-card:hover { transform: translateY(-4px); }
-
-.tier-card .tier-name {
-  font-size: 0.85rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.tier-card .tier-count {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.4rem;
-  font-weight: 700;
-}
-
-.tier-card .tier-limit {
-  font-size: 0.75rem;
-  color: var(--muted);
-  margin-top: 0.25rem;
-}
-
-.tier-card.t-leyenda { border-color: #ffd700; }
-.tier-card.t-leyenda .tier-name { color: #ffd700; }
-.tier-card.t-leyenda .tier-count { color: #ffd700; }
-
-.tier-card.t-experto { border-color: #a371f7; }
-.tier-card.t-experto .tier-name { color: #a371f7; }
-.tier-card.t-experto .tier-count { color: #a371f7; }
-
-.tier-card.t-master { border-color: #388bfd; }
-.tier-card.t-master .tier-name { color: #388bfd; }
-.tier-card.t-master .tier-count { color: #388bfd; }
-
-.tier-card.t-novato { border-color: #2ea043; }
-.tier-card.t-novato .tier-name { color: #2ea043; }
-.tier-card.t-novato .tier-count { color: #2ea043; }
-
-.tier-card.t-aprendiz { border-color: var(--muted); }
-.tier-card.t-aprendiz .tier-name { color: var(--muted); }
-.tier-card.t-aprendiz .tier-count { color: var(--muted); }
-
-.components-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 0.75rem;
-}
-
-.component-pill {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
-  font-size: 0.8rem;
-  text-align: center;
-}
-
-.component-pill .c-name { font-weight: 600; }
-.component-pill .c-weight { color: var(--muted); font-size: 0.7rem; }
-
-/* ═══════════════ SLIDE 6: TECH ═══════════════ */
-.slide-tech {
-  background: radial-gradient(ellipse at 50% 40%, rgba(56,139,253,0.06) 0%, transparent 50%),
-              var(--bg);
-}
-
-.tech-pipeline {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
-.pipe-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.pipe-node {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 0.75rem 1.25rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.pipe-node.highlight { border-color: var(--accent); color: var(--accent); }
-.pipe-node.blue { border-color: var(--blue); color: var(--blue); }
-.pipe-node.green { border-color: var(--green); color: var(--green); }
-.pipe-node.purple { border-color: var(--purple); color: var(--purple); }
-
-.pipe-arrow { color: var(--muted); font-size: 1.2rem; }
-
-.tech-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.tech-stat {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem;
-}
-
-.tech-stat .ts-value {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--blue);
-}
-
-.tech-stat .ts-label {
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin-top: 0.25rem;
-}
-
-/* ═══════════════ SLIDE 7: CTA ═══════════════ */
-.slide-cta {
-  background: radial-gradient(ellipse at 50% 50%, rgba(240,165,0,0.1) 0%, transparent 50%),
-              var(--bg);
-  text-align: center;
-}
-
-.cta-title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
-}
-
-.cta-sub {
-  font-size: 1.1rem;
-  color: var(--muted);
-  max-width: 600px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.6;
-}
-
-.cta-cards {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 3rem;
-}
-
-.cta-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 2rem;
-  width: 280px;
-  text-align: left;
-}
-
-.cta-card h4 {
-  font-size: 0.9rem;
-  color: var(--accent);
-  margin-bottom: 0.75rem;
-}
-
-.cta-card p {
-  font-size: 0.85rem;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.chat-invite {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  color: var(--bg);
-  padding: 1rem 2.5rem;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  cursor: pointer;
-  border: none;
-  transition: all 0.3s;
-}
-
-.chat-invite:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(240,165,0,0.3);
-}
-
-/* ═══════════════ CHAT WIDGET ═══════════════ */
-.chat-fab {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  border: none;
-  cursor: pointer;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 20px rgba(240,165,0,0.4);
-  transition: all 0.3s;
-  font-size: 1.5rem;
-}
-
-.chat-fab:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 30px rgba(240,165,0,0.5);
-}
-
-.chat-fab.open { border-radius: 12px; }
-
-.chat-panel {
-  position: fixed;
-  bottom: 6rem;
-  right: 2rem;
-  width: 420px;
-  max-height: 520px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  z-index: 999;
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-  animation: chatSlideIn 0.3s ease;
-}
-
+body { font-family: 'Manrope', system-ui, sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--eco), var(--accent)); z-index: 200; transition: width 0.3s; box-shadow: 0 0 8px rgba(5,150,105,0.4); }
+.watermark { position: fixed; top: 1.2rem; left: 1.5rem; z-index: 90; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(240,165,0,0.2); pointer-events: none; }
+.slide-counter { position: fixed; bottom: 2rem; left: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--muted); z-index: 90; letter-spacing: 0.1em; }
+
+/* ═══ NAV ═══ */
+.nav-dots { position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 0.55rem; }
+.nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; transition: all 0.3s; position: relative; }
+.nav-dot.active { background: var(--accent); box-shadow: 0 0 10px rgba(240,165,0,0.5); transform: scale(1.4); }
+.nav-dot:hover { background: var(--accent); }
+.nav-dot .tip { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); background: var(--surface2); color: var(--text); padding: 0.2rem 0.5rem; border-radius: 5px; font-size: 0.6rem; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; border: 1px solid var(--border); }
+.nav-dot:hover .tip { opacity: 1; }
+
+/* ═══ SLIDES ═══ */
+.slide { min-height: 100vh; padding: 5rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.slide-inner { max-width: 1100px; width: 100%; z-index: 2; position: relative; }
+.tag { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+.title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1.5rem; line-height: 1.12; }
+.sub { color: var(--muted); max-width: 650px; line-height: 1.7; font-size: 1rem; margin-bottom: 2.5rem; }
+
+/* ═══ REVEAL ═══ */
+.r { opacity: 0; transform: translateY(25px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+.r.v { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: .1s; } .d2 { transition-delay: .2s; } .d3 { transition-delay: .3s; } .d4 { transition-delay: .4s; } .d5 { transition-delay: .5s; }
+
+/* ═══ CARDS / KPI ═══ */
+.grid { display: grid; gap: 1rem; }
+.g2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.g3 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.g4 { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+.g6 { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; transition: all 0.3s; }
+.card:hover { border-color: rgba(240,165,0,0.3); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; text-align: center; }
+.kv { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; font-weight: 700; }
+.kv.gold { color: var(--accent); } .kv.green { color: var(--eco-light); } .kv.blue { color: var(--blue); } .kv.red { color: var(--terpel); } .kv.purple { color: var(--purple); }
+.kl { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.3rem; }
+.ks { font-size: 0.72rem; color: var(--muted); margin-top: 0.1rem; }
+
+/* ═══ SLIDE 0: FUGA ═══ */
+.s-fuga { background: radial-gradient(ellipse at 30% 50%, rgba(5,150,105,0.07) 0%, transparent 60%), radial-gradient(ellipse at 70% 70%, rgba(240,165,0,0.05) 0%, transparent 50%), var(--bg); }
+.fuga-num { font-family: 'JetBrains Mono', monospace; font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; color: var(--eco-light); line-height: 1; margin-bottom: 0.5rem; text-shadow: 0 0 40px rgba(5,150,105,0.3); }
+.fuga-unit { font-size: 1.3rem; color: var(--muted); font-weight: 500; margin-bottom: 2.5rem; }
+.fuga-line { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 700; line-height: 1.3; margin-bottom: 3rem; }
+.fuga-line em { font-style: normal; color: var(--accent); }
+.fuga-stats { display: flex; gap: 3rem; flex-wrap: wrap; }
+.fuga-stat .fn { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 800; }
+.fuga-stat .fn.gold { color: var(--accent); }
+.fuga-stat .fn.red { color: var(--terpel); }
+.fuga-stat .fn.green { color: var(--eco-light); }
+.fuga-stat .fl { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+.scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: var(--muted); font-size: 0.75rem; animation: bob 2s infinite; }
+@keyframes bob { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+/* ═══ SLIDE 1: QUIENES ═══ */
+.s-quienes { background: radial-gradient(ellipse at 60% 40%, rgba(240,165,0,0.06) 0%, transparent 50%), var(--bg); }
+.brand-row { display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+.brand-tag { font-size: 1.1rem; font-weight: 800; letter-spacing: 0.05em; padding: 0.5rem 1.2rem; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); }
+.brand-tag.zaz { color: var(--accent); border-color: rgba(240,165,0,0.3); }
+.brand-tag.yango { color: var(--blue); border-color: rgba(59,130,246,0.3); }
+.brand-tag.gcp { color: var(--eco-light); border-color: rgba(52,211,153,0.3); }
+.brand-x { font-size: 1rem; color: var(--muted); font-weight: 300; }
+.cap-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+.cap-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+.cap-card .cap-num { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; color: var(--accent); margin-top: 0.75rem; }
+
+/* ═══ SLIDE 2: XP ═══ */
+.s-xp { background: radial-gradient(ellipse at 30% 60%, rgba(5,150,105,0.05) 0%, transparent 50%), var(--bg); }
+.flow { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.flow-step { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; text-align: center; flex: 1; min-width: 140px; }
+.flow-step .fi { font-size: 1.8rem; margin-bottom: 0.3rem; }
+.flow-step .fn { font-size: 0.8rem; font-weight: 700; }
+.flow-step .fd { font-size: 0.7rem; color: var(--muted); margin-top: 0.15rem; }
+.flow-step.burn { border-color: var(--terpel); }
+.flow-step.redeem { border-color: var(--eco); }
+.flow-arrow { color: var(--accent); font-size: 1.3rem; font-weight: 800; }
+.liga-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.liga-badge { padding: 0.6rem 1rem; border-radius: 8px; font-size: 0.75rem; font-weight: 700; text-align: center; border: 1px solid var(--border); background: var(--surface); flex: 1; min-width: 100px; }
+.liga-badge.sin { color: var(--muted); } .liga-badge.bronce { color: #cd7f32; border-color: rgba(205,127,50,0.3); }
+.liga-badge.plata { color: #c0c0c0; border-color: rgba(192,192,192,0.3); } .liga-badge.oro { color: #ffd700; border-color: rgba(255,215,0,0.3); }
+.liga-badge.diamante { color: #b9f2ff; border-color: rgba(185,242,255,0.3); }
+.liga-pct { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; display: block; margin-top: 0.2rem; }
+
+/* ═══ SLIDE 3: DATA ═══ */
+.s-data { background: radial-gradient(ellipse at 50% 50%, rgba(59,130,246,0.04) 0%, transparent 50%), var(--bg); }
+.chart-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; }
+.chart-box h3 { font-size: 0.95rem; margin-bottom: 1rem; }
+.chart-wrap { position: relative; height: 280px; }
+
+/* ═══ SLIDE 4: GUARDIAN ═══ */
+.s-guard { background: radial-gradient(ellipse at 40% 60%, rgba(139,92,246,0.05) 0%, transparent 50%), var(--bg); }
+.tier-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.tier { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem; flex: 1; min-width: 130px; text-align: center; transition: all 0.3s; }
+.tier:hover { transform: translateY(-3px); }
+.tier .tn { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+.tier .tc { font-family: 'JetBrains Mono', monospace; font-size: 1.3rem; font-weight: 700; }
+.tier .tl { font-size: 0.65rem; color: var(--muted); margin-top: 0.2rem; }
+.tier.t5 { border-color: #ffd700; } .tier.t5 .tn, .tier.t5 .tc { color: #ffd700; }
+.tier.t4 { border-color: var(--purple); } .tier.t4 .tn, .tier.t4 .tc { color: var(--purple); }
+.tier.t3 { border-color: var(--blue); } .tier.t3 .tn, .tier.t3 .tc { color: var(--blue); }
+.tier.t2 { border-color: var(--eco); } .tier.t2 .tn, .tier.t2 .tc { color: var(--eco); }
+.tier.t1 { border-color: var(--muted); } .tier.t1 .tn, .tier.t1 .tc { color: var(--muted); }
+.comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.6rem; }
+.comp { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 0.65rem 0.9rem; font-size: 0.78rem; text-align: center; }
+.comp b { display: block; }
+
+/* ═══ SLIDE 5: ALIANZA ═══ */
+.s-alianza { background: radial-gradient(ellipse at 60% 50%, rgba(5,150,105,0.06) 0%, transparent 50%), radial-gradient(ellipse at 30% 30%, rgba(239,68,68,0.04) 0%, transparent 50%), var(--bg); }
+.win-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
+.win-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; }
+.win-card .wt { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.win-card .wt.c-terpel { color: var(--terpel); } .win-card .wt.c-driver { color: var(--eco-light); } .win-card .wt.c-zaz { color: var(--accent); }
+.win-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+.win-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+.mech-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem 2rem; }
+.mech-step { text-align: center; flex: 1; min-width: 120px; }
+.mech-step .mn { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.1rem; color: var(--accent); }
+.mech-step .md { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+.mech-arr { color: var(--muted); font-size: 1.5rem; }
+
+/* ═══ SLIDE 6: ROI ═══ */
+.s-roi { background: radial-gradient(ellipse at 50% 40%, rgba(240,165,0,0.06) 0%, transparent 50%), var(--bg); }
+.cost-vs { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.5rem; align-items: center; margin-bottom: 2rem; }
+.cost-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; text-align: center; }
+.cost-box .cl { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+.cost-box .cv { font-family: 'JetBrains Mono', monospace; font-size: 2.5rem; font-weight: 800; }
+.cost-box .cd { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.4; }
+.cost-box.real { border-color: var(--eco); } .cost-box.real .cv { color: var(--eco-light); }
+.cost-box.cap { border-color: var(--accent); } .cost-box.cap .cv { color: var(--accent); }
+.cost-sep { font-size: 1.3rem; font-weight: 800; color: var(--muted); text-align: center; }
+.margin-bar { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.75rem; margin-bottom: 1.5rem; }
+.margin-bar h4 { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.75rem; }
+.bar-track { background: var(--surface2); border-radius: 8px; height: 36px; position: relative; overflow: hidden; }
+.bar-fill { background: linear-gradient(90deg, var(--eco), var(--accent)); height: 100%; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; transition: width 1.5s ease; }
+.bar-cap { position: absolute; right: 0; top: 0; height: 100%; display: flex; align-items: center; padding-right: 0.75rem; font-size: 0.7rem; color: var(--muted); }
+
+/* ═══ SLIDE 7: CTA ═══ */
+.s-cta { background: radial-gradient(ellipse at 50% 50%, rgba(240,165,0,0.08) 0%, transparent 50%), var(--bg); text-align: center; }
+.cta-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1.5rem; line-height: 1.1; }
+.cta-sub { font-size: 1.05rem; color: var(--muted); max-width: 550px; margin: 0 auto 2.5rem; line-height: 1.6; }
+.phase-row { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+.phase { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; width: 260px; text-align: left; }
+.phase .pn { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+.phase h4 { font-size: 1rem; margin-bottom: 0.5rem; }
+.phase p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+.cta-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: var(--bg); padding: 1rem 2.5rem; border-radius: 12px; font-weight: 700; font-size: 1.05rem; cursor: pointer; border: none; transition: all 0.3s; font-family: 'Manrope', sans-serif; }
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(240,165,0,0.3); }
+
+/* ═══ CHAT ═══ */
+.chat-fab { position: fixed; bottom: 2rem; right: 2rem; width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); border: none; cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(240,165,0,0.35); transition: all 0.3s; font-size: 1.4rem; }
+.chat-fab:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(240,165,0,0.5); }
+.chat-panel { position: fixed; bottom: 5.5rem; right: 2rem; width: 400px; max-height: 500px; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; z-index: 999; display: none; flex-direction: column; overflow: hidden; box-shadow: 0 16px 50px rgba(0,0,0,0.5); animation: chatIn 0.3s ease; }
 .chat-panel.open { display: flex; }
-
-@keyframes chatSlideIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.chat-header {
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  padding: 1rem 1.5rem;
-  color: var(--bg);
-  font-weight: 700;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.chat-header .pulse {
-  width: 8px;
-  height: 8px;
-  background: var(--bg);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
-.chat-messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  max-height: 350px;
-}
-
-.msg {
-  max-width: 85%;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  animation: msgIn 0.3s ease;
-}
-
-@keyframes msgIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.msg.user {
-  background: var(--accent);
-  color: var(--bg);
-  align-self: flex-end;
-  border-bottom-right-radius: 4px;
-  font-weight: 500;
-}
-
-.msg.ai {
-  background: var(--surface2);
-  color: var(--text);
-  align-self: flex-start;
-  border-bottom-left-radius: 4px;
-  border: 1px solid var(--border);
-}
-
-.msg.ai.typing {
-  color: var(--muted);
-  font-style: italic;
-}
-
-.chat-input-row {
-  display: flex;
-  padding: 0.75rem;
-  gap: 0.5rem;
-  border-top: 1px solid var(--border);
-  background: var(--surface);
-}
-
-.chat-input-row input {
-  flex: 1;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 0.7rem 1rem;
-  color: var(--text);
-  font-family: 'Manrope', sans-serif;
-  font-size: 0.85rem;
-  outline: none;
-}
-
-.chat-input-row input:focus { border-color: var(--accent); }
-
-.chat-input-row input::placeholder { color: var(--muted); }
-
-.chat-send {
-  background: var(--accent);
-  border: none;
-  border-radius: 10px;
-  width: 42px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  transition: all 0.2s;
-}
-
+@keyframes chatIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.chat-hdr { background: linear-gradient(135deg, var(--accent), var(--accent2)); padding: 0.9rem 1.25rem; color: var(--bg); font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; }
+.chat-hdr .pulse { width: 7px; height: 7px; background: var(--bg); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+.chat-msgs { flex: 1; overflow-y: auto; padding: 0.9rem; display: flex; flex-direction: column; gap: 0.6rem; max-height: 330px; }
+.msg { max-width: 85%; padding: 0.65rem 0.9rem; border-radius: 11px; font-size: 0.82rem; line-height: 1.5; animation: msgIn 0.3s ease; }
+@keyframes msgIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.msg.user { background: var(--accent); color: var(--bg); align-self: flex-end; border-bottom-right-radius: 4px; font-weight: 500; }
+.msg.ai { background: var(--surface2); color: var(--text); align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid var(--border); }
+.msg.ai.typing { color: var(--muted); font-style: italic; }
+.chat-input { display: flex; padding: 0.6rem; gap: 0.4rem; border-top: 1px solid var(--border); }
+.chat-input input { flex: 1; background: var(--surface2); border: 1px solid var(--border); border-radius: 9px; padding: 0.6rem 0.9rem; color: var(--text); font-family: 'Manrope', sans-serif; font-size: 0.82rem; outline: none; }
+.chat-input input:focus { border-color: var(--accent); }
+.chat-input input::placeholder { color: var(--muted); }
+.chat-send { background: var(--accent); border: none; border-radius: 9px; width: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: all 0.2s; }
 .chat-send:hover { background: var(--accent2); }
 .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
 
-/* ═══════════════ ANIMATIONS ═══════════════ */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
+/* ═══ PRESENTER NOTES ═══ */
+.pnotes { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(15,20,32,0.95); border-top: 2px solid var(--accent); padding: 1rem 2rem; z-index: 150; font-size: 0.82rem; line-height: 1.6; color: var(--text); display: none; backdrop-filter: blur(10px); max-height: 25vh; overflow-y: auto; }
+.pnotes.show { display: block; }
+.pnotes .pn-label { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
+.pnotes-hint { position: fixed; bottom: 0.5rem; left: 50%; transform: translateX(-50%); font-size: 0.55rem; color: rgba(107,122,141,0.4); z-index: 80; letter-spacing: 0.1em; }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-
-/* ═══════════════ RESPONSIVE ═══════════════ */
+/* ═══ RESPONSIVE ═══ */
 @media (max-width: 768px) {
-  .slide { padding: 2rem 1.25rem; }
-  .hero-stats { gap: 1.5rem; }
-  .cost-comparison { grid-template-columns: 1fr; }
-  .cost-vs { text-align: center; }
-  .chat-panel { width: calc(100vw - 2rem); right: 1rem; bottom: 5rem; }
-  .nav-dots { display: none; }
-  .tier-row { gap: 0.5rem; }
-  .tier-card { min-width: 120px; padding: 1rem; }
-}
-
-/* ═══════════════ CONFIDENTIAL WATERMARK ═══════════════ */
-.watermark {
-  position: fixed;
-  top: 1.5rem;
-  left: 1.5rem;
-  z-index: 90;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(240,165,0,0.25);
-  pointer-events: none;
+  .slide { padding: 3rem 1.25rem; }
+  .fuga-stats { gap: 1.5rem; }
+  .cost-vs { grid-template-columns: 1fr; }
+  .cost-sep { display: none; }
+  .chat-panel { width: calc(100vw - 2rem); right: 1rem; }
+  .nav-dots, .slide-counter, .pnotes-hint { display: none; }
+  .tier-row { gap: 0.4rem; }
+  .tier { min-width: 100px; padding: 0.8rem; }
+  .flow { gap: 0.4rem; }
+  .flow-step { min-width: 110px; padding: 0.75rem; }
 }
 </style>
 </head>
 <body>
 
-<div class="watermark">CONFIDENCIAL — ZAZ x TERPEL — 29 MAY 2026</div>
-
-<!-- NAV DOTS -->
+<div class="progress-bar" id="progressBar"></div>
+<div class="watermark">CONFIDENCIAL — ZAZ × TERPEL — 29 MAY 2026</div>
+<div class="slide-counter" id="slideCounter">01 / 08</div>
 <div class="nav-dots" id="navDots"></div>
+<div class="pnotes-hint">Pulsa N para notas del presentador</div>
 
-<!-- ═══════════════ SLIDE 0: HERO ═══════════════ -->
-<section class="slide slide-hero" id="slide-0" data-name="Inicio">
+<!-- ═══════════ SLIDE 0: LA FUGA INVISIBLE ═══════════ -->
+<section class="slide s-fuga" id="s0" data-name="La Fuga">
   <div class="slide-inner">
-    <div class="hero-badge">ALIANZA ESTRATEGICA 2026</div>
-    <h1 class="hero-title reveal">
-      <span class="zaz">ZAZ</span>
-      <span class="x"> x </span>
-      <span class="terpel">Terpel</span>
-    </h1>
-    <p class="hero-sub reveal reveal-delay-1">
-      67,812 conductores. 6,828 galones/dia. Un sistema de fidelizacion
-      basado en datos reales que convierte buen comportamiento en combustible.
+    <div class="tag r">DESPUES DEL VIDEO</div>
+    <div class="fuga-num r d1" data-count="204840">204,840</div>
+    <div class="fuga-unit r d2">galones al mes — sin direccion, sin fidelidad, sin marca</div>
+    <div class="fuga-line r d3">
+      Acaban de ver la fuga invisible.<br>
+      Ahora les vamos a mostrar <em>como la tapamos</em>.
+    </div>
+    <div class="fuga-stats r d4">
+      <div class="fuga-stat"><div class="fn gold">67,812</div><div class="fl">Conductores registrados</div></div>
+      <div class="fuga-stat"><div class="fn green">5,723</div><div class="fl">Activos ultimos 30 dias</div></div>
+      <div class="fuga-stat"><div class="fn red">$3,236M</div><div class="fl">COP/mes en combustible</div></div>
+    </div>
+    <div class="scroll-hint">&#8595; Desliza para ver los datos</div>
+  </div>
+</section>
+
+<!-- ═══════════ SLIDE 1: QUIENES SOMOS ═══════════ -->
+<section class="slide s-quienes" id="s1" data-name="Quienes somos">
+  <div class="slide-inner">
+    <div class="tag r">Quienes somos</div>
+    <h2 class="title r d1">No somos un operador de flotas.<br>Somos una <span style="color:var(--accent)">empresa de base tecnologica</span>.</h2>
+
+    <div class="brand-row r d2">
+      <span class="brand-tag zaz">ZAZ Conductores</span>
+      <span class="brand-x">socio operador #1</span>
+      <span class="brand-tag yango">Yango</span>
+      <span class="brand-x">sobre</span>
+      <span class="brand-tag gcp">Google Cloud</span>
+    </div>
+
+    <div class="grid g2 r d3">
+      <div class="card cap-card">
+        <h3>Escala</h3>
+        <p>17 flotas en 3 paises (Colombia, Peru, Venezuela). 213,000+ viajes procesados cada mes. $1,526M COP en facturacion mensual.</p>
+        <div class="cap-num">17 flotas</div>
+      </div>
+      <div class="card cap-card">
+        <h3>LAURA — IA Propia</h3>
+        <p>Asistente inteligente en WhatsApp, PWA y Voz. Onboarding automatizado, coaching financiero, alertas proactivas. Rev 00230.</p>
+        <div class="cap-num">24/7</div>
+      </div>
+      <div class="card cap-card">
+        <h3>Score Guardian</h3>
+        <p>Sistema de scoring con 6 componentes. Clasifica 67,812 conductores en 5 tiers. Se actualiza 6 veces al dia con kill switch defensivo.</p>
+        <div class="cap-num">6x/dia</div>
+      </div>
+      <div class="card cap-card">
+        <h3>Infraestructura</h3>
+        <p>113 objetos BigQuery (Bronze→Silver→Gold). 87 jobs cron. Pipeline automatizado de datos. Monitoreo 24/7 con Doctor + Vigilante.</p>
+        <div class="cap-num">113 objetos BQ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SLIDE 2: SISTEMA XP ═══════════ -->
+<section class="slide s-xp" id="s2" data-name="Sistema XP">
+  <div class="slide-inner">
+    <div class="tag r">La maquina de comportamiento</div>
+    <h2 class="title r d1">Cada accion tiene un valor.<br>Los XP se <span style="color:var(--eco-light)">canjean por galones</span>.</h2>
+    <p class="sub r d2">El conductor gana puntos por buen comportamiento y los pierde por cancelaciones. Al final del mes, canjea en Terpel. La economia se autorregula.</p>
+
+    <div class="flow r d3">
+      <div class="flow-step"><div class="fi">&#128663;</div><div class="fn">Viaje</div><div class="fd">+10 XP</div></div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-step"><div class="fi">&#127942;</div><div class="fn">Bono cazado</div><div class="fd">+100 XP</div></div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-step"><div class="fi">&#9201;</div><div class="fn">Hora pico</div><div class="fd">+5 XP</div></div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-step burn"><div class="fi">&#10060;</div><div class="fn" style="color:var(--terpel)">Cancelacion</div><div class="fd">-30 XP</div></div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-step redeem"><div class="fi">&#9981;</div><div class="fn" style="color:var(--eco-light)">Canjear Terpel</div><div class="fd">$10 COP/XP</div></div>
+    </div>
+
+    <h3 class="r d3" style="font-size:0.95rem;margin-bottom:1rem;">Liga mensual (resetea dia 1)</h3>
+    <div class="liga-row r d4">
+      <div class="liga-badge sin">SIN LIGA<span class="liga-pct">64.4%</span><span style="font-size:0.6rem">0-999 XP</span></div>
+      <div class="liga-badge bronce">BRONCE<span class="liga-pct">11.7%</span><span style="font-size:0.6rem">1K-3K XP</span></div>
+      <div class="liga-badge plata">PLATA<span class="liga-pct">8.4%</span><span style="font-size:0.6rem">3K-6K XP</span></div>
+      <div class="liga-badge oro">ORO<span class="liga-pct">0.8%</span><span style="font-size:0.6rem">6K-10K XP</span></div>
+      <div class="liga-badge diamante">DIAMANTE<span class="liga-pct">0.1%</span><span style="font-size:0.6rem">10K+ XP</span></div>
+    </div>
+    <p class="r d5" style="color:var(--muted);font-size:0.82rem;margin-top:1.5rem;">&#128293; Tasa de quema natural: 31.7% — las cancelaciones absorben un tercio de la emision. La moneda se autorregula.</p>
+  </div>
+</section>
+
+<!-- ═══════════ SLIDE 3: LOS DATOS ═══════════ -->
+<section class="slide s-data" id="s3" data-name="Datos BQ">
+  <div class="slide-inner">
+    <div class="tag r">Los datos hablan</div>
+    <h2 class="title r d1">12 meses de datos reales — BigQuery</h2>
+
+    <div class="grid g4 r d2" style="margin-bottom:1.5rem;">
+      <div class="kpi"><div class="kv gold">680</div><div class="kl">Promedio XP/mes</div><div class="ks">= $6,800 COP</div></div>
+      <div class="kpi"><div class="kv blue">230</div><div class="kl">Mediana mensual</div><div class="ks">50% gana menos</div></div>
+      <div class="kpi"><div class="kv red">0.2%</div><div class="kl">Supera 5,000 XP</div><div class="ks">Solo 7 de 3,205</div></div>
+      <div class="kpi"><div class="kv green">31.7%</div><div class="kl">Tasa de quema</div><div class="ks">Autoregulada</div></div>
+    </div>
+
+    <div class="chart-box r d3">
+      <h3>XP Canjeable Promedio por Conductor — Jun 2025 a May 2026</h3>
+      <div class="chart-wrap"><canvas id="chartXP"></canvas></div>
+    </div>
+
+    <p class="r d4" style="color:var(--muted);font-size:0.82rem;margin-top:1.25rem;text-align:center;">
+      Dato clave: el conductor record gano 26,060 XP en agosto 2025 (499 bonos + 111 viajes + 0 cancelaciones). Costo: $260K COP = ~5 galones. Ese conductor genero &gt;$3M COP en comisiones.
     </p>
-    <div class="hero-stats reveal reveal-delay-2">
-      <div class="hero-stat">
-        <div class="number gold">67,812</div>
-        <div class="label">Conductores activos</div>
-      </div>
-      <div class="hero-stat">
-        <div class="number red">6,828</div>
-        <div class="label">Galones / dia</div>
-      </div>
-      <div class="hero-stat">
-        <div class="number green">8.6x</div>
-        <div class="label">CLV : CAC ratio</div>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- ═══════════════ SLIDE 1: PROBLEMA ═══════════════ -->
-<section class="slide slide-problem" id="slide-1" data-name="Problema">
+<!-- ═══════════ SLIDE 4: SCORE GUARDIAN ═══════════ -->
+<section class="slide s-guard" id="s4" data-name="Score Guardian">
   <div class="slide-inner">
-    <div class="section-tag reveal">El problema</div>
-    <h2 class="section-title reveal reveal-delay-1">El combustible es el gasto #1<br>del conductor</h2>
-    <div class="problem-grid">
-      <div class="problem-card reveal reveal-delay-1">
-        <div class="problem-icon">&#9981;</div>
-        <h3>Sin fidelizacion</h3>
-        <p>Los conductores tanquean donde sea. No hay incentivo para elegir una marca. Terpel pierde volumen ante EDS informales.</p>
-        <div class="stat">0% fidelizados</div>
-      </div>
-      <div class="problem-card reveal reveal-delay-2">
-        <div class="problem-icon">&#128200;</div>
-        <h3>12,866 conductores dormidos</h3>
-        <p>64% de conductores generan menos de 500 XP/mes. Son conductores activos que no participan porque no tienen incentivo.</p>
-        <div class="stat">64.4% sin liga</div>
-      </div>
-      <div class="problem-card reveal reveal-delay-3">
-        <div class="problem-icon">&#128176;</div>
-        <h3>$3,277M COP/mes en galones</h3>
-        <p>Nuestros conductores consumen 6,828 galones diarios. Ese volumen hoy se distribuye sin direccionamiento hacia ninguna marca.</p>
-        <div class="stat">$39.3B COP/ano</div>
-      </div>
-    </div>
-  </div>
-</section>
+    <div class="tag r">Score Guardian — El cerebro</div>
+    <h2 class="title r d1">Cada conductor tiene un perfil de comportamiento</h2>
+    <p class="sub r d2">Score de 0-100 basado en 6 metricas. Se actualiza 6 veces al dia. Kill switch defensivo ante anomalias. Alertas Telegram en tiempo real.</p>
 
-<!-- ═══════════════ SLIDE 2: SOLUCION ═══════════════ -->
-<section class="slide slide-solution" id="slide-2" data-name="Solucion">
-  <div class="slide-inner">
-    <div class="section-tag reveal">La solucion</div>
-    <h2 class="section-title reveal reveal-delay-1">XP que se convierten en galones</h2>
-    <p class="reveal reveal-delay-1" style="color:var(--muted);max-width:700px;margin-bottom:2rem;">
-      Cada accion positiva del conductor genera XP. Al final del mes, los XP se canjean por combustible Terpel. Buen comportamiento = mas gasolina.
+    <div class="tier-row r d3">
+      <div class="tier t5"><div class="tn">LEYENDA</div><div class="tc">166</div><div class="tl">65+ pts | -$5K</div></div>
+      <div class="tier t4"><div class="tn">EXPERTO</div><div class="tc">347</div><div class="tl">50-64 pts | -$4K</div></div>
+      <div class="tier t3"><div class="tn">MASTER</div><div class="tc">526</div><div class="tl">35-49 pts | -$3K</div></div>
+      <div class="tier t2"><div class="tn">NOVATO</div><div class="tc">824</div><div class="tl">20-34 pts | -$1K</div></div>
+      <div class="tier t1"><div class="tn">APRENDIZ</div><div class="tc">65,949</div><div class="tl">0-19 pts | -$1K</div></div>
+    </div>
+
+    <h3 class="r d3" style="font-size:0.9rem;margin-bottom:0.75rem;">6 componentes del score</h3>
+    <div class="comp-grid r d4">
+      <div class="comp"><b>Actividad</b> Viajes completados</div>
+      <div class="comp"><b>Bonos</b> Bonos cazados $</div>
+      <div class="comp"><b>Calidad</b> Rating promedio</div>
+      <div class="comp"><b>Riesgo</b> % cobro digital</div>
+      <div class="comp"><b>Horas Pico</b> Trabajo en demanda</div>
+      <div class="comp"><b>Lealtad</b> Meses de antiguedad</div>
+    </div>
+
+    <p class="r d5" style="color:var(--muted);font-size:0.82rem;margin-top:1.25rem;">
+      Antiguedad promedio: 11.9 meses. 81% lleva &gt;6 meses. 51% lleva &gt;1 ano. Estos NO son conductores pasajeros — son una flota comprometida.
     </p>
-
-    <div class="solution-flow reveal reveal-delay-2">
-      <div class="flow-step">
-        <div class="step-icon">&#128663;</div>
-        <div class="step-label">Viaje completado</div>
-        <div class="step-detail">+10 XP</div>
-      </div>
-      <div class="flow-arrow">&#8594;</div>
-      <div class="flow-step">
-        <div class="step-icon">&#127942;</div>
-        <div class="step-label">Bono cazado</div>
-        <div class="step-detail">+100 XP</div>
-      </div>
-      <div class="flow-arrow">&#8594;</div>
-      <div class="flow-step">
-        <div class="step-icon">&#9201;</div>
-        <div class="step-label">Hora pico</div>
-        <div class="step-detail">+5 XP</div>
-      </div>
-      <div class="flow-arrow">&#8594;</div>
-      <div class="flow-step" style="border-color:var(--terpel);">
-        <div class="step-icon">&#9981;</div>
-        <div class="step-label" style="color:var(--terpel);">Canjear en Terpel</div>
-        <div class="step-detail">$10 COP / XP</div>
-      </div>
-    </div>
-
-    <table class="xp-table reveal reveal-delay-3">
-      <thead>
-        <tr>
-          <th>Evento</th>
-          <th>XP</th>
-          <th>Eventos/mes</th>
-          <th>Estado</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Viaje completado</td><td class="positive">+10</td><td>~35,670</td><td>Activo</td></tr>
-        <tr><td>Bono Yango cazado</td><td class="positive">+100</td><td>~10,920</td><td>Activo</td></tr>
-        <tr><td>Hora pico</td><td class="positive">+5</td><td>~966</td><td>Activo</td></tr>
-        <tr><td>Cancelacion manual</td><td class="negative">-30</td><td>~31,322</td><td>Activo (quema)</td></tr>
-        <tr><td style="font-weight:700;">Neto mensual</td><td class="positive" style="font-size:1.1rem;">~1M XP</td><td colspan="2" style="color:var(--muted);">Tasa de quema: 31.7%</td></tr>
-      </tbody>
-    </table>
   </div>
 </section>
 
-<!-- ═══════════════ SLIDE 3: DATA ═══════════════ -->
-<section class="slide slide-data" id="slide-3" data-name="Datos">
+<!-- ═══════════ SLIDE 5: LA ALIANZA ═══════════ -->
+<section class="slide s-alianza" id="s5" data-name="La Alianza">
   <div class="slide-inner">
-    <div class="section-tag reveal">Los datos</div>
-    <h2 class="section-title reveal reveal-delay-1">12 meses de datos reales BigQuery</h2>
+    <div class="tag r">La propuesta</div>
+    <h2 class="title r d1">XP verificados <span style="color:var(--eco-light)">&#8594;</span> Galones Terpel</h2>
+    <p class="sub r d2">Terpel no paga por marketing masivo. Paga solo por comportamiento verificado en BigQuery. Cada peso invertido tiene trazabilidad completa.</p>
 
-    <div class="kpi-row reveal reveal-delay-1">
-      <div class="kpi">
-        <div class="kpi-value gold">680</div>
-        <div class="kpi-label">Promedio XP / conductor / mes</div>
-        <div class="kpi-sub">= $6,800 COP</div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-value blue">230</div>
-        <div class="kpi-label">Mediana mensual</div>
-        <div class="kpi-sub">50% gana menos que esto</div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-value red">0.2%</div>
-        <div class="kpi-label">Superan 5,000 XP</div>
-        <div class="kpi-sub">Solo 7 de 3,205</div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-value green">31.7%</div>
-        <div class="kpi-label">Tasa de quema</div>
-        <div class="kpi-sub">Moneda autoregulada</div>
-      </div>
+    <div class="mech-row r d3">
+      <div class="mech-step"><div class="mn">1,000 XP</div><div class="md">Conductor gana en el mes</div></div>
+      <div class="mech-arr">&#8594;</div>
+      <div class="mech-step"><div class="mn">$10 COP/XP</div><div class="md">Ratio de conversion</div></div>
+      <div class="mech-arr">&#8594;</div>
+      <div class="mech-step"><div class="mn">$10,000</div><div class="md">Descuento en Terpel</div></div>
+      <div class="mech-arr">&#8594;</div>
+      <div class="mech-step"><div class="mn" style="color:var(--eco-light)">0.63 gal</div><div class="md">A $15,800/gal promedio</div></div>
     </div>
 
-    <div class="chart-card reveal reveal-delay-2">
-      <h3>Promedio XP Canjeable por Mes (por conductor)</h3>
-      <div class="chart-wrap"><canvas id="chartMensual"></canvas></div>
+    <div class="win-grid r d4">
+      <div class="win-card">
+        <div class="wt c-terpel">TERPEL GANA</div>
+        <h3>204,840 galones/mes de volumen direccionado</h3>
+        <p>Canal exclusivo de fidelizacion digital con conductores profesionales. Costo por galon incentivado: $49 COP (0.3% del precio). Sin pauta, sin cupones fisicos.</p>
+      </div>
+      <div class="win-card">
+        <div class="wt c-driver">CONDUCTOR GANA</div>
+        <h3>Combustible gratis por trabajar bien</h3>
+        <p>Por primera vez, buen comportamiento = beneficio tangible. La mediana gana $2,300 COP/mes. El top 5% puede ganar hasta $25,000 COP/mes. Motivacion que se siente.</p>
+      </div>
+      <div class="win-card">
+        <div class="wt c-zaz">ZAZ GANA</div>
+        <h3>Retencion y productividad de flota</h3>
+        <p>Conductores mas activos, mejor calificados, con menos cancelaciones. El incentivo de Terpel es el motor de fidelizacion que completa nuestro ecosistema.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ SLIDE 4: COSTO ═══════════════ -->
-<section class="slide slide-cost" id="slide-4" data-name="Costo">
+<!-- ═══════════ SLIDE 6: ROI ═══════════ -->
+<section class="slide s-roi" id="s6" data-name="Inversion">
   <div class="slide-inner">
-    <div class="section-tag reveal">La inversion</div>
-    <h2 class="section-title reveal reveal-delay-1">Costo controlado, margen garantizado</h2>
+    <div class="tag r">Los numeros del CFO</div>
+    <h2 class="title r d1">Inversion controlada — margen garantizado</h2>
 
-    <div class="cost-comparison reveal reveal-delay-2">
-      <div class="cost-box safe">
-        <div class="cost-label">Costo real proyectado</div>
-        <div class="cost-value">$5.1M</div>
-        <div class="cost-detail">COP / mes<br>Basado en 50% tasa de canje</div>
+    <div class="cost-vs r d2">
+      <div class="cost-box real">
+        <div class="cl">Costo real proyectado</div>
+        <div class="cv">$5.1M</div>
+        <div class="cd">COP / mes<br>50% tasa de canje</div>
       </div>
-      <div class="cost-vs">vs</div>
+      <div class="cost-sep">vs</div>
       <div class="cost-box cap">
-        <div class="cost-label">Techo presupuesto</div>
-        <div class="cost-value">$9.5M</div>
-        <div class="cost-detail">COP / mes<br>Maximo acordado en deck</div>
+        <div class="cl">Techo presupuesto</div>
+        <div class="cv">$9.5M</div>
+        <div class="cd">COP / mes<br>Maximo acordado</div>
       </div>
     </div>
 
-    <div class="margin-bar reveal reveal-delay-3">
+    <div class="margin-bar r d3">
       <h4>Margen de seguridad: 46% entre costo real y techo</h4>
       <div class="bar-track">
-        <div class="bar-fill" style="width:54%;">$5.1M (costo real)</div>
+        <div class="bar-fill" id="marginFill" style="width:0%;">$5.1M (real)</div>
         <div class="bar-cap">$9.5M (techo)</div>
       </div>
     </div>
 
-    <div class="kpi-row reveal reveal-delay-4" style="margin-top:2rem;">
-      <div class="kpi">
-        <div class="kpi-value gold">$260K</div>
-        <div class="kpi-label">Maximo 1 conductor / mes</div>
-        <div class="kpi-sub">~5 galones. Genera >$3M comisiones</div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-value green">$6,800</div>
-        <div class="kpi-label">Promedio conductor / mes</div>
-        <div class="kpi-sub">~0.15 galones</div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-value blue">$2,300</div>
-        <div class="kpi-label">Mediana conductor / mes</div>
-        <div class="kpi-sub">El 50% canjea menos</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ SLIDE 5: SCORE GUARDIAN ═══════════════ -->
-<section class="slide slide-guardian" id="slide-5" data-name="Guardian">
-  <div class="slide-inner">
-    <div class="section-tag reveal">Score Guardian</div>
-    <h2 class="section-title reveal reveal-delay-1">Gobernanza en tiempo real</h2>
-    <p class="reveal reveal-delay-1" style="color:var(--muted);max-width:700px;margin-bottom:1rem;">
-      Cada conductor tiene un score de 0-100 basado en 6 metricas. El score determina su credito operativo y acceso a beneficios.
-    </p>
-
-    <div class="tier-row reveal reveal-delay-2">
-      <div class="tier-card t-leyenda">
-        <div class="tier-name">LEYENDA</div>
-        <div class="tier-count">166</div>
-        <div class="tier-limit">65+ pts | -$5K</div>
-      </div>
-      <div class="tier-card t-experto">
-        <div class="tier-name">EXPERTO</div>
-        <div class="tier-count">347</div>
-        <div class="tier-limit">50-64 pts | -$4K</div>
-      </div>
-      <div class="tier-card t-master">
-        <div class="tier-name">MASTER</div>
-        <div class="tier-count">526</div>
-        <div class="tier-limit">35-49 pts | -$3K</div>
-      </div>
-      <div class="tier-card t-novato">
-        <div class="tier-name">NOVATO</div>
-        <div class="tier-count">824</div>
-        <div class="tier-limit">20-34 pts | -$1K</div>
-      </div>
-      <div class="tier-card t-aprendiz">
-        <div class="tier-name">APRENDIZ</div>
-        <div class="tier-count">65,949</div>
-        <div class="tier-limit">0-19 pts | -$1K</div>
-      </div>
+    <div class="grid g4 r d4">
+      <div class="kpi"><div class="kv gold">$147</div><div class="kl">COP / conductor / mes</div><div class="ks">Practicamente cero</div></div>
+      <div class="kpi"><div class="kv green">$49</div><div class="kl">COP / galon incentivado</div><div class="ks">0.3% del precio</div></div>
+      <div class="kpi"><div class="kv blue">16.2x</div><div class="kl">ROI conservador</div><div class="ks">5% market share gain</div></div>
+      <div class="kpi"><div class="kv purple">8.6x</div><div class="kl">CLV : CAC</div><div class="ks">Retorno por conductor</div></div>
     </div>
 
-    <div class="components-grid reveal reveal-delay-3">
-      <div class="component-pill"><div class="c-name">Actividad</div><div class="c-weight">Viajes completados</div></div>
-      <div class="component-pill"><div class="c-name">Bonos</div><div class="c-weight">Bonos cazados $</div></div>
-      <div class="component-pill"><div class="c-name">Calidad</div><div class="c-weight">Rating promedio</div></div>
-      <div class="component-pill"><div class="c-name">Riesgo</div><div class="c-weight">% digital</div></div>
-      <div class="component-pill"><div class="c-name">Horas Pico</div><div class="c-weight">% en demanda</div></div>
-      <div class="component-pill"><div class="c-name">Lealtad</div><div class="c-weight">Antiguedad meses</div></div>
-    </div>
-
-    <p class="reveal reveal-delay-4" style="color:var(--muted);font-size:0.85rem;margin-top:1.5rem;">
-      6 corridas diarias automatizadas. Kill switch defensivo. Dashboard de monitoreo 24/7. Alertas Telegram en tiempo real.
+    <p class="r d5" style="color:var(--muted);font-size:0.82rem;margin-top:1.25rem;text-align:center;">
+      Inversion anual a costo real: ~$61M COP. Volumen capturado: $38,832M COP/ano en ventas de combustible. El ROI se multiplica con escala.
     </p>
   </div>
 </section>
 
-<!-- ═══════════════ SLIDE 6: TECH ═══════════════ -->
-<section class="slide slide-tech" id="slide-6" data-name="Tecnologia">
+<!-- ═══════════ SLIDE 7: SIGUIENTE PASO ═══════════ -->
+<section class="slide s-cta" id="s7" data-name="Siguiente paso">
   <div class="slide-inner">
-    <div class="section-tag reveal">Infraestructura</div>
-    <h2 class="section-title reveal reveal-delay-1">Stack de datos enterprise</h2>
-
-    <div class="tech-pipeline reveal reveal-delay-2">
-      <div class="pipe-row">
-        <div class="pipe-node highlight">API Yango (17 flotas)</div>
-        <div class="pipe-arrow">&#8594;</div>
-        <div class="pipe-node">Bronze (append-only)</div>
-        <div class="pipe-arrow">&#8594;</div>
-        <div class="pipe-node blue">Silver (dedup)</div>
-        <div class="pipe-arrow">&#8594;</div>
-        <div class="pipe-node green">Gold (vistas negocio)</div>
-      </div>
-      <div class="pipe-row" style="padding-left:3rem;">
-        <div class="pipe-arrow">&#8600;</div>
-        <div class="pipe-node purple">Score Guardian</div>
-        <div class="pipe-arrow">&#8594;</div>
-        <div class="pipe-node">Yango API (limites)</div>
-        <div class="pipe-arrow">+</div>
-        <div class="pipe-node purple">LAURA IA</div>
-        <div class="pipe-arrow">&#8594;</div>
-        <div class="pipe-node">WhatsApp + PWA</div>
-      </div>
-    </div>
-
-    <div class="tech-stats reveal reveal-delay-3">
-      <div class="tech-stat">
-        <div class="ts-value">113</div>
-        <div class="ts-label">Objetos BigQuery (tablas + vistas)</div>
-      </div>
-      <div class="tech-stat">
-        <div class="ts-value">87</div>
-        <div class="ts-label">Jobs cron automatizados</div>
-      </div>
-      <div class="tech-stat">
-        <div class="ts-value">24/7</div>
-        <div class="ts-label">Monitoreo (Doctor + Vigilante)</div>
-      </div>
-      <div class="tech-stat">
-        <div class="ts-value">3</div>
-        <div class="ts-label">Paises en produccion (COL, PE, VE)</div>
-      </div>
-      <div class="tech-stat">
-        <div class="ts-value">&lt;2s</div>
-        <div class="ts-label">Latencia promedio API</div>
-      </div>
-      <div class="tech-stat">
-        <div class="ts-value">99.9%</div>
-        <div class="ts-label">Uptime Cloud Run</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ SLIDE 7: CTA ═══════════════ -->
-<section class="slide slide-cta" id="slide-7" data-name="Siguiente paso">
-  <div class="slide-inner">
-    <h2 class="cta-title reveal">
-      <span style="color:var(--accent);">67,812</span> conductores<br>esperan tanquear con<br><span style="color:var(--terpel);">Terpel</span>
+    <h2 class="cta-title r">
+      La infraestructura <span style="color:var(--eco-light)">esta lista</span>.<br>
+      Los datos <span style="color:var(--accent)">lo demuestran</span>.<br>
+      Solo falta <span style="color:var(--terpel)">Terpel</span>.
     </h2>
-    <p class="cta-sub reveal reveal-delay-1">
-      La infraestructura esta lista. Los datos lo demuestran. Solo falta decir si.
-    </p>
+    <p class="cta-sub r d1">Quien controle el habito, asegura el galon exclusivo.</p>
 
-    <div class="cta-cards reveal reveal-delay-2">
-      <div class="cta-card">
-        <h4>Paso 1 — Piloto</h4>
-        <p>30 dias, 500 conductores top (Score Guardian Leyenda + Experto). Medimos canje real vs proyeccion.</p>
+    <div class="phase-row r d2">
+      <div class="phase">
+        <div class="pn">Fase 1 — Piloto (30 dias)</div>
+        <h4>500 conductores top</h4>
+        <p>Score Guardian Leyenda + Experto. Medimos canje real vs proyeccion. Dashboard compartido con Terpel en tiempo real.</p>
       </div>
-      <div class="cta-card">
-        <h4>Paso 2 — Escalar</h4>
-        <p>Abrir a los 67K conductores. Dashboard compartido con Terpel en tiempo real. Ajustar ratio si es necesario.</p>
+      <div class="phase">
+        <div class="pn">Fase 2 — Escala</div>
+        <h4>67,812 conductores</h4>
+        <p>Abrir a toda la flota Colombia. Ajustar ratio si es necesario. Integrar con app Terpel. Optimizar por zona y horario.</p>
       </div>
-      <div class="cta-card">
-        <h4>Paso 3 — Expandir</h4>
-        <p>Peru (5 flotas, PEN). Venezuela (USD). Otros aliados: lubricantes, llantas, seguros.</p>
+      <div class="phase">
+        <div class="pn">Fase 3 — Expansion</div>
+        <h4>3 paises + aliados</h4>
+        <p>Peru (5 flotas, PEN). Venezuela (USD). Otros aliados: lubricantes, llantas, seguros. Ecosistema completo.</p>
       </div>
     </div>
 
-    <button class="chat-invite reveal reveal-delay-3" onclick="toggleChat()">
-      &#129302; Preguntale a nuestra IA en vivo
-    </button>
+    <button class="cta-btn r d3" onclick="toggleChat()">&#129302; Preguntale a nuestra IA — tiene toda la data en vivo</button>
   </div>
 </section>
 
-<!-- ═══════════════ CHAT WIDGET ═══════════════ -->
-<button class="chat-fab" id="chatFab" onclick="toggleChat()" title="Chat IA en vivo">&#129302;</button>
-
+<!-- ═══ CHAT WIDGET ═══ -->
+<button class="chat-fab" id="chatFab" onclick="toggleChat()">&#129302;</button>
 <div class="chat-panel" id="chatPanel">
-  <div class="chat-header">
-    <div class="pulse"></div>
-    ZAZ IA — Datos en vivo | Pregunta lo que quieras
+  <div class="chat-hdr"><div class="pulse"></div>ZAZ IA — Datos en vivo | Gemini 2.5 Flash</div>
+  <div class="chat-msgs" id="chatMsgs">
+    <div class="msg ai">Bienvenidos. Tengo acceso a 12 meses de datos reales de 67,812 conductores en BigQuery. Pregunta sobre XP, costos, ROI, Score Guardian o infraestructura.</div>
   </div>
-  <div class="chat-messages" id="chatMessages">
-    <div class="msg ai">Bienvenidos a ZAZ. Tengo acceso a 12 meses de datos reales de 67,812 conductores en BigQuery. Pueden preguntarme cualquier cosa sobre el programa XP, costos, proyecciones o infraestructura.</div>
-  </div>
-  <div class="chat-input-row">
-    <input type="text" id="chatInput" placeholder="Escribe tu pregunta..." autocomplete="off">
-    <button class="chat-send" id="chatSend" onclick="sendChat()">&#9654;</button>
+  <div class="chat-input">
+    <input type="text" id="chatIn" placeholder="Escribe tu pregunta..." autocomplete="off">
+    <button class="chat-send" id="chatSendBtn" onclick="sendChat()">&#9654;</button>
   </div>
 </div>
 
+<!-- ═══ PRESENTER NOTES ═══ -->
+<div class="pnotes" id="pnotes"><div class="pn-label">NOTAS DEL PRESENTADOR (N para ocultar)</div><div id="pnotesText"></div></div>
+
 <script>
-// ═══════════════ NAV DOTS ═══════════════
+const NOTES = [
+  "SLIDE 0 — Despues del video, di: \"Acaban de ver la fuga invisible. Ahora les voy a mostrar como la tapamos.\" Pausa 2 segundos. Senala los 204,840 galones. \"Ese volumen HOY no tiene direccion. Nosotros lo controlamos.\"",
+  "SLIDE 1 — Presentar ZAZ brevemente. Clave: \"No somos un simple operador de flotas. Somos una empresa de base tecnologica con IA propia.\" Mencionar: 17 flotas, LAURA, Score Guardian. No detenerse mucho — los detalles vienen despues.",
+  "SLIDE 2 — Explicar XP de forma simple: \"El conductor gana puntos por portarse bien y los pierde por portarse mal. Al final del mes, esos puntos se convierten en gasolina Terpel.\" Enfatizar: 31.7% se quema NATURALMENTE en cancelaciones. La economia se autorregula.",
+  "SLIDE 3 — Dejar que los numeros hablen. Clave: \"La mediana es 230 XP. Eso son $2,300 COP al mes. Menos de un galon. El conductor promedio gana 680 XP = $6,800 COP. El record historico es 26,060 XP — y ese conductor genero mas de $3M en comisiones para ZAZ.\"",
+  "SLIDE 4 — Score Guardian: \"Cada conductor tiene un perfil de comportamiento actualizado 6 veces al dia. Nuestros conductores no son pasajeros — el 51% lleva mas de 1 ano con nosotros.\" Senalar que los Leyenda son los mejores 166 de 67,812.",
+  "SLIDE 5 — Este es el momento de cerrar: \"Terpel no paga por publicidad masiva. Paga SOLO por comportamiento verificado en BigQuery. $49 pesos por galon incentivado — el 0.3% del precio. Es practicamente gratis.\" Mostrar Win-Win.",
+  "SLIDE 6 — Numeros del CFO: \"$147 pesos por conductor al mes. $49 pesos por galon. ROI 16.2x conservador. Y el costo real es $5.1M vs un techo de $9.5M — hay 46% de margen de seguridad.\" Si preguntan: la inversion anual real es $61M COP vs $38,832M en volumen.",
+  "SLIDE 7 — Cerrar con fuerza: \"La infraestructura esta lista. Los datos lo demuestran. Solo falta Terpel. Quien controle el habito, asegura el galon exclusivo.\" Invitar a probar el chat IA como demo. \"Haganle cualquier pregunta — tiene acceso a todos nuestros datos.\""
+];
+
 const slides = document.querySelectorAll('.slide');
-const navContainer = document.getElementById('navDots');
+const navC = document.getElementById('navDots');
+const progBar = document.getElementById('progressBar');
+const counter = document.getElementById('slideCounter');
+const pnotes = document.getElementById('pnotes');
+const pnotesText = document.getElementById('pnotesText');
+let notesVisible = false;
 
 slides.forEach((s, i) => {
-  const dot = document.createElement('button');
-  dot.className = 'nav-dot';
-  dot.innerHTML = `<span class="tooltip">${s.dataset.name || 'Slide ' + i}</span>`;
-  dot.onclick = () => s.scrollIntoView({ behavior: 'smooth' });
-  navContainer.appendChild(dot);
+  const d = document.createElement('button');
+  d.className = 'nav-dot';
+  d.innerHTML = `<span class="tip">${s.dataset.name || 'Slide '+i}</span>`;
+  d.onclick = () => s.scrollIntoView({ behavior: 'smooth' });
+  navC.appendChild(d);
 });
-
 const dots = document.querySelectorAll('.nav-dot');
 
-function updateActiveDot() {
-  let active = 0;
-  slides.forEach((s, i) => {
-    const r = s.getBoundingClientRect();
-    if (r.top < window.innerHeight / 2) active = i;
-  });
-  dots.forEach((d, i) => d.classList.toggle('active', i === active));
+function getActive() {
+  let a = 0;
+  slides.forEach((s, i) => { if (s.getBoundingClientRect().top < window.innerHeight / 2) a = i; });
+  return a;
 }
 
-window.addEventListener('scroll', updateActiveDot);
-updateActiveDot();
+function updateNav() {
+  const a = getActive();
+  dots.forEach((d, i) => d.classList.toggle('active', i === a));
+  counter.textContent = String(a + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+  const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+  progBar.style.width = scrollH > 0 ? (window.scrollY / scrollH * 100) + '%' : '0%';
+  if (notesVisible) pnotesText.textContent = NOTES[a] || '';
+}
 
-// ═══════════════ REVEAL ON SCROLL ═══════════════
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.15 });
+window.addEventListener('scroll', updateNav);
+updateNav();
 
-reveals.forEach(r => observer.observe(r));
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('v'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.r').forEach(el => obs.observe(el));
 
-// ═══════════════ CHARTS ═══════════════
+// Margin bar animation
+const marginObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { document.getElementById('marginFill').style.width = '54%'; marginObs.unobserve(e.target); }
+  });
+}, { threshold: 0.5 });
+const mf = document.getElementById('marginFill');
+if (mf) marginObs.observe(mf.closest('.margin-bar'));
+
+// Chart
 const meses = ['Jun 25','Jul','Ago','Sep','Oct','Nov','Dic','Ene 26','Feb','Mar','Abr','May'];
-const promedios = [700,850,740,747,794,842,836,687,667,496,414,409];
-const medianas = [250,300,280,280,260,260,240,190,220,180,150,110];
+const proms = [700,850,740,747,794,842,836,687,667,496,414,409];
+const meds = [250,300,280,280,260,260,240,190,220,180,150,110];
 const p95 = [2480,3050,2510,2660,2850,3600,3470,2650,2680,1990,1670,1415];
 
-const chartOpts = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: { labels: { color: '#7d8590', font: { family: 'Manrope', size: 11 } } }
-  },
-  scales: {
-    x: { ticks: { color: '#7d8590', font: { family: 'Manrope', size: 11 } }, grid: { color: 'rgba(33,38,45,0.5)' } },
-    y: { ticks: { color: '#7d8590', font: { family: 'Manrope' } }, grid: { color: 'rgba(33,38,45,0.3)' } }
-  }
-};
-
-new Chart(document.getElementById('chartMensual'), {
+new Chart(document.getElementById('chartXP'), {
   type: 'bar',
   data: {
     labels: meses,
     datasets: [
-      { label: 'Promedio XP', data: promedios, backgroundColor: 'rgba(240,165,0,0.7)', borderColor: '#f0a500', borderWidth: 1, borderRadius: 6, order: 2 },
-      { label: 'Mediana', data: medianas, backgroundColor: 'rgba(56,139,253,0.5)', borderColor: '#388bfd', borderWidth: 1, borderRadius: 6, order: 3 },
-      { label: 'P95 (Top 5%)', data: p95, type: 'line', borderColor: '#dc2626', backgroundColor: 'rgba(220,38,38,0.1)', borderWidth: 2, pointRadius: 3, tension: 0.3, fill: false, order: 1 }
+      { label: 'Promedio XP', data: proms, backgroundColor: 'rgba(240,165,0,0.7)', borderColor: '#f0a500', borderWidth: 1, borderRadius: 5, order: 2 },
+      { label: 'Mediana', data: meds, backgroundColor: 'rgba(59,130,246,0.5)', borderColor: '#3b82f6', borderWidth: 1, borderRadius: 5, order: 3 },
+      { label: 'P95 (Top 5%)', data: p95, type: 'line', borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.08)', borderWidth: 2, pointRadius: 3, tension: 0.3, fill: false, order: 1 }
     ]
   },
-  options: chartOpts
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#6b7a8d', font: { family: 'Manrope', size: 11 } } } },
+    scales: {
+      x: { ticks: { color: '#6b7a8d', font: { family: 'Manrope', size: 10 } }, grid: { color: 'rgba(30,38,56,0.5)' } },
+      y: { ticks: { color: '#6b7a8d', font: { family: 'Manrope' } }, grid: { color: 'rgba(30,38,56,0.3)' } }
+    }
+  }
 });
 
-// ═══════════════ CHAT ═══════════════
+// Chat
 const CHAT_API = window.location.origin + '/chat';
 let chatOpen = false;
 
 function toggleChat() {
   chatOpen = !chatOpen;
   document.getElementById('chatPanel').classList.toggle('open', chatOpen);
-  if (chatOpen) document.getElementById('chatInput').focus();
+  if (chatOpen) document.getElementById('chatIn').focus();
 }
 
-document.getElementById('chatInput').addEventListener('keydown', e => {
+document.getElementById('chatIn').addEventListener('keydown', e => {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
 });
 
 async function sendChat() {
-  const input = document.getElementById('chatInput');
-  const q = input.value.trim();
+  const inp = document.getElementById('chatIn');
+  const q = inp.value.trim();
   if (!q) return;
-
   addMsg(q, 'user');
-  input.value = '';
-  document.getElementById('chatSend').disabled = true;
-
-  const typing = addMsg('Consultando datos...', 'ai typing');
-
+  inp.value = '';
+  document.getElementById('chatSendBtn').disabled = true;
+  const t = addMsg('Consultando datos...', 'ai typing');
   try {
-    const res = await fetch(CHAT_API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question: q })
-    });
-
+    const res = await fetch(CHAT_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ question: q }) });
     const data = await res.json();
-    typing.remove();
-
-    if (data.answer) {
-      addMsg(data.answer, 'ai');
-    } else {
-      addMsg('Error: ' + (data.error || 'Sin respuesta'), 'ai');
-    }
+    t.remove();
+    addMsg(data.answer || 'Error: ' + (data.error || 'Sin respuesta'), 'ai');
   } catch (err) {
-    typing.remove();
-    addMsg('Error de conexion. Verifica que el servidor esta activo.', 'ai');
+    t.remove();
+    addMsg('Error de conexion. Verifica que el servidor esta activo en puerto 3099.', 'ai');
   }
-
-  document.getElementById('chatSend').disabled = false;
+  document.getElementById('chatSendBtn').disabled = false;
 }
 
 function addMsg(text, type) {
-  const msgs = document.getElementById('chatMessages');
-  const div = document.createElement('div');
-  div.className = 'msg ' + type;
-  div.textContent = text;
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-  return div;
+  const c = document.getElementById('chatMsgs');
+  const d = document.createElement('div');
+  d.className = 'msg ' + type;
+  d.textContent = text;
+  c.appendChild(d);
+  c.scrollTop = c.scrollHeight;
+  return d;
 }
 
-// ═══════════════ KEYBOARD NAV ═══════════════
+// Keyboard
 document.addEventListener('keydown', e => {
+  if (e.key === 'n' || e.key === 'N') {
+    if (document.activeElement.tagName === 'INPUT') return;
+    notesVisible = !notesVisible;
+    pnotes.classList.toggle('show', notesVisible);
+    if (notesVisible) pnotesText.textContent = NOTES[getActive()] || '';
+    return;
+  }
   if (chatOpen && e.target.tagName === 'INPUT') return;
-  if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-    e.preventDefault();
-    const next = getCurrentSlide() + 1;
-    if (next < slides.length) slides[next].scrollIntoView({ behavior: 'smooth' });
-  }
-  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-    e.preventDefault();
-    const prev = getCurrentSlide() - 1;
-    if (prev >= 0) slides[prev].scrollIntoView({ behavior: 'smooth' });
-  }
+  const a = getActive();
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); if (a + 1 < slides.length) slides[a + 1].scrollIntoView({ behavior: 'smooth' }); }
+  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); if (a > 0) slides[a - 1].scrollIntoView({ behavior: 'smooth' }); }
 });
-
-function getCurrentSlide() {
-  let active = 0;
-  slides.forEach((s, i) => {
-    if (s.getBoundingClientRect().top < window.innerHeight / 2) active = i;
-  });
-  return active;
-}
 </script>
-
 </body>
 </html>
