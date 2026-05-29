@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZAZ × Terpel — Alianza Estratégica</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  --bg: #06080d;
+  --surface: #0d1117;
+  --surface2: #161b22;
+  --border: #21262d;
+  --text: #e6edf3;
+  --muted: #7d8590;
+  --accent: #f0a500;
+  --accent2: #ff6b35;
+  --terpel: #dc2626;
+  --green: #2ea043;
+  --blue: #388bfd;
+  --purple: #a371f7;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Manrope', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ═══════════════ SLIDE SYSTEM ═══════════════ */
+.slide {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-inner {
+  max-width: 1200px;
+  width: 100%;
+  z-index: 2;
+  position: relative;
+}
+
+/* ═══════════════ NAV DOTS ═══════════════ */
+.nav-dots {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.nav-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.nav-dot.active {
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(240,165,0,0.5);
+  transform: scale(1.3);
+}
+
+.nav-dot:hover { background: var(--accent); transform: scale(1.2); }
+
+.nav-dot .tooltip {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--surface2);
+  color: var(--text);
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  border: 1px solid var(--border);
+}
+
+.nav-dot:hover .tooltip { opacity: 1; }
+
+/* ═══════════════ SLIDE 0: HERO ═══════════════ */
+.slide-hero {
+  background: radial-gradient(ellipse at 30% 50%, rgba(240,165,0,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 30%, rgba(220,38,38,0.06) 0%, transparent 50%),
+              var(--bg);
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(240,165,0,0.12);
+  color: var(--accent);
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(240,165,0,0.2);
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title .zaz { color: var(--accent); }
+.hero-title .x { color: var(--muted); font-weight: 300; }
+.hero-title .terpel { color: var(--terpel); }
+
+.hero-sub {
+  font-size: 1.25rem;
+  color: var(--muted);
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.hero-stat .number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.hero-stat .number.gold { color: var(--accent); }
+.hero-stat .number.red { color: var(--terpel); }
+.hero-stat .number.green { color: var(--green); }
+
+.hero-stat .label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+/* ═══════════════ SLIDE 1: PROBLEMA ═══════════════ */
+.slide-problem {
+  background: radial-gradient(ellipse at 70% 50%, rgba(220,38,38,0.06) 0%, transparent 50%),
+              var(--bg);
+}
+
+.section-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 2rem;
+  line-height: 1.15;
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.problem-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s;
+}
+
+.problem-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(240,165,0,0.08);
+}
+
+.problem-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.problem-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.problem-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.problem-card .stat {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 1rem;
+}
+
+/* ═══════════════ SLIDE 2: SOLUCION ═══════════════ */
+.slide-solution {
+  background: radial-gradient(ellipse at 30% 60%, rgba(46,160,67,0.06) 0%, transparent 50%),
+              var(--bg);
+}
+
+.solution-flow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.flow-step {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  flex: 1;
+  min-width: 180px;
+  transition: all 0.3s;
+}
+
+.flow-step:hover { border-color: var(--green); }
+
+.flow-step .step-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.flow-step .step-label { font-size: 0.8rem; font-weight: 600; }
+.flow-step .step-detail { font-size: 0.7rem; color: var(--muted); margin-top: 0.25rem; }
+
+.flow-arrow {
+  color: var(--accent);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.xp-table {
+  width: 100%;
+  margin-top: 2rem;
+  border-collapse: collapse;
+}
+
+.xp-table th {
+  text-align: left;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.xp-table td {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(33,38,45,0.5);
+}
+
+.xp-table .positive { color: var(--green); font-weight: 600; }
+.xp-table .negative { color: var(--terpel); font-weight: 600; }
+
+/* ═══════════════ SLIDE 3: DATA ═══════════════ */
+.slide-data {
+  background: radial-gradient(ellipse at 50% 50%, rgba(56,139,253,0.05) 0%, transparent 50%),
+              var(--bg);
+}
+
+.chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.chart-card h3 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.chart-wrap { position: relative; height: 300px; }
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.kpi {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.kpi .kpi-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.kpi .kpi-value.gold { color: var(--accent); }
+.kpi .kpi-value.green { color: var(--green); }
+.kpi .kpi-value.blue { color: var(--blue); }
+.kpi .kpi-value.red { color: var(--terpel); }
+
+.kpi .kpi-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.3rem;
+}
+
+.kpi .kpi-sub {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+/* ═══════════════ SLIDE 4: COSTO ═══════════════ */
+.slide-cost {
+  background: radial-gradient(ellipse at 60% 40%, rgba(240,165,0,0.06) 0%, transparent 50%),
+              var(--bg);
+}
+
+.cost-comparison {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.cost-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.cost-box .cost-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.cost-box .cost-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.cost-box .cost-detail {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.75rem;
+  line-height: 1.5;
+}
+
+.cost-box.safe { border-color: var(--green); }
+.cost-box.safe .cost-value { color: var(--green); }
+.cost-box.cap { border-color: var(--accent); }
+.cost-box.cap .cost-value { color: var(--accent); }
+
+.cost-vs {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.margin-bar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+}
+
+.margin-bar h4 {
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  color: var(--muted);
+}
+
+.bar-track {
+  background: var(--surface2);
+  border-radius: 8px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bar-fill {
+  background: linear-gradient(90deg, var(--green), var(--accent));
+  height: 100%;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: width 1.5s ease;
+}
+
+.bar-cap {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* ═══════════════ SLIDE 5: SCORE GUARDIAN ═══════════════ */
+.slide-guardian {
+  background: radial-gradient(ellipse at 40% 60%, rgba(163,113,247,0.06) 0%, transparent 50%),
+              var(--bg);
+}
+
+.tier-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.tier-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.tier-card:hover { transform: translateY(-4px); }
+
+.tier-card .tier-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.tier-card .tier-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.tier-card .tier-limit {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+.tier-card.t-leyenda { border-color: #ffd700; }
+.tier-card.t-leyenda .tier-name { color: #ffd700; }
+.tier-card.t-leyenda .tier-count { color: #ffd700; }
+
+.tier-card.t-experto { border-color: #a371f7; }
+.tier-card.t-experto .tier-name { color: #a371f7; }
+.tier-card.t-experto .tier-count { color: #a371f7; }
+
+.tier-card.t-master { border-color: #388bfd; }
+.tier-card.t-master .tier-name { color: #388bfd; }
+.tier-card.t-master .tier-count { color: #388bfd; }
+
+.tier-card.t-novato { border-color: #2ea043; }
+.tier-card.t-novato .tier-name { color: #2ea043; }
+.tier-card.t-novato .tier-count { color: #2ea043; }
+
+.tier-card.t-aprendiz { border-color: var(--muted); }
+.tier-card.t-aprendiz .tier-name { color: var(--muted); }
+.tier-card.t-aprendiz .tier-count { color: var(--muted); }
+
+.components-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.component-pill {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.component-pill .c-name { font-weight: 600; }
+.component-pill .c-weight { color: var(--muted); font-size: 0.7rem; }
+
+/* ═══════════════ SLIDE 6: TECH ═══════════════ */
+.slide-tech {
+  background: radial-gradient(ellipse at 50% 40%, rgba(56,139,253,0.06) 0%, transparent 50%),
+              var(--bg);
+}
+
+.tech-pipeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.pipe-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pipe-node {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pipe-node.highlight { border-color: var(--accent); color: var(--accent); }
+.pipe-node.blue { border-color: var(--blue); color: var(--blue); }
+.pipe-node.green { border-color: var(--green); color: var(--green); }
+.pipe-node.purple { border-color: var(--purple); color: var(--purple); }
+
+.pipe-arrow { color: var(--muted); font-size: 1.2rem; }
+
+.tech-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.tech-stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.tech-stat .ts-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.tech-stat .ts-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+/* ═══════════════ SLIDE 7: CTA ═══════════════ */
+.slide-cta {
+  background: radial-gradient(ellipse at 50% 50%, rgba(240,165,0,0.1) 0%, transparent 50%),
+              var(--bg);
+  text-align: center;
+}
+
+.cta-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.cta-sub {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+.cta-cards {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.cta-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  width: 280px;
+  text-align: left;
+}
+
+.cta-card h4 {
+  font-size: 0.9rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.cta-card p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.chat-invite {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: var(--bg);
+  padding: 1rem 2.5rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s;
+}
+
+.chat-invite:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(240,165,0,0.3);
+}
+
+/* ═══════════════ CHAT WIDGET ═══════════════ */
+.chat-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(240,165,0,0.4);
+  transition: all 0.3s;
+  font-size: 1.5rem;
+}
+
+.chat-fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 30px rgba(240,165,0,0.5);
+}
+
+.chat-fab.open { border-radius: 12px; }
+
+.chat-panel {
+  position: fixed;
+  bottom: 6rem;
+  right: 2rem;
+  width: 420px;
+  max-height: 520px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  z-index: 999;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  animation: chatSlideIn 0.3s ease;
+}
+
+.chat-panel.open { display: flex; }
+
+@keyframes chatSlideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-header {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  padding: 1rem 1.5rem;
+  color: var(--bg);
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chat-header .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--bg);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 350px;
+}
+
+.msg {
+  max-width: 85%;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  animation: msgIn 0.3s ease;
+}
+
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.msg.user {
+  background: var(--accent);
+  color: var(--bg);
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+  font-weight: 500;
+}
+
+.msg.ai {
+  background: var(--surface2);
+  color: var(--text);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.msg.ai.typing {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.chat-input-row {
+  display: flex;
+  padding: 0.75rem;
+  gap: 0.5rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.chat-input-row input {
+  flex: 1;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.chat-input-row input:focus { border-color: var(--accent); }
+
+.chat-input-row input::placeholder { color: var(--muted); }
+
+.chat-send {
+  background: var(--accent);
+  border: none;
+  border-radius: 10px;
+  width: 42px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: all 0.2s;
+}
+
+.chat-send:hover { background: var(--accent2); }
+.chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ═══════════════ ANIMATIONS ═══════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ═══════════════ RESPONSIVE ═══════════════ */
+@media (max-width: 768px) {
+  .slide { padding: 2rem 1.25rem; }
+  .hero-stats { gap: 1.5rem; }
+  .cost-comparison { grid-template-columns: 1fr; }
+  .cost-vs { text-align: center; }
+  .chat-panel { width: calc(100vw - 2rem); right: 1rem; bottom: 5rem; }
+  .nav-dots { display: none; }
+  .tier-row { gap: 0.5rem; }
+  .tier-card { min-width: 120px; padding: 1rem; }
+}
+
+/* ═══════════════ CONFIDENTIAL WATERMARK ═══════════════ */
+.watermark {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 90;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(240,165,0,0.25);
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+
+<div class="watermark">CONFIDENCIAL — ZAZ x TERPEL — 29 MAY 2026</div>
+
+<!-- NAV DOTS -->
+<div class="nav-dots" id="navDots"></div>
+
+<!-- ═══════════════ SLIDE 0: HERO ═══════════════ -->
+<section class="slide slide-hero" id="slide-0" data-name="Inicio">
+  <div class="slide-inner">
+    <div class="hero-badge">ALIANZA ESTRATEGICA 2026</div>
+    <h1 class="hero-title reveal">
+      <span class="zaz">ZAZ</span>
+      <span class="x"> x </span>
+      <span class="terpel">Terpel</span>
+    </h1>
+    <p class="hero-sub reveal reveal-delay-1">
+      67,812 conductores. 6,828 galones/dia. Un sistema de fidelizacion
+      basado en datos reales que convierte buen comportamiento en combustible.
+    </p>
+    <div class="hero-stats reveal reveal-delay-2">
+      <div class="hero-stat">
+        <div class="number gold">67,812</div>
+        <div class="label">Conductores activos</div>
+      </div>
+      <div class="hero-stat">
+        <div class="number red">6,828</div>
+        <div class="label">Galones / dia</div>
+      </div>
+      <div class="hero-stat">
+        <div class="number green">8.6x</div>
+        <div class="label">CLV : CAC ratio</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 1: PROBLEMA ═══════════════ -->
+<section class="slide slide-problem" id="slide-1" data-name="Problema">
+  <div class="slide-inner">
+    <div class="section-tag reveal">El problema</div>
+    <h2 class="section-title reveal reveal-delay-1">El combustible es el gasto #1<br>del conductor</h2>
+    <div class="problem-grid">
+      <div class="problem-card reveal reveal-delay-1">
+        <div class="problem-icon">&#9981;</div>
+        <h3>Sin fidelizacion</h3>
+        <p>Los conductores tanquean donde sea. No hay incentivo para elegir una marca. Terpel pierde volumen ante EDS informales.</p>
+        <div class="stat">0% fidelizados</div>
+      </div>
+      <div class="problem-card reveal reveal-delay-2">
+        <div class="problem-icon">&#128200;</div>
+        <h3>12,866 conductores dormidos</h3>
+        <p>64% de conductores generan menos de 500 XP/mes. Son conductores activos que no participan porque no tienen incentivo.</p>
+        <div class="stat">64.4% sin liga</div>
+      </div>
+      <div class="problem-card reveal reveal-delay-3">
+        <div class="problem-icon">&#128176;</div>
+        <h3>$3,277M COP/mes en galones</h3>
+        <p>Nuestros conductores consumen 6,828 galones diarios. Ese volumen hoy se distribuye sin direccionamiento hacia ninguna marca.</p>
+        <div class="stat">$39.3B COP/ano</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 2: SOLUCION ═══════════════ -->
+<section class="slide slide-solution" id="slide-2" data-name="Solucion">
+  <div class="slide-inner">
+    <div class="section-tag reveal">La solucion</div>
+    <h2 class="section-title reveal reveal-delay-1">XP que se convierten en galones</h2>
+    <p class="reveal reveal-delay-1" style="color:var(--muted);max-width:700px;margin-bottom:2rem;">
+      Cada accion positiva del conductor genera XP. Al final del mes, los XP se canjean por combustible Terpel. Buen comportamiento = mas gasolina.
+    </p>
+
+    <div class="solution-flow reveal reveal-delay-2">
+      <div class="flow-step">
+        <div class="step-icon">&#128663;</div>
+        <div class="step-label">Viaje completado</div>
+        <div class="step-detail">+10 XP</div>
+      </div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-step">
+        <div class="step-icon">&#127942;</div>
+        <div class="step-label">Bono cazado</div>
+        <div class="step-detail">+100 XP</div>
+      </div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-step">
+        <div class="step-icon">&#9201;</div>
+        <div class="step-label">Hora pico</div>
+        <div class="step-detail">+5 XP</div>
+      </div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-step" style="border-color:var(--terpel);">
+        <div class="step-icon">&#9981;</div>
+        <div class="step-label" style="color:var(--terpel);">Canjear en Terpel</div>
+        <div class="step-detail">$10 COP / XP</div>
+      </div>
+    </div>
+
+    <table class="xp-table reveal reveal-delay-3">
+      <thead>
+        <tr>
+          <th>Evento</th>
+          <th>XP</th>
+          <th>Eventos/mes</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Viaje completado</td><td class="positive">+10</td><td>~35,670</td><td>Activo</td></tr>
+        <tr><td>Bono Yango cazado</td><td class="positive">+100</td><td>~10,920</td><td>Activo</td></tr>
+        <tr><td>Hora pico</td><td class="positive">+5</td><td>~966</td><td>Activo</td></tr>
+        <tr><td>Cancelacion manual</td><td class="negative">-30</td><td>~31,322</td><td>Activo (quema)</td></tr>
+        <tr><td style="font-weight:700;">Neto mensual</td><td class="positive" style="font-size:1.1rem;">~1M XP</td><td colspan="2" style="color:var(--muted);">Tasa de quema: 31.7%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 3: DATA ═══════════════ -->
+<section class="slide slide-data" id="slide-3" data-name="Datos">
+  <div class="slide-inner">
+    <div class="section-tag reveal">Los datos</div>
+    <h2 class="section-title reveal reveal-delay-1">12 meses de datos reales BigQuery</h2>
+
+    <div class="kpi-row reveal reveal-delay-1">
+      <div class="kpi">
+        <div class="kpi-value gold">680</div>
+        <div class="kpi-label">Promedio XP / conductor / mes</div>
+        <div class="kpi-sub">= $6,800 COP</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value blue">230</div>
+        <div class="kpi-label">Mediana mensual</div>
+        <div class="kpi-sub">50% gana menos que esto</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value red">0.2%</div>
+        <div class="kpi-label">Superan 5,000 XP</div>
+        <div class="kpi-sub">Solo 7 de 3,205</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value green">31.7%</div>
+        <div class="kpi-label">Tasa de quema</div>
+        <div class="kpi-sub">Moneda autoregulada</div>
+      </div>
+    </div>
+
+    <div class="chart-card reveal reveal-delay-2">
+      <h3>Promedio XP Canjeable por Mes (por conductor)</h3>
+      <div class="chart-wrap"><canvas id="chartMensual"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 4: COSTO ═══════════════ -->
+<section class="slide slide-cost" id="slide-4" data-name="Costo">
+  <div class="slide-inner">
+    <div class="section-tag reveal">La inversion</div>
+    <h2 class="section-title reveal reveal-delay-1">Costo controlado, margen garantizado</h2>
+
+    <div class="cost-comparison reveal reveal-delay-2">
+      <div class="cost-box safe">
+        <div class="cost-label">Costo real proyectado</div>
+        <div class="cost-value">$5.1M</div>
+        <div class="cost-detail">COP / mes<br>Basado en 50% tasa de canje</div>
+      </div>
+      <div class="cost-vs">vs</div>
+      <div class="cost-box cap">
+        <div class="cost-label">Techo presupuesto</div>
+        <div class="cost-value">$9.5M</div>
+        <div class="cost-detail">COP / mes<br>Maximo acordado en deck</div>
+      </div>
+    </div>
+
+    <div class="margin-bar reveal reveal-delay-3">
+      <h4>Margen de seguridad: 46% entre costo real y techo</h4>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:54%;">$5.1M (costo real)</div>
+        <div class="bar-cap">$9.5M (techo)</div>
+      </div>
+    </div>
+
+    <div class="kpi-row reveal reveal-delay-4" style="margin-top:2rem;">
+      <div class="kpi">
+        <div class="kpi-value gold">$260K</div>
+        <div class="kpi-label">Maximo 1 conductor / mes</div>
+        <div class="kpi-sub">~5 galones. Genera >$3M comisiones</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value green">$6,800</div>
+        <div class="kpi-label">Promedio conductor / mes</div>
+        <div class="kpi-sub">~0.15 galones</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value blue">$2,300</div>
+        <div class="kpi-label">Mediana conductor / mes</div>
+        <div class="kpi-sub">El 50% canjea menos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 5: SCORE GUARDIAN ═══════════════ -->
+<section class="slide slide-guardian" id="slide-5" data-name="Guardian">
+  <div class="slide-inner">
+    <div class="section-tag reveal">Score Guardian</div>
+    <h2 class="section-title reveal reveal-delay-1">Gobernanza en tiempo real</h2>
+    <p class="reveal reveal-delay-1" style="color:var(--muted);max-width:700px;margin-bottom:1rem;">
+      Cada conductor tiene un score de 0-100 basado en 6 metricas. El score determina su credito operativo y acceso a beneficios.
+    </p>
+
+    <div class="tier-row reveal reveal-delay-2">
+      <div class="tier-card t-leyenda">
+        <div class="tier-name">LEYENDA</div>
+        <div class="tier-count">166</div>
+        <div class="tier-limit">65+ pts | -$5K</div>
+      </div>
+      <div class="tier-card t-experto">
+        <div class="tier-name">EXPERTO</div>
+        <div class="tier-count">347</div>
+        <div class="tier-limit">50-64 pts | -$4K</div>
+      </div>
+      <div class="tier-card t-master">
+        <div class="tier-name">MASTER</div>
+        <div class="tier-count">526</div>
+        <div class="tier-limit">35-49 pts | -$3K</div>
+      </div>
+      <div class="tier-card t-novato">
+        <div class="tier-name">NOVATO</div>
+        <div class="tier-count">824</div>
+        <div class="tier-limit">20-34 pts | -$1K</div>
+      </div>
+      <div class="tier-card t-aprendiz">
+        <div class="tier-name">APRENDIZ</div>
+        <div class="tier-count">65,949</div>
+        <div class="tier-limit">0-19 pts | -$1K</div>
+      </div>
+    </div>
+
+    <div class="components-grid reveal reveal-delay-3">
+      <div class="component-pill"><div class="c-name">Actividad</div><div class="c-weight">Viajes completados</div></div>
+      <div class="component-pill"><div class="c-name">Bonos</div><div class="c-weight">Bonos cazados $</div></div>
+      <div class="component-pill"><div class="c-name">Calidad</div><div class="c-weight">Rating promedio</div></div>
+      <div class="component-pill"><div class="c-name">Riesgo</div><div class="c-weight">% digital</div></div>
+      <div class="component-pill"><div class="c-name">Horas Pico</div><div class="c-weight">% en demanda</div></div>
+      <div class="component-pill"><div class="c-name">Lealtad</div><div class="c-weight">Antiguedad meses</div></div>
+    </div>
+
+    <p class="reveal reveal-delay-4" style="color:var(--muted);font-size:0.85rem;margin-top:1.5rem;">
+      6 corridas diarias automatizadas. Kill switch defensivo. Dashboard de monitoreo 24/7. Alertas Telegram en tiempo real.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 6: TECH ═══════════════ -->
+<section class="slide slide-tech" id="slide-6" data-name="Tecnologia">
+  <div class="slide-inner">
+    <div class="section-tag reveal">Infraestructura</div>
+    <h2 class="section-title reveal reveal-delay-1">Stack de datos enterprise</h2>
+
+    <div class="tech-pipeline reveal reveal-delay-2">
+      <div class="pipe-row">
+        <div class="pipe-node highlight">API Yango (17 flotas)</div>
+        <div class="pipe-arrow">&#8594;</div>
+        <div class="pipe-node">Bronze (append-only)</div>
+        <div class="pipe-arrow">&#8594;</div>
+        <div class="pipe-node blue">Silver (dedup)</div>
+        <div class="pipe-arrow">&#8594;</div>
+        <div class="pipe-node green">Gold (vistas negocio)</div>
+      </div>
+      <div class="pipe-row" style="padding-left:3rem;">
+        <div class="pipe-arrow">&#8600;</div>
+        <div class="pipe-node purple">Score Guardian</div>
+        <div class="pipe-arrow">&#8594;</div>
+        <div class="pipe-node">Yango API (limites)</div>
+        <div class="pipe-arrow">+</div>
+        <div class="pipe-node purple">LAURA IA</div>
+        <div class="pipe-arrow">&#8594;</div>
+        <div class="pipe-node">WhatsApp + PWA</div>
+      </div>
+    </div>
+
+    <div class="tech-stats reveal reveal-delay-3">
+      <div class="tech-stat">
+        <div class="ts-value">113</div>
+        <div class="ts-label">Objetos BigQuery (tablas + vistas)</div>
+      </div>
+      <div class="tech-stat">
+        <div class="ts-value">87</div>
+        <div class="ts-label">Jobs cron automatizados</div>
+      </div>
+      <div class="tech-stat">
+        <div class="ts-value">24/7</div>
+        <div class="ts-label">Monitoreo (Doctor + Vigilante)</div>
+      </div>
+      <div class="tech-stat">
+        <div class="ts-value">3</div>
+        <div class="ts-label">Paises en produccion (COL, PE, VE)</div>
+      </div>
+      <div class="tech-stat">
+        <div class="ts-value">&lt;2s</div>
+        <div class="ts-label">Latencia promedio API</div>
+      </div>
+      <div class="tech-stat">
+        <div class="ts-value">99.9%</div>
+        <div class="ts-label">Uptime Cloud Run</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 7: CTA ═══════════════ -->
+<section class="slide slide-cta" id="slide-7" data-name="Siguiente paso">
+  <div class="slide-inner">
+    <h2 class="cta-title reveal">
+      <span style="color:var(--accent);">67,812</span> conductores<br>esperan tanquear con<br><span style="color:var(--terpel);">Terpel</span>
+    </h2>
+    <p class="cta-sub reveal reveal-delay-1">
+      La infraestructura esta lista. Los datos lo demuestran. Solo falta decir si.
+    </p>
+
+    <div class="cta-cards reveal reveal-delay-2">
+      <div class="cta-card">
+        <h4>Paso 1 — Piloto</h4>
+        <p>30 dias, 500 conductores top (Score Guardian Leyenda + Experto). Medimos canje real vs proyeccion.</p>
+      </div>
+      <div class="cta-card">
+        <h4>Paso 2 — Escalar</h4>
+        <p>Abrir a los 67K conductores. Dashboard compartido con Terpel en tiempo real. Ajustar ratio si es necesario.</p>
+      </div>
+      <div class="cta-card">
+        <h4>Paso 3 — Expandir</h4>
+        <p>Peru (5 flotas, PEN). Venezuela (USD). Otros aliados: lubricantes, llantas, seguros.</p>
+      </div>
+    </div>
+
+    <button class="chat-invite reveal reveal-delay-3" onclick="toggleChat()">
+      &#129302; Preguntale a nuestra IA en vivo
+    </button>
+  </div>
+</section>
+
+<!-- ═══════════════ CHAT WIDGET ═══════════════ -->
+<button class="chat-fab" id="chatFab" onclick="toggleChat()" title="Chat IA en vivo">&#129302;</button>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div class="pulse"></div>
+    ZAZ IA — Datos en vivo | Pregunta lo que quieras
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="msg ai">Bienvenidos a ZAZ. Tengo acceso a 12 meses de datos reales de 67,812 conductores en BigQuery. Pueden preguntarme cualquier cosa sobre el programa XP, costos, proyecciones o infraestructura.</div>
+  </div>
+  <div class="chat-input-row">
+    <input type="text" id="chatInput" placeholder="Escribe tu pregunta..." autocomplete="off">
+    <button class="chat-send" id="chatSend" onclick="sendChat()">&#9654;</button>
+  </div>
+</div>
+
+<script>
+// ═══════════════ NAV DOTS ═══════════════
+const slides = document.querySelectorAll('.slide');
+const navContainer = document.getElementById('navDots');
+
+slides.forEach((s, i) => {
+  const dot = document.createElement('button');
+  dot.className = 'nav-dot';
+  dot.innerHTML = `<span class="tooltip">${s.dataset.name || 'Slide ' + i}</span>`;
+  dot.onclick = () => s.scrollIntoView({ behavior: 'smooth' });
+  navContainer.appendChild(dot);
+});
+
+const dots = document.querySelectorAll('.nav-dot');
+
+function updateActiveDot() {
+  let active = 0;
+  slides.forEach((s, i) => {
+    const r = s.getBoundingClientRect();
+    if (r.top < window.innerHeight / 2) active = i;
+  });
+  dots.forEach((d, i) => d.classList.toggle('active', i === active));
+}
+
+window.addEventListener('scroll', updateActiveDot);
+updateActiveDot();
+
+// ═══════════════ REVEAL ON SCROLL ═══════════════
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+
+reveals.forEach(r => observer.observe(r));
+
+// ═══════════════ CHARTS ═══════════════
+const meses = ['Jun 25','Jul','Ago','Sep','Oct','Nov','Dic','Ene 26','Feb','Mar','Abr','May'];
+const promedios = [700,850,740,747,794,842,836,687,667,496,414,409];
+const medianas = [250,300,280,280,260,260,240,190,220,180,150,110];
+const p95 = [2480,3050,2510,2660,2850,3600,3470,2650,2680,1990,1670,1415];
+
+const chartOpts = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: { labels: { color: '#7d8590', font: { family: 'Manrope', size: 11 } } }
+  },
+  scales: {
+    x: { ticks: { color: '#7d8590', font: { family: 'Manrope', size: 11 } }, grid: { color: 'rgba(33,38,45,0.5)' } },
+    y: { ticks: { color: '#7d8590', font: { family: 'Manrope' } }, grid: { color: 'rgba(33,38,45,0.3)' } }
+  }
+};
+
+new Chart(document.getElementById('chartMensual'), {
+  type: 'bar',
+  data: {
+    labels: meses,
+    datasets: [
+      { label: 'Promedio XP', data: promedios, backgroundColor: 'rgba(240,165,0,0.7)', borderColor: '#f0a500', borderWidth: 1, borderRadius: 6, order: 2 },
+      { label: 'Mediana', data: medianas, backgroundColor: 'rgba(56,139,253,0.5)', borderColor: '#388bfd', borderWidth: 1, borderRadius: 6, order: 3 },
+      { label: 'P95 (Top 5%)', data: p95, type: 'line', borderColor: '#dc2626', backgroundColor: 'rgba(220,38,38,0.1)', borderWidth: 2, pointRadius: 3, tension: 0.3, fill: false, order: 1 }
+    ]
+  },
+  options: chartOpts
+});
+
+// ═══════════════ CHAT ═══════════════
+const CHAT_API = window.location.origin + '/chat';
+let chatOpen = false;
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('chatPanel').classList.toggle('open', chatOpen);
+  if (chatOpen) document.getElementById('chatInput').focus();
+}
+
+document.getElementById('chatInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
+});
+
+async function sendChat() {
+  const input = document.getElementById('chatInput');
+  const q = input.value.trim();
+  if (!q) return;
+
+  addMsg(q, 'user');
+  input.value = '';
+  document.getElementById('chatSend').disabled = true;
+
+  const typing = addMsg('Consultando datos...', 'ai typing');
+
+  try {
+    const res = await fetch(CHAT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: q })
+    });
+
+    const data = await res.json();
+    typing.remove();
+
+    if (data.answer) {
+      addMsg(data.answer, 'ai');
+    } else {
+      addMsg('Error: ' + (data.error || 'Sin respuesta'), 'ai');
+    }
+  } catch (err) {
+    typing.remove();
+    addMsg('Error de conexion. Verifica que el servidor esta activo.', 'ai');
+  }
+
+  document.getElementById('chatSend').disabled = false;
+}
+
+function addMsg(text, type) {
+  const msgs = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'msg ' + type;
+  div.textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+// ═══════════════ KEYBOARD NAV ═══════════════
+document.addEventListener('keydown', e => {
+  if (chatOpen && e.target.tagName === 'INPUT') return;
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+    e.preventDefault();
+    const next = getCurrentSlide() + 1;
+    if (next < slides.length) slides[next].scrollIntoView({ behavior: 'smooth' });
+  }
+  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+    e.preventDefault();
+    const prev = getCurrentSlide() - 1;
+    if (prev >= 0) slides[prev].scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
+function getCurrentSlide() {
+  let active = 0;
+  slides.forEach((s, i) => {
+    if (s.getBoundingClientRect().top < window.innerHeight / 2) active = i;
+  });
+  return active;
+}
+</script>
+
+</body>
+</html>
