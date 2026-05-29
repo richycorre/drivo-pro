@@ -7,314 +7,325 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap');
-
 :root {
-  --bg: #070b14;
-  --surface: #0f1420;
-  --surface2: #171d2b;
-  --border: #1e2638;
-  --text: #eaf0f6;
-  --muted: #6b7a8d;
-  --accent: #f0a500;
-  --accent2: #ff6b35;
-  --eco: #059669;
-  --eco-light: #34d399;
-  --terpel: #ef4444;
-  --blue: #3b82f6;
-  --purple: #8b5cf6;
+  --bg:#070b14;--surface:#0f1420;--surface2:#171d2b;--border:#1e2638;--text:#eaf0f6;--muted:#6b7a8d;
+  --accent:#f0a500;--accent2:#ff6b35;--eco:#059669;--eco-light:#34d399;--terpel:#ef4444;--blue:#3b82f6;--purple:#8b5cf6;
 }
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Manrope', system-ui, sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--eco),var(--accent));z-index:200;transition:width .3s;box-shadow:0 0 8px rgba(5,150,105,.4)}
+.watermark{position:fixed;top:1.2rem;left:1.5rem;z-index:90;font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,165,0,.2);pointer-events:none}
+.slide-counter{position:fixed;bottom:2rem;left:2rem;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);z-index:90;letter-spacing:.1em}
 
-.progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--eco), var(--accent)); z-index: 200; transition: width 0.3s; box-shadow: 0 0 8px rgba(5,150,105,0.4); }
-.watermark { position: fixed; top: 1.2rem; left: 1.5rem; z-index: 90; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(240,165,0,0.2); pointer-events: none; }
-.slide-counter { position: fixed; bottom: 2rem; left: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--muted); z-index: 90; letter-spacing: 0.1em; }
+.nav-dots{position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:.5rem}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;cursor:pointer;transition:all .3s;position:relative}
+.nav-dot.active{background:var(--accent);box-shadow:0 0 10px rgba(240,165,0,.5);transform:scale(1.4)}
+.nav-dot:hover{background:var(--accent)}
+.nav-dot .tip{position:absolute;right:18px;top:50%;transform:translateY(-50%);background:var(--surface2);color:var(--text);padding:.2rem .5rem;border-radius:5px;font-size:.6rem;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;border:1px solid var(--border)}
+.nav-dot:hover .tip{opacity:1}
 
-/* ═══ NAV ═══ */
-.nav-dots { position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 0.55rem; }
-.nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; transition: all 0.3s; position: relative; }
-.nav-dot.active { background: var(--accent); box-shadow: 0 0 10px rgba(240,165,0,0.5); transform: scale(1.4); }
-.nav-dot:hover { background: var(--accent); }
-.nav-dot .tip { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); background: var(--surface2); color: var(--text); padding: 0.2rem 0.5rem; border-radius: 5px; font-size: 0.6rem; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; border: 1px solid var(--border); }
-.nav-dot:hover .tip { opacity: 1; }
+.slide{min-height:100vh;padding:5rem 2rem;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.slide-inner{max-width:1100px;width:100%;z-index:2;position:relative}
+.tag{font-size:.65rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.title{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;margin-bottom:1.5rem;line-height:1.12}
+.sub{color:var(--muted);max-width:650px;line-height:1.7;font-size:1rem;margin-bottom:2rem}
 
-/* ═══ SLIDES ═══ */
-.slide { min-height: 100vh; padding: 5rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-.slide-inner { max-width: 1100px; width: 100%; z-index: 2; position: relative; }
-.tag { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-.title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1.5rem; line-height: 1.12; }
-.sub { color: var(--muted); max-width: 650px; line-height: 1.7; font-size: 1rem; margin-bottom: 2.5rem; }
+.r{opacity:0;transform:translateY(25px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.r.v{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
 
-/* ═══ REVEAL ═══ */
-.r { opacity: 0; transform: translateY(25px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-.r.v { opacity: 1; transform: translateY(0); }
-.d1 { transition-delay: .1s; } .d2 { transition-delay: .2s; } .d3 { transition-delay: .3s; } .d4 { transition-delay: .4s; } .d5 { transition-delay: .5s; }
+.grid{display:grid;gap:1rem}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.75rem;transition:all .3s}
+.card:hover{border-color:rgba(240,165,0,.3);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:center}
+.kv{font-family:'JetBrains Mono',monospace;font-size:1.8rem;font-weight:700}
+.kv.gold{color:var(--accent)}.kv.green{color:var(--eco-light)}.kv.blue{color:var(--blue)}.kv.red{color:var(--terpel)}.kv.purple{color:var(--purple)}
+.kl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:.3rem}
+.ks{font-size:.72rem;color:var(--muted);margin-top:.1rem}
 
-/* ═══ CARDS / KPI ═══ */
-.grid { display: grid; gap: 1rem; }
-.g2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-.g3 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-.g4 { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
-.g6 { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+/* ═══ HERO ═══ */
+.s-hero{background:radial-gradient(ellipse at 30% 50%,rgba(240,165,0,.06) 0%,transparent 60%),radial-gradient(ellipse at 70% 70%,rgba(5,150,105,.05) 0%,transparent 50%),var(--bg)}
+.hero-row{display:flex;align-items:center;gap:4rem}
+.hero-text{flex:1}
+.hero-badge{display:inline-block;background:rgba(240,165,0,.1);color:var(--accent);padding:.35rem .9rem;border-radius:999px;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.5rem;border:1px solid rgba(240,165,0,.2)}
+.hero-title{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.05;margin-bottom:1.5rem}
+.hero-title .zaz{color:var(--accent)}.hero-title .x{color:var(--muted);font-weight:300}.hero-title .tp{color:var(--terpel)}
+.hero-sub{font-size:1.1rem;color:var(--muted);max-width:550px;line-height:1.6;margin-bottom:2.5rem}
+.hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap}
+.hero-stat .hn{font-family:'JetBrains Mono',monospace;font-size:2rem;font-weight:800}
+.hero-stat .hn.gold{color:var(--accent)}.hero-stat .hn.green{color:var(--eco-light)}.hero-stat .hn.red{color:var(--terpel)}
+.hero-stat .hl{font-size:.75rem;color:var(--muted);margin-top:.15rem}
 
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; transition: all 0.3s; }
-.card:hover { border-color: rgba(240,165,0,0.3); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+/* ═══ PHONE MOCKUP ═══ */
+.phone{width:210px;height:400px;background:#181d28;border-radius:26px;border:2.5px solid #2a3040;padding:10px;box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 30px rgba(240,165,0,.08);flex-shrink:0}
+.phone-notch{width:60px;height:5px;background:#2a3040;border-radius:3px;margin:0 auto 8px}
+.phone-screen{background:var(--bg);border-radius:16px;height:calc(100% - 13px);padding:10px;overflow:hidden;font-size:.65rem}
+.phone .app-hdr{text-align:center;color:var(--accent);font-weight:800;font-size:.55rem;letter-spacing:.12em;margin-bottom:8px}
+.phone .badges{display:flex;gap:3px;justify-content:center;margin-bottom:6px}
+.phone .badge{padding:2px 5px;border-radius:3px;font-size:.5rem;font-weight:700}
+.phone .feed-item{display:flex;justify-content:space-between;margin-bottom:3px;font-size:.52rem;color:var(--muted)}
 
-.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; text-align: center; }
-.kv { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; font-weight: 700; }
-.kv.gold { color: var(--accent); } .kv.green { color: var(--eco-light); } .kv.blue { color: var(--blue); } .kv.red { color: var(--terpel); } .kv.purple { color: var(--purple); }
-.kl { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.3rem; }
-.ks { font-size: 0.72rem; color: var(--muted); margin-top: 0.1rem; }
+/* ═══ INSIGHT BOX ═══ */
+.insight{background:linear-gradient(135deg,rgba(5,150,105,.07),rgba(240,165,0,.07));border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:1.25rem 1.75rem;margin:2rem 0;font-size:.92rem;line-height:1.65;color:var(--text)}
+.insight em{font-style:normal;color:var(--accent);font-weight:700}
 
-/* ═══ SLIDE 0: FUGA ═══ */
-.s-fuga { background: radial-gradient(ellipse at 30% 50%, rgba(5,150,105,0.07) 0%, transparent 60%), radial-gradient(ellipse at 70% 70%, rgba(240,165,0,0.05) 0%, transparent 50%), var(--bg); }
-.fuga-num { font-family: 'JetBrains Mono', monospace; font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; color: var(--eco-light); line-height: 1; margin-bottom: 0.5rem; text-shadow: 0 0 40px rgba(5,150,105,0.3); }
-.fuga-unit { font-size: 1.3rem; color: var(--muted); font-weight: 500; margin-bottom: 2.5rem; }
-.fuga-line { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 700; line-height: 1.3; margin-bottom: 3rem; }
-.fuga-line em { font-style: normal; color: var(--accent); }
-.fuga-stats { display: flex; gap: 3rem; flex-wrap: wrap; }
-.fuga-stat .fn { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 800; }
-.fuga-stat .fn.gold { color: var(--accent); }
-.fuga-stat .fn.red { color: var(--terpel); }
-.fuga-stat .fn.green { color: var(--eco-light); }
-.fuga-stat .fl { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
-.scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: var(--muted); font-size: 0.75rem; animation: bob 2s infinite; }
-@keyframes bob { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+/* ═══ GAMIFICATION ═══ */
+.s-gam{background:radial-gradient(ellipse at 40% 50%,rgba(139,92,246,.05) 0%,transparent 50%),radial-gradient(ellipse at 70% 70%,rgba(5,150,105,.04) 0%,transparent 50%),var(--bg)}
+.rings-row{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+.ring-item{text-align:center}
+.ring-label{font-size:.72rem;font-weight:700;margin-top:.3rem}
+.ring-sub{font-size:.6rem;color:var(--muted)}
+.liga-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.liga{padding:.55rem .8rem;border-radius:8px;font-size:.7rem;font-weight:700;text-align:center;border:1px solid var(--border);background:var(--surface);flex:1;min-width:90px}
+.liga.sin{color:var(--muted)}.liga.bronce{color:#cd7f32;border-color:rgba(205,127,50,.3)}
+.liga.plata{color:#c0c0c0;border-color:rgba(192,192,192,.3)}.liga.oro{color:#ffd700;border-color:rgba(255,215,0,.3)}
+.liga.diamante{color:#b9f2ff;border-color:rgba(185,242,255,.3)}
+.liga .lpct{font-family:'JetBrains Mono',monospace;font-size:1rem;display:block;margin-top:.15rem}
+.xp-events{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.6rem;margin-bottom:1.5rem}
+.xp-ev{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.9rem;text-align:center}
+.xp-ev .ev-icon{font-size:1.5rem;margin-bottom:.25rem}
+.xp-ev .ev-name{font-size:.75rem;font-weight:600}
+.xp-ev .ev-xp{font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:700;margin-top:.2rem}
+.xp-ev.positive .ev-xp{color:var(--eco-light)}.xp-ev.negative .ev-xp{color:var(--terpel)}
+.xp-ev.negative{border-color:rgba(239,68,68,.2)}
+.mission-card{background:var(--surface);border:1px solid rgba(139,92,246,.25);border-radius:12px;padding:1.25rem;display:flex;align-items:center;gap:1rem}
+.mission-card .mc-badge{background:rgba(139,92,246,.12);color:var(--purple);padding:.3rem .7rem;border-radius:6px;font-size:.6rem;font-weight:800;letter-spacing:.1em;white-space:nowrap}
 
-/* ═══ SLIDE 1: QUIENES ═══ */
-.s-quienes { background: radial-gradient(ellipse at 60% 40%, rgba(240,165,0,0.06) 0%, transparent 50%), var(--bg); }
-.brand-row { display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
-.brand-tag { font-size: 1.1rem; font-weight: 800; letter-spacing: 0.05em; padding: 0.5rem 1.2rem; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); }
-.brand-tag.zaz { color: var(--accent); border-color: rgba(240,165,0,0.3); }
-.brand-tag.yango { color: var(--blue); border-color: rgba(59,130,246,0.3); }
-.brand-tag.gcp { color: var(--eco-light); border-color: rgba(52,211,153,0.3); }
-.brand-x { font-size: 1rem; color: var(--muted); font-weight: 300; }
-.cap-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
-.cap-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
-.cap-card .cap-num { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; color: var(--accent); margin-top: 0.75rem; }
+/* ═══ DATA ═══ */
+.s-data{background:radial-gradient(ellipse at 50% 50%,rgba(59,130,246,.04) 0%,transparent 50%),var(--bg)}
+.chart-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.75rem}
+.chart-box h3{font-size:.95rem;margin-bottom:1rem}
+.chart-wrap{position:relative;height:280px}
 
-/* ═══ SLIDE 2: XP ═══ */
-.s-xp { background: radial-gradient(ellipse at 30% 60%, rgba(5,150,105,0.05) 0%, transparent 50%), var(--bg); }
-.flow { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-.flow-step { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; text-align: center; flex: 1; min-width: 140px; }
-.flow-step .fi { font-size: 1.8rem; margin-bottom: 0.3rem; }
-.flow-step .fn { font-size: 0.8rem; font-weight: 700; }
-.flow-step .fd { font-size: 0.7rem; color: var(--muted); margin-top: 0.15rem; }
-.flow-step.burn { border-color: var(--terpel); }
-.flow-step.redeem { border-color: var(--eco); }
-.flow-arrow { color: var(--accent); font-size: 1.3rem; font-weight: 800; }
-.liga-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-.liga-badge { padding: 0.6rem 1rem; border-radius: 8px; font-size: 0.75rem; font-weight: 700; text-align: center; border: 1px solid var(--border); background: var(--surface); flex: 1; min-width: 100px; }
-.liga-badge.sin { color: var(--muted); } .liga-badge.bronce { color: #cd7f32; border-color: rgba(205,127,50,0.3); }
-.liga-badge.plata { color: #c0c0c0; border-color: rgba(192,192,192,0.3); } .liga-badge.oro { color: #ffd700; border-color: rgba(255,215,0,0.3); }
-.liga-badge.diamante { color: #b9f2ff; border-color: rgba(185,242,255,0.3); }
-.liga-pct { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; display: block; margin-top: 0.2rem; }
+/* ═══ GUARDIAN ═══ */
+.s-guard{background:radial-gradient(ellipse at 40% 60%,rgba(139,92,246,.05) 0%,transparent 50%),var(--bg)}
+.tier-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.tier{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;flex:1;min-width:125px;text-align:center;transition:all .3s}
+.tier:hover{transform:translateY(-3px)}
+.tier .tn{font-size:.72rem;font-weight:800;letter-spacing:.08em;margin-bottom:.35rem}
+.tier .tc{font-family:'JetBrains Mono',monospace;font-size:1.3rem;font-weight:700}
+.tier .tl{font-size:.62rem;color:var(--muted);margin-top:.15rem}
+.tier.t5{border-color:#ffd700}.tier.t5 .tn,.tier.t5 .tc{color:#ffd700}
+.tier.t4{border-color:var(--purple)}.tier.t4 .tn,.tier.t4 .tc{color:var(--purple)}
+.tier.t3{border-color:var(--blue)}.tier.t3 .tn,.tier.t3 .tc{color:var(--blue)}
+.tier.t2{border-color:var(--eco)}.tier.t2 .tn,.tier.t2 .tc{color:var(--eco)}
+.tier.t1{border-color:var(--muted)}.tier.t1 .tn,.tier.t1 .tc{color:var(--muted)}
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:.5rem}
+.comp{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.6rem .8rem;font-size:.75rem;text-align:center}
+.comp b{display:block}
 
-/* ═══ SLIDE 3: DATA ═══ */
-.s-data { background: radial-gradient(ellipse at 50% 50%, rgba(59,130,246,0.04) 0%, transparent 50%), var(--bg); }
-.chart-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; }
-.chart-box h3 { font-size: 0.95rem; margin-bottom: 1rem; }
-.chart-wrap { position: relative; height: 280px; }
+/* ═══ SAFETY ═══ */
+.s-safe{background:radial-gradient(ellipse at 50% 40%,rgba(5,150,105,.06) 0%,transparent 50%),var(--bg)}
+.shield-grid{display:grid;gap:.75rem;max-width:700px}
+.shield{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1.25rem;transition:all .3s}
+.shield:hover{border-color:var(--eco);transform:translateX(4px)}
+.shield-num{font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:800;color:var(--eco-light);width:32px;text-align:center;flex-shrink:0}
+.shield h4{font-size:.9rem;margin-bottom:.2rem}
+.shield p{font-size:.78rem;color:var(--muted);line-height:1.4}
 
-/* ═══ SLIDE 4: GUARDIAN ═══ */
-.s-guard { background: radial-gradient(ellipse at 40% 60%, rgba(139,92,246,0.05) 0%, transparent 50%), var(--bg); }
-.tier-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
-.tier { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem; flex: 1; min-width: 130px; text-align: center; transition: all 0.3s; }
-.tier:hover { transform: translateY(-3px); }
-.tier .tn { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
-.tier .tc { font-family: 'JetBrains Mono', monospace; font-size: 1.3rem; font-weight: 700; }
-.tier .tl { font-size: 0.65rem; color: var(--muted); margin-top: 0.2rem; }
-.tier.t5 { border-color: #ffd700; } .tier.t5 .tn, .tier.t5 .tc { color: #ffd700; }
-.tier.t4 { border-color: var(--purple); } .tier.t4 .tn, .tier.t4 .tc { color: var(--purple); }
-.tier.t3 { border-color: var(--blue); } .tier.t3 .tn, .tier.t3 .tc { color: var(--blue); }
-.tier.t2 { border-color: var(--eco); } .tier.t2 .tn, .tier.t2 .tc { color: var(--eco); }
-.tier.t1 { border-color: var(--muted); } .tier.t1 .tn, .tier.t1 .tc { color: var(--muted); }
-.comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.6rem; }
-.comp { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 0.65rem 0.9rem; font-size: 0.78rem; text-align: center; }
-.comp b { display: block; }
+/* ═══ ROI ═══ */
+.s-roi{background:radial-gradient(ellipse at 50% 40%,rgba(240,165,0,.06) 0%,transparent 50%),var(--bg)}
+.cost-vs{display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:center;margin-bottom:1.5rem}
+.cost-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;text-align:center}
+.cost-box .cl{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.7rem}
+.cost-box .cv{font-family:'JetBrains Mono',monospace;font-size:2.4rem;font-weight:800}
+.cost-box .cd{font-size:.78rem;color:var(--muted);margin-top:.5rem;line-height:1.4}
+.cost-box.real{border-color:var(--eco)}.cost-box.real .cv{color:var(--eco-light)}
+.cost-box.cap{border-color:var(--accent)}.cost-box.cap .cv{color:var(--accent)}
+.cost-sep{font-size:1.3rem;font-weight:800;color:var(--muted);text-align:center}
+.margin-bar{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.75rem;margin-bottom:1.5rem}
+.margin-bar h4{font-size:.8rem;color:var(--muted);margin-bottom:.7rem}
+.bar-track{background:var(--surface2);border-radius:8px;height:36px;position:relative;overflow:hidden}
+.bar-fill{background:linear-gradient(90deg,var(--eco),var(--accent));height:100%;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;transition:width 1.5s ease}
+.bar-cap{position:absolute;right:0;top:0;height:100%;display:flex;align-items:center;padding-right:.75rem;font-size:.7rem;color:var(--muted)}
+.proj-box{background:var(--surface);border:1px solid rgba(139,92,246,.25);border-radius:14px;padding:1.5rem;margin-top:1.5rem}
+.proj-box h4{font-size:.85rem;color:var(--purple);margin-bottom:.5rem}
 
-/* ═══ SLIDE 5: ALIANZA ═══ */
-.s-alianza { background: radial-gradient(ellipse at 60% 50%, rgba(5,150,105,0.06) 0%, transparent 50%), radial-gradient(ellipse at 30% 30%, rgba(239,68,68,0.04) 0%, transparent 50%), var(--bg); }
-.win-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
-.win-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; }
-.win-card .wt { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; }
-.win-card .wt.c-terpel { color: var(--terpel); } .win-card .wt.c-driver { color: var(--eco-light); } .win-card .wt.c-zaz { color: var(--accent); }
-.win-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
-.win-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
-.mech-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem 2rem; }
-.mech-step { text-align: center; flex: 1; min-width: 120px; }
-.mech-step .mn { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.1rem; color: var(--accent); }
-.mech-step .md { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
-.mech-arr { color: var(--muted); font-size: 1.5rem; }
+/* ═══ FAQ ═══ */
+.s-faq{background:radial-gradient(ellipse at 50% 50%,rgba(240,165,0,.04) 0%,transparent 50%),var(--bg)}
+.faq{margin-top:1rem}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;margin-bottom:.55rem;overflow:hidden;transition:border-color .3s}
+.faq-item.open{border-color:rgba(240,165,0,.3)}
+.faq-q{padding:.9rem 1.2rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:.85rem;font-weight:600;transition:background .2s;gap:.75rem}
+.faq-q:hover{background:var(--surface2)}
+.faq-q .fq-icon{font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--accent);flex-shrink:0;transition:transform .3s;width:20px;text-align:center}
+.faq-item.open .fq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-item.open .faq-a{max-height:250px}
+.faq-a-inner{padding:.25rem 1.2rem 1rem;font-size:.8rem;color:var(--muted);line-height:1.6}
 
-/* ═══ SLIDE 6: ROI ═══ */
-.s-roi { background: radial-gradient(ellipse at 50% 40%, rgba(240,165,0,0.06) 0%, transparent 50%), var(--bg); }
-.cost-vs { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.5rem; align-items: center; margin-bottom: 2rem; }
-.cost-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; text-align: center; }
-.cost-box .cl { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
-.cost-box .cv { font-family: 'JetBrains Mono', monospace; font-size: 2.5rem; font-weight: 800; }
-.cost-box .cd { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.4; }
-.cost-box.real { border-color: var(--eco); } .cost-box.real .cv { color: var(--eco-light); }
-.cost-box.cap { border-color: var(--accent); } .cost-box.cap .cv { color: var(--accent); }
-.cost-sep { font-size: 1.3rem; font-weight: 800; color: var(--muted); text-align: center; }
-.margin-bar { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.75rem; margin-bottom: 1.5rem; }
-.margin-bar h4 { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.75rem; }
-.bar-track { background: var(--surface2); border-radius: 8px; height: 36px; position: relative; overflow: hidden; }
-.bar-fill { background: linear-gradient(90deg, var(--eco), var(--accent)); height: 100%; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; transition: width 1.5s ease; }
-.bar-cap { position: absolute; right: 0; top: 0; height: 100%; display: flex; align-items: center; padding-right: 0.75rem; font-size: 0.7rem; color: var(--muted); }
-
-/* ═══ SLIDE 7: CTA ═══ */
-.s-cta { background: radial-gradient(ellipse at 50% 50%, rgba(240,165,0,0.08) 0%, transparent 50%), var(--bg); text-align: center; }
-.cta-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1.5rem; line-height: 1.1; }
-.cta-sub { font-size: 1.05rem; color: var(--muted); max-width: 550px; margin: 0 auto 2.5rem; line-height: 1.6; }
-.phase-row { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
-.phase { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; width: 260px; text-align: left; }
-.phase .pn { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
-.phase h4 { font-size: 1rem; margin-bottom: 0.5rem; }
-.phase p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
-.cta-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: var(--bg); padding: 1rem 2.5rem; border-radius: 12px; font-weight: 700; font-size: 1.05rem; cursor: pointer; border: none; transition: all 0.3s; font-family: 'Manrope', sans-serif; }
-.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(240,165,0,0.3); }
+/* ═══ CTA ═══ */
+.s-cta{background:radial-gradient(ellipse at 50% 50%,rgba(240,165,0,.08) 0%,transparent 50%),var(--bg);text-align:center}
+.cta-title{font-size:clamp(1.8rem,4.5vw,3.2rem);font-weight:800;margin-bottom:1.5rem;line-height:1.1}
+.cta-sub{font-size:1rem;color:var(--muted);max-width:500px;margin:0 auto 2.5rem;line-height:1.6}
+.phase-row{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.phase{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;width:250px;text-align:left}
+.phase .pn{font-size:.6rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
+.phase h4{font-size:.95rem;margin-bottom:.4rem}
+.phase p{font-size:.78rem;color:var(--muted);line-height:1.5}
+.cta-btn{display:inline-flex;align-items:center;gap:.75rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);padding:1rem 2.5rem;border-radius:12px;font-weight:700;font-size:1.05rem;cursor:pointer;border:none;transition:all .3s;font-family:'Manrope',sans-serif}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(240,165,0,.3)}
 
 /* ═══ CHAT ═══ */
-.chat-fab { position: fixed; bottom: 2rem; right: 2rem; width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); border: none; cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(240,165,0,0.35); transition: all 0.3s; font-size: 1.4rem; }
-.chat-fab:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(240,165,0,0.5); }
-.chat-panel { position: fixed; bottom: 5.5rem; right: 2rem; width: 400px; max-height: 500px; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; z-index: 999; display: none; flex-direction: column; overflow: hidden; box-shadow: 0 16px 50px rgba(0,0,0,0.5); animation: chatIn 0.3s ease; }
-.chat-panel.open { display: flex; }
-@keyframes chatIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-.chat-hdr { background: linear-gradient(135deg, var(--accent), var(--accent2)); padding: 0.9rem 1.25rem; color: var(--bg); font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; }
-.chat-hdr .pulse { width: 7px; height: 7px; background: var(--bg); border-radius: 50%; animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
-.chat-msgs { flex: 1; overflow-y: auto; padding: 0.9rem; display: flex; flex-direction: column; gap: 0.6rem; max-height: 330px; }
-.msg { max-width: 85%; padding: 0.65rem 0.9rem; border-radius: 11px; font-size: 0.82rem; line-height: 1.5; animation: msgIn 0.3s ease; }
-@keyframes msgIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-.msg.user { background: var(--accent); color: var(--bg); align-self: flex-end; border-bottom-right-radius: 4px; font-weight: 500; }
-.msg.ai { background: var(--surface2); color: var(--text); align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid var(--border); }
-.msg.ai.typing { color: var(--muted); font-style: italic; }
-.chat-input { display: flex; padding: 0.6rem; gap: 0.4rem; border-top: 1px solid var(--border); }
-.chat-input input { flex: 1; background: var(--surface2); border: 1px solid var(--border); border-radius: 9px; padding: 0.6rem 0.9rem; color: var(--text); font-family: 'Manrope', sans-serif; font-size: 0.82rem; outline: none; }
-.chat-input input:focus { border-color: var(--accent); }
-.chat-input input::placeholder { color: var(--muted); }
-.chat-send { background: var(--accent); border: none; border-radius: 9px; width: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: all 0.2s; }
-.chat-send:hover { background: var(--accent2); }
-.chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+.chat-fab{position:fixed;bottom:2rem;right:2rem;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;cursor:pointer;z-index:1000;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(240,165,0,.35);transition:all .3s;font-size:1.4rem}
+.chat-fab:hover{transform:scale(1.1);box-shadow:0 6px 24px rgba(240,165,0,.5)}
+.chat-panel{position:fixed;bottom:5.5rem;right:2rem;width:400px;max-height:500px;background:var(--surface);border:1px solid var(--border);border-radius:18px;z-index:999;display:none;flex-direction:column;overflow:hidden;box-shadow:0 16px 50px rgba(0,0,0,.5);animation:chatIn .3s ease}
+.chat-panel.open{display:flex}
+@keyframes chatIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.chat-hdr{background:linear-gradient(135deg,var(--accent),var(--accent2));padding:.85rem 1.2rem;color:var(--bg);font-weight:700;font-size:.82rem;display:flex;align-items:center;gap:.5rem}
+.chat-hdr .pulse{width:7px;height:7px;background:var(--bg);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.chat-msgs{flex:1;overflow-y:auto;padding:.9rem;display:flex;flex-direction:column;gap:.6rem;max-height:330px}
+.msg{max-width:85%;padding:.65rem .9rem;border-radius:11px;font-size:.82rem;line-height:1.5;animation:msgIn .3s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.msg.user{background:var(--accent);color:var(--bg);align-self:flex-end;border-bottom-right-radius:4px;font-weight:500}
+.msg.ai{background:var(--surface2);color:var(--text);align-self:flex-start;border-bottom-left-radius:4px;border:1px solid var(--border)}
+.msg.ai.typing{color:var(--muted);font-style:italic}
+.chat-input{display:flex;padding:.6rem;gap:.4rem;border-top:1px solid var(--border)}
+.chat-input input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:.6rem .9rem;color:var(--text);font-family:'Manrope',sans-serif;font-size:.82rem;outline:none}
+.chat-input input:focus{border-color:var(--accent)}
+.chat-input input::placeholder{color:var(--muted)}
+.chat-send{background:var(--accent);border:none;border-radius:9px;width:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .2s}
+.chat-send:hover{background:var(--accent2)}
+.chat-send:disabled{opacity:.4;cursor:not-allowed}
 
-/* ═══ PRESENTER NOTES ═══ */
-.pnotes { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(15,20,32,0.95); border-top: 2px solid var(--accent); padding: 1rem 2rem; z-index: 150; font-size: 0.82rem; line-height: 1.6; color: var(--text); display: none; backdrop-filter: blur(10px); max-height: 25vh; overflow-y: auto; }
-.pnotes.show { display: block; }
-.pnotes .pn-label { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
-.pnotes-hint { position: fixed; bottom: 0.5rem; left: 50%; transform: translateX(-50%); font-size: 0.55rem; color: rgba(107,122,141,0.4); z-index: 80; letter-spacing: 0.1em; }
+.pnotes{position:fixed;bottom:0;left:0;right:0;background:rgba(15,20,32,.95);border-top:2px solid var(--accent);padding:1rem 2rem;z-index:150;font-size:.8rem;line-height:1.6;color:var(--text);display:none;backdrop-filter:blur(10px);max-height:22vh;overflow-y:auto}
+.pnotes.show{display:block}
+.pnotes .pn-label{font-size:.55rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem}
+.pnotes-hint{position:fixed;bottom:.5rem;left:50%;transform:translateX(-50%);font-size:.5rem;color:rgba(107,122,141,.35);z-index:80;letter-spacing:.1em}
 
-/* ═══ RESPONSIVE ═══ */
-@media (max-width: 768px) {
-  .slide { padding: 3rem 1.25rem; }
-  .fuga-stats { gap: 1.5rem; }
-  .cost-vs { grid-template-columns: 1fr; }
-  .cost-sep { display: none; }
-  .chat-panel { width: calc(100vw - 2rem); right: 1rem; }
-  .nav-dots, .slide-counter, .pnotes-hint { display: none; }
-  .tier-row { gap: 0.4rem; }
-  .tier { min-width: 100px; padding: 0.8rem; }
-  .flow { gap: 0.4rem; }
-  .flow-step { min-width: 110px; padding: 0.75rem; }
+@media(max-width:768px){
+.slide{padding:3rem 1.25rem}.hero-row{flex-direction:column;gap:2rem}.phone{width:180px;height:340px}
+.cost-vs{grid-template-columns:1fr}.cost-sep{display:none}.chat-panel{width:calc(100vw - 2rem);right:1rem}
+.nav-dots,.slide-counter,.pnotes-hint{display:none}.tier-row{gap:.4rem}.tier{min-width:100px;padding:.8rem}
+.rings-row{gap:1rem}.phase-row{flex-direction:column;align-items:center}
 }
 </style>
 </head>
 <body>
-
 <div class="progress-bar" id="progressBar"></div>
 <div class="watermark">CONFIDENCIAL — ZAZ × TERPEL — 29 MAY 2026</div>
 <div class="slide-counter" id="slideCounter">01 / 08</div>
 <div class="nav-dots" id="navDots"></div>
 <div class="pnotes-hint">Pulsa N para notas del presentador</div>
 
-<!-- ═══════════ SLIDE 0: LA FUGA INVISIBLE ═══════════ -->
-<section class="slide s-fuga" id="s0" data-name="La Fuga">
+<!-- ═══════════ SLIDE 0: HERO ═══════════ -->
+<section class="slide s-hero" id="s0" data-name="ZAZ × Terpel">
   <div class="slide-inner">
-    <div class="tag r">DESPUES DEL VIDEO</div>
-    <div class="fuga-num r d1" data-count="204840">204,840</div>
-    <div class="fuga-unit r d2">galones al mes — sin direccion, sin fidelidad, sin marca</div>
-    <div class="fuga-line r d3">
-      Acaban de ver la fuga invisible.<br>
-      Ahora les vamos a mostrar <em>como la tapamos</em>.
+    <div class="hero-row">
+      <div class="hero-text">
+        <div class="hero-badge r">ALIANZA ESTRATEGICA 2026</div>
+        <h1 class="hero-title r d1"><span class="zaz">ZAZ</span><span class="x"> × </span><span class="tp">Terpel</span></h1>
+        <p class="hero-sub r d2">67,812 conductores profesionales. 204,840 galones al mes. Un sistema de fidelizacion basado en datos reales que convierte buen comportamiento en combustible.</p>
+        <div class="hero-stats r d3">
+          <div class="hero-stat"><div class="hn gold">67,812</div><div class="hl">Conductores registrados</div></div>
+          <div class="hero-stat"><div class="hn green">3</div><div class="hl">Paises en produccion</div></div>
+          <div class="hero-stat"><div class="hn red">204,840</div><div class="hl">Galones / mes</div></div>
+        </div>
+      </div>
+      <!-- PWA Mockup: Conductor Top -->
+      <div class="phone r d4">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="app-hdr">ZAZ GPS FINANCIERO</div>
+          <svg viewBox="0 0 100 100" width="72" height="72" style="display:block;margin:0 auto 5px">
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#1e2638" stroke-width="5.5"/>
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#34d399" stroke-width="5.5" stroke-dasharray="251.3" stroke-dashoffset="85" transform="rotate(-90 50 50)"/>
+            <text x="50" y="45" text-anchor="middle" fill="#eaf0f6" font-size="13" font-weight="800" font-family="JetBrains Mono">2,450</text>
+            <text x="50" y="58" text-anchor="middle" fill="#6b7a8d" font-size="6.5">XP ESTE MES</text>
+          </svg>
+          <div class="badges">
+            <span class="badge" style="background:rgba(192,192,192,.12);color:#c0c0c0">PLATA</span>
+            <span class="badge" style="background:rgba(59,130,246,.12);color:#3b82f6">MASTER 42</span>
+          </div>
+          <div style="font-size:.5rem;color:var(--accent);text-align:center;margin-bottom:5px">Balance: $45,200 COP</div>
+          <div style="border-top:1px solid var(--border);padding-top:5px">
+            <div class="feed-item"><span>Bono cazado #184</span><span style="color:#34d399;font-weight:700">+100</span></div>
+            <div class="feed-item"><span>Viaje completado</span><span style="color:#34d399;font-weight:700">+10</span></div>
+            <div class="feed-item"><span>Hora pico activa</span><span style="color:#34d399;font-weight:700">+5</span></div>
+            <div class="feed-item"><span>Cancel. manual</span><span style="color:#ef4444;font-weight:700">-30</span></div>
+          </div>
+          <div style="margin-top:6px;background:rgba(240,165,0,.08);border-radius:6px;padding:4px;text-align:center;font-size:.48rem;color:var(--accent)">Canjear XP en Terpel &#9981;</div>
+        </div>
+      </div>
     </div>
-    <div class="fuga-stats r d4">
-      <div class="fuga-stat"><div class="fn gold">67,812</div><div class="fl">Conductores registrados</div></div>
-      <div class="fuga-stat"><div class="fn green">5,723</div><div class="fl">Activos ultimos 30 dias</div></div>
-      <div class="fuga-stat"><div class="fn red">$3,236M</div><div class="fl">COP/mes en combustible</div></div>
-    </div>
-    <div class="scroll-hint">&#8595; Desliza para ver los datos</div>
   </div>
 </section>
 
-<!-- ═══════════ SLIDE 1: QUIENES SOMOS ═══════════ -->
-<section class="slide s-quienes" id="s1" data-name="Quienes somos">
+<!-- ═══════════ SLIDE 1: IDENTIDAD ═══════════ -->
+<section class="slide" id="s1" data-name="Quienes somos" style="background:radial-gradient(ellipse at 60% 40%,rgba(240,165,0,.05) 0%,transparent 50%),var(--bg)">
   <div class="slide-inner">
     <div class="tag r">Quienes somos</div>
-    <h2 class="title r d1">No somos un operador de flotas.<br>Somos una <span style="color:var(--accent)">empresa de base tecnologica</span>.</h2>
+    <h2 class="title r d1">No somos una app de transporte.<br>Somos una empresa de <span style="color:var(--accent)">tecnologia de comportamiento</span>.</h2>
+    <p class="sub r d2">Utilizamos gamificacion como herramienta para modificar tendencias. Cada conductor es un perfil de datos vivo que medimos, calificamos y motivamos en tiempo real.</p>
 
-    <div class="brand-row r d2">
-      <span class="brand-tag zaz">ZAZ Conductores</span>
-      <span class="brand-x">socio operador #1</span>
-      <span class="brand-tag yango">Yango</span>
-      <span class="brand-x">sobre</span>
-      <span class="brand-tag gcp">Google Cloud</span>
+    <div class="insight r d3">
+      El conductor no elige estacion por precio — la diferencia de $200-400/gal es marginal frente a un ingreso de $300K-$800K/dia. <em>Elige por conveniencia y habito.</em> Quien controla el habito, controla el galon.
     </div>
 
-    <div class="grid g2 r d3">
-      <div class="card cap-card">
-        <h3>Escala</h3>
-        <p>17 flotas en 3 paises (Colombia, Peru, Venezuela). 213,000+ viajes procesados cada mes. $1,526M COP en facturacion mensual.</p>
-        <div class="cap-num">17 flotas</div>
-      </div>
-      <div class="card cap-card">
-        <h3>LAURA — IA Propia</h3>
-        <p>Asistente inteligente en WhatsApp, PWA y Voz. Onboarding automatizado, coaching financiero, alertas proactivas. Rev 00230.</p>
-        <div class="cap-num">24/7</div>
-      </div>
-      <div class="card cap-card">
-        <h3>Score Guardian</h3>
-        <p>Sistema de scoring con 6 componentes. Clasifica 67,812 conductores en 5 tiers. Se actualiza 6 veces al dia con kill switch defensivo.</p>
-        <div class="cap-num">6x/dia</div>
-      </div>
-      <div class="card cap-card">
-        <h3>Infraestructura</h3>
-        <p>113 objetos BigQuery (Bronze→Silver→Gold). 87 jobs cron. Pipeline automatizado de datos. Monitoreo 24/7 con Doctor + Vigilante.</p>
-        <div class="cap-num">113 objetos BQ</div>
-      </div>
+    <div class="grid g4 r d4" style="margin-bottom:1.5rem">
+      <div class="kpi"><div class="kv gold">213,447</div><div class="kl">Viajes / mes</div><div class="ks">Procesados en BQ</div></div>
+      <div class="kpi"><div class="kv green">5,723</div><div class="kl">Activos 30 dias</div><div class="ks">De 67,812 registrados</div></div>
+      <div class="kpi"><div class="kv blue">$1,526M</div><div class="kl">Facturacion / mes</div><div class="ks">COP total flota</div></div>
+      <div class="kpi"><div class="kv purple">11.9</div><div class="kl">Meses antiguedad</div><div class="ks">Promedio conductor</div></div>
+    </div>
+
+    <div class="grid g3 r d5">
+      <div class="card"><h3 style="font-size:.95rem;margin-bottom:.4rem">LAURA — IA Propia</h3><p style="font-size:.8rem;color:var(--muted);line-height:1.5">WhatsApp + PWA + Voz. Onboarding, coaching financiero, alertas. 24/7 en 3 paises.</p></div>
+      <div class="card"><h3 style="font-size:.95rem;margin-bottom:.4rem">Score Guardian</h3><p style="font-size:.8rem;color:var(--muted);line-height:1.5">Scoring 6 componentes. 5 tiers. Kill switch defensivo. 6 corridas/dia automatizadas.</p></div>
+      <div class="card"><h3 style="font-size:.95rem;margin-bottom:.4rem">Pipeline BigQuery</h3><p style="font-size:.8rem;color:var(--muted);line-height:1.5">113 objetos. Bronze→Silver→Gold. 87 cron jobs. Monitoreo Doctor+Vigilante 24/7.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ SLIDE 2: SISTEMA XP ═══════════ -->
-<section class="slide s-xp" id="s2" data-name="Sistema XP">
+<!-- ═══════════ SLIDE 2: GAMIFICACION ═══════════ -->
+<section class="slide s-gam" id="s2" data-name="Gamificacion">
   <div class="slide-inner">
-    <div class="tag r">La maquina de comportamiento</div>
-    <h2 class="title r d1">Cada accion tiene un valor.<br>Los XP se <span style="color:var(--eco-light)">canjean por galones</span>.</h2>
-    <p class="sub r d2">El conductor gana puntos por buen comportamiento y los pierde por cancelaciones. Al final del mes, canjea en Terpel. La economia se autorregula.</p>
+    <div class="tag r">El sistema de gamificacion</div>
+    <h2 class="title r d1">Anillos, ligas, misiones —<br>cada accion <span style="color:var(--eco-light)">tiene un valor</span></h2>
 
-    <div class="flow r d3">
-      <div class="flow-step"><div class="fi">&#128663;</div><div class="fn">Viaje</div><div class="fd">+10 XP</div></div>
-      <div class="flow-arrow">&#8594;</div>
-      <div class="flow-step"><div class="fi">&#127942;</div><div class="fn">Bono cazado</div><div class="fd">+100 XP</div></div>
-      <div class="flow-arrow">&#8594;</div>
-      <div class="flow-step"><div class="fi">&#9201;</div><div class="fn">Hora pico</div><div class="fd">+5 XP</div></div>
-      <div class="flow-arrow">&#8594;</div>
-      <div class="flow-step burn"><div class="fi">&#10060;</div><div class="fn" style="color:var(--terpel)">Cancelacion</div><div class="fd">-30 XP</div></div>
-      <div class="flow-arrow">&#8594;</div>
-      <div class="flow-step redeem"><div class="fi">&#9981;</div><div class="fn" style="color:var(--eco-light)">Canjear Terpel</div><div class="fd">$10 COP/XP</div></div>
+    <div class="xp-events r d2">
+      <div class="xp-ev positive"><div class="ev-icon">&#128663;</div><div class="ev-name">Viaje</div><div class="ev-xp">+10 XP</div></div>
+      <div class="xp-ev positive"><div class="ev-icon">&#127942;</div><div class="ev-name">Bono cazado</div><div class="ev-xp">+100 XP</div></div>
+      <div class="xp-ev positive"><div class="ev-icon">&#9201;</div><div class="ev-name">Hora pico</div><div class="ev-xp">+5 XP</div></div>
+      <div class="xp-ev negative"><div class="ev-icon">&#10060;</div><div class="ev-name">Cancelacion</div><div class="ev-xp">-30 XP</div></div>
+      <div class="xp-ev positive" style="border-color:rgba(139,92,246,.25)"><div class="ev-icon">&#127919;</div><div class="ev-name">Misiones</div><div class="ev-xp" style="color:var(--purple)">+50 a +5K</div></div>
     </div>
 
-    <h3 class="r d3" style="font-size:0.95rem;margin-bottom:1rem;">Liga mensual (resetea dia 1)</h3>
-    <div class="liga-row r d4">
-      <div class="liga-badge sin">SIN LIGA<span class="liga-pct">64.4%</span><span style="font-size:0.6rem">0-999 XP</span></div>
-      <div class="liga-badge bronce">BRONCE<span class="liga-pct">11.7%</span><span style="font-size:0.6rem">1K-3K XP</span></div>
-      <div class="liga-badge plata">PLATA<span class="liga-pct">8.4%</span><span style="font-size:0.6rem">3K-6K XP</span></div>
-      <div class="liga-badge oro">ORO<span class="liga-pct">0.8%</span><span style="font-size:0.6rem">6K-10K XP</span></div>
-      <div class="liga-badge diamante">DIAMANTE<span class="liga-pct">0.1%</span><span style="font-size:0.6rem">10K+ XP</span></div>
+    <h3 class="r d3" style="font-size:.9rem;margin-bottom:.75rem">Anillo de progreso — Liga mensual (resetea dia 1)</h3>
+    <div class="rings-row r d3">
+      <div class="ring-item">
+        <svg viewBox="0 0 100 100" width="85" height="85"><circle cx="50" cy="50" r="40" fill="none" stroke="#1e2638" stroke-width="5"/><circle cx="50" cy="50" r="40" fill="none" stroke="#6b7a8d" stroke-width="5" stroke-dasharray="251.3" stroke-dashoffset="213" transform="rotate(-90 50 50)"/><text x="50" y="46" text-anchor="middle" fill="#6b7a8d" font-size="12" font-weight="700" font-family="JetBrains Mono">150</text><text x="50" y="58" text-anchor="middle" fill="#6b7a8d" font-size="6">XP</text></svg>
+        <div class="ring-label" style="color:var(--muted)">Sin Liga</div><div class="ring-sub">64.4% conductores</div>
+      </div>
+      <div class="ring-item">
+        <svg viewBox="0 0 100 100" width="85" height="85"><circle cx="50" cy="50" r="40" fill="none" stroke="#1e2638" stroke-width="5"/><circle cx="50" cy="50" r="40" fill="none" stroke="#cd7f32" stroke-width="5" stroke-dasharray="251.3" stroke-dashoffset="165" transform="rotate(-90 50 50)"/><text x="50" y="46" text-anchor="middle" fill="#cd7f32" font-size="12" font-weight="700" font-family="JetBrains Mono">1,200</text><text x="50" y="58" text-anchor="middle" fill="#cd7f32" font-size="6">XP</text></svg>
+        <div class="ring-label" style="color:#cd7f32">Bronce</div><div class="ring-sub">11.7% conductores</div>
+      </div>
+      <div class="ring-item">
+        <svg viewBox="0 0 100 100" width="85" height="85"><circle cx="50" cy="50" r="40" fill="none" stroke="#1e2638" stroke-width="5"/><circle cx="50" cy="50" r="40" fill="none" stroke="#c0c0c0" stroke-width="5" stroke-dasharray="251.3" stroke-dashoffset="90" transform="rotate(-90 50 50)"/><text x="50" y="46" text-anchor="middle" fill="#c0c0c0" font-size="12" font-weight="700" font-family="JetBrains Mono">3,500</text><text x="50" y="58" text-anchor="middle" fill="#c0c0c0" font-size="6">XP</text></svg>
+        <div class="ring-label" style="color:#c0c0c0">Plata</div><div class="ring-sub">8.4% conductores</div>
+      </div>
+      <div class="ring-item">
+        <svg viewBox="0 0 100 100" width="85" height="85"><circle cx="50" cy="50" r="40" fill="none" stroke="#1e2638" stroke-width="5"/><circle cx="50" cy="50" r="40" fill="none" stroke="#ffd700" stroke-width="5" stroke-dasharray="251.3" stroke-dashoffset="40" transform="rotate(-90 50 50)"/><text x="50" y="46" text-anchor="middle" fill="#ffd700" font-size="12" font-weight="700" font-family="JetBrains Mono">8,500</text><text x="50" y="58" text-anchor="middle" fill="#ffd700" font-size="6">XP</text></svg>
+        <div class="ring-label" style="color:#ffd700">Oro</div><div class="ring-sub">0.8% conductores</div>
+      </div>
+      <div class="ring-item">
+        <svg viewBox="0 0 100 100" width="85" height="85"><circle cx="50" cy="50" r="40" fill="none" stroke="#1e2638" stroke-width="5"/><circle cx="50" cy="50" r="40" fill="none" stroke="#b9f2ff" stroke-width="5" stroke-dasharray="251.3" stroke-dashoffset="10" transform="rotate(-90 50 50)"/><text x="50" y="46" text-anchor="middle" fill="#b9f2ff" font-size="12" font-weight="700" font-family="JetBrains Mono">12K+</text><text x="50" y="58" text-anchor="middle" fill="#b9f2ff" font-size="6">XP</text></svg>
+        <div class="ring-label" style="color:#b9f2ff">Diamante</div><div class="ring-sub">0.1% — solo 5</div>
+      </div>
     </div>
-    <p class="r d5" style="color:var(--muted);font-size:0.82rem;margin-top:1.5rem;">&#128293; Tasa de quema natural: 31.7% — las cancelaciones absorben un tercio de la emision. La moneda se autorregula.</p>
+
+    <div class="mission-card r d4">
+      <div class="mc-badge">PROXIMAMENTE</div>
+      <div><b style="font-size:.88rem">Misiones</b> — retos semanales que multiplican engagement: "50 viajes esta semana" (+500 XP), "0 cancelaciones 7 dias" (+200 XP), "Caza 10 bonos" (+1,000 XP). Activacion post-piloto Terpel.</div>
+    </div>
+
+    <p class="r d5" style="color:var(--muted);font-size:.8rem;margin-top:1.25rem">&#128293; Tasa de quema natural: 31.7% — las cancelaciones absorben un tercio de la emision. La moneda se autorregula sin intervencion.</p>
   </div>
 </section>
 
@@ -324,7 +335,7 @@ body { font-family: 'Manrope', system-ui, sans-serif; background: var(--bg); col
     <div class="tag r">Los datos hablan</div>
     <h2 class="title r d1">12 meses de datos reales — BigQuery</h2>
 
-    <div class="grid g4 r d2" style="margin-bottom:1.5rem;">
+    <div class="grid g4 r d2" style="margin-bottom:1.5rem">
       <div class="kpi"><div class="kv gold">680</div><div class="kl">Promedio XP/mes</div><div class="ks">= $6,800 COP</div></div>
       <div class="kpi"><div class="kv blue">230</div><div class="kl">Mediana mensual</div><div class="ks">50% gana menos</div></div>
       <div class="kpi"><div class="kv red">0.2%</div><div class="kl">Supera 5,000 XP</div><div class="ks">Solo 7 de 3,205</div></div>
@@ -332,13 +343,13 @@ body { font-family: 'Manrope', system-ui, sans-serif; background: var(--bg); col
     </div>
 
     <div class="chart-box r d3">
-      <h3>XP Canjeable Promedio por Conductor — Jun 2025 a May 2026</h3>
+      <h3>XP Canjeable por Conductor — Jun 2025 a May 2026</h3>
       <div class="chart-wrap"><canvas id="chartXP"></canvas></div>
     </div>
 
-    <p class="r d4" style="color:var(--muted);font-size:0.82rem;margin-top:1.25rem;text-align:center;">
-      Dato clave: el conductor record gano 26,060 XP en agosto 2025 (499 bonos + 111 viajes + 0 cancelaciones). Costo: $260K COP = ~5 galones. Ese conductor genero &gt;$3M COP en comisiones.
-    </p>
+    <div class="insight r d4" style="margin-top:1.5rem">
+      <b>Conductor record:</b> 26,060 XP en agosto 2025 (499 bonos + 111 viajes + 0 cancelaciones). Costo para Terpel: $260,600 COP = ~5 galones. Ese conductor genero &gt;$3M COP en comisiones para ZAZ ese mes. <em>Le devolvemos ~8% en combustible.</em>
+    </div>
   </div>
 </section>
 
@@ -346,8 +357,8 @@ body { font-family: 'Manrope', system-ui, sans-serif; background: var(--bg); col
 <section class="slide s-guard" id="s4" data-name="Score Guardian">
   <div class="slide-inner">
     <div class="tag r">Score Guardian — El cerebro</div>
-    <h2 class="title r d1">Cada conductor tiene un perfil de comportamiento</h2>
-    <p class="sub r d2">Score de 0-100 basado en 6 metricas. Se actualiza 6 veces al dia. Kill switch defensivo ante anomalias. Alertas Telegram en tiempo real.</p>
+    <h2 class="title r d1">Gobernanza en tiempo real sobre cada conductor</h2>
+    <p class="sub r d2">Score de 0-100 basado en 6 metricas. Se actualiza 6 veces al dia. Kill switch defensivo ante anomalias.</p>
 
     <div class="tier-row r d3">
       <div class="tier t5"><div class="tn">LEYENDA</div><div class="tc">166</div><div class="tl">65+ pts | -$5K</div></div>
@@ -357,55 +368,36 @@ body { font-family: 'Manrope', system-ui, sans-serif; background: var(--bg); col
       <div class="tier t1"><div class="tn">APRENDIZ</div><div class="tc">65,949</div><div class="tl">0-19 pts | -$1K</div></div>
     </div>
 
-    <h3 class="r d3" style="font-size:0.9rem;margin-bottom:0.75rem;">6 componentes del score</h3>
     <div class="comp-grid r d4">
-      <div class="comp"><b>Actividad</b> Viajes completados</div>
-      <div class="comp"><b>Bonos</b> Bonos cazados $</div>
-      <div class="comp"><b>Calidad</b> Rating promedio</div>
-      <div class="comp"><b>Riesgo</b> % cobro digital</div>
-      <div class="comp"><b>Horas Pico</b> Trabajo en demanda</div>
-      <div class="comp"><b>Lealtad</b> Meses de antiguedad</div>
+      <div class="comp"><b>Actividad</b>Viajes completados</div>
+      <div class="comp"><b>Bonos</b>Bonos cazados $</div>
+      <div class="comp"><b>Calidad</b>Rating promedio</div>
+      <div class="comp"><b>Riesgo</b>% cobro digital</div>
+      <div class="comp"><b>Horas Pico</b>Trabajo en demanda</div>
+      <div class="comp"><b>Lealtad</b>Antiguedad meses</div>
     </div>
 
-    <p class="r d5" style="color:var(--muted);font-size:0.82rem;margin-top:1.25rem;">
-      Antiguedad promedio: 11.9 meses. 81% lleva &gt;6 meses. 51% lleva &gt;1 ano. Estos NO son conductores pasajeros — son una flota comprometida.
-    </p>
+    <div class="grid g3 r d5" style="margin-top:1.25rem">
+      <div class="kpi"><div class="kv blue">81.3%</div><div class="kl">Lleva &gt;6 meses</div></div>
+      <div class="kpi"><div class="kv purple">50.8%</div><div class="kl">Lleva &gt;1 ano</div></div>
+      <div class="kpi"><div class="kv green">513</div><div class="kl">Elite (Leyenda+Experto)</div></div>
+    </div>
   </div>
 </section>
 
-<!-- ═══════════ SLIDE 5: LA ALIANZA ═══════════ -->
-<section class="slide s-alianza" id="s5" data-name="La Alianza">
+<!-- ═══════════ SLIDE 5: TOPES DE SEGURIDAD ═══════════ -->
+<section class="slide s-safe" id="s5" data-name="Seguridad">
   <div class="slide-inner">
-    <div class="tag r">La propuesta</div>
-    <h2 class="title r d1">XP verificados <span style="color:var(--eco-light)">&#8594;</span> Galones Terpel</h2>
-    <p class="sub r d2">Terpel no paga por marketing masivo. Paga solo por comportamiento verificado en BigQuery. Cada peso invertido tiene trazabilidad completa.</p>
+    <div class="tag r">Topes de seguridad</div>
+    <h2 class="title r d1">5 capas de proteccion<br>para <span style="color:var(--eco-light)">cuidar la inversion</span></h2>
+    <p class="sub r d2">Cada peso que Terpel invierte esta protegido por multiples capas de control automatizado. No hay sorpresas.</p>
 
-    <div class="mech-row r d3">
-      <div class="mech-step"><div class="mn">1,000 XP</div><div class="md">Conductor gana en el mes</div></div>
-      <div class="mech-arr">&#8594;</div>
-      <div class="mech-step"><div class="mn">$10 COP/XP</div><div class="md">Ratio de conversion</div></div>
-      <div class="mech-arr">&#8594;</div>
-      <div class="mech-step"><div class="mn">$10,000</div><div class="md">Descuento en Terpel</div></div>
-      <div class="mech-arr">&#8594;</div>
-      <div class="mech-step"><div class="mn" style="color:var(--eco-light)">0.63 gal</div><div class="md">A $15,800/gal promedio</div></div>
-    </div>
-
-    <div class="win-grid r d4">
-      <div class="win-card">
-        <div class="wt c-terpel">TERPEL GANA</div>
-        <h3>204,840 galones/mes de volumen direccionado</h3>
-        <p>Canal exclusivo de fidelizacion digital con conductores profesionales. Costo por galon incentivado: $49 COP (0.3% del precio). Sin pauta, sin cupones fisicos.</p>
-      </div>
-      <div class="win-card">
-        <div class="wt c-driver">CONDUCTOR GANA</div>
-        <h3>Combustible gratis por trabajar bien</h3>
-        <p>Por primera vez, buen comportamiento = beneficio tangible. La mediana gana $2,300 COP/mes. El top 5% puede ganar hasta $25,000 COP/mes. Motivacion que se siente.</p>
-      </div>
-      <div class="win-card">
-        <div class="wt c-zaz">ZAZ GANA</div>
-        <h3>Retencion y productividad de flota</h3>
-        <p>Conductores mas activos, mejor calificados, con menos cancelaciones. El incentivo de Terpel es el motor de fidelizacion que completa nuestro ecosistema.</p>
-      </div>
+    <div class="shield-grid r d3">
+      <div class="shield"><div class="shield-num">1</div><div><h4>Reset mensual</h4><p>XP no se acumula. Resetea el dia 1 de cada mes. Imposible guardar puntos para un canje masivo.</p></div></div>
+      <div class="shield"><div class="shield-num">2</div><div><h4>Quema natural — 31.7%</h4><p>Cada cancelacion quema -30 XP. Un tercio de toda la emision se destruye automaticamente. La moneda se deflaciona sola.</p></div></div>
+      <div class="shield"><div class="shield-num">3</div><div><h4>Distribucion autoregulada</h4><p>Solo 0.9% de conductores alcanza Oro o Diamante. El 64% no llega ni a Bronce. La curva de Pareto protege el presupuesto.</p></div></div>
+      <div class="shield"><div class="shield-num">4</div><div><h4>Techo presupuestal — $9.5M/mes</h4><p>Limite maximo hardcoded. El costo real proyectado es $5.1M — hay 46% de margen de seguridad entre costo y techo.</p></div></div>
+      <div class="shield"><div class="shield-num">5</div><div><h4>Kill Switch automatico</h4><p>Score Guardian detecta anomalias (fraude, bots, inflacion artificial) y detiene el sistema automaticamente con alerta Telegram.</p></div></div>
     </div>
   </div>
 </section>
@@ -414,81 +406,104 @@ body { font-family: 'Manrope', system-ui, sans-serif; background: var(--bg); col
 <section class="slide s-roi" id="s6" data-name="Inversion">
   <div class="slide-inner">
     <div class="tag r">Los numeros del CFO</div>
-    <h2 class="title r d1">Inversion controlada — margen garantizado</h2>
+    <h2 class="title r d1">Inversion controlada — retorno verificable</h2>
 
     <div class="cost-vs r d2">
-      <div class="cost-box real">
-        <div class="cl">Costo real proyectado</div>
-        <div class="cv">$5.1M</div>
-        <div class="cd">COP / mes<br>50% tasa de canje</div>
-      </div>
+      <div class="cost-box real"><div class="cl">Costo real proyectado</div><div class="cv">$5.1M</div><div class="cd">COP/mes — 50% tasa de canje</div></div>
       <div class="cost-sep">vs</div>
-      <div class="cost-box cap">
-        <div class="cl">Techo presupuesto</div>
-        <div class="cv">$9.5M</div>
-        <div class="cd">COP / mes<br>Maximo acordado</div>
-      </div>
+      <div class="cost-box cap"><div class="cl">Techo presupuesto</div><div class="cv">$9.5M</div><div class="cd">COP/mes — maximo</div></div>
     </div>
 
     <div class="margin-bar r d3">
-      <h4>Margen de seguridad: 46% entre costo real y techo</h4>
-      <div class="bar-track">
-        <div class="bar-fill" id="marginFill" style="width:0%;">$5.1M (real)</div>
-        <div class="bar-cap">$9.5M (techo)</div>
-      </div>
+      <h4>Margen de seguridad: 46%</h4>
+      <div class="bar-track"><div class="bar-fill" id="marginFill" style="width:0%">$5.1M (real)</div><div class="bar-cap">$9.5M (techo)</div></div>
     </div>
 
     <div class="grid g4 r d4">
-      <div class="kpi"><div class="kv gold">$147</div><div class="kl">COP / conductor / mes</div><div class="ks">Practicamente cero</div></div>
+      <div class="kpi"><div class="kv gold">$147</div><div class="kl">COP / conductor / mes</div><div class="ks">Costo fidelizacion</div></div>
       <div class="kpi"><div class="kv green">$49</div><div class="kl">COP / galon incentivado</div><div class="ks">0.3% del precio</div></div>
-      <div class="kpi"><div class="kv blue">16.2x</div><div class="kl">ROI conservador</div><div class="ks">5% market share gain</div></div>
+      <div class="kpi"><div class="kv blue">16.2x</div><div class="kl">ROI conservador</div><div class="ks">5% market share</div></div>
       <div class="kpi"><div class="kv purple">8.6x</div><div class="kl">CLV : CAC</div><div class="ks">Retorno por conductor</div></div>
     </div>
 
-    <p class="r d5" style="color:var(--muted);font-size:0.82rem;margin-top:1.25rem;text-align:center;">
-      Inversion anual a costo real: ~$61M COP. Volumen capturado: $38,832M COP/ano en ventas de combustible. El ROI se multiplica con escala.
-    </p>
+    <div class="proj-box r d5">
+      <h4>&#128640; Proyeccion: si Terpel activa conductores dormidos</h4>
+      <p style="font-size:.85rem;color:var(--muted);line-height:1.6;margin-bottom:.75rem">Hoy: 5,723 activos de 67,812 registrados. 62,089 conductores dormidos. Si el incentivo Terpel reactiva solo el 10%:</p>
+      <div class="grid g3">
+        <div class="kpi"><div class="kv green" style="font-size:1.4rem">+6,209</div><div class="kl">Conductores reactivados</div></div>
+        <div class="kpi"><div class="kv gold" style="font-size:1.4rem">425,970</div><div class="kl">Gal/mes (2.1x actual)</div></div>
+        <div class="kpi"><div class="kv blue" style="font-size:1.4rem">$6,730M</div><div class="kl">COP/mes en ventas</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ═══════════ SLIDE 7: SIGUIENTE PASO ═══════════ -->
-<section class="slide s-cta" id="s7" data-name="Siguiente paso">
+<!-- ═══════════ SLIDE 7: PREGUNTAS ═══════════ -->
+<section class="slide s-faq" id="s7" data-name="Preguntas">
   <div class="slide-inner">
-    <h2 class="cta-title r">
-      La infraestructura <span style="color:var(--eco-light)">esta lista</span>.<br>
-      Los datos <span style="color:var(--accent)">lo demuestran</span>.<br>
-      Solo falta <span style="color:var(--terpel)">Terpel</span>.
-    </h2>
-    <p class="cta-sub r d1">Quien controle el habito, asegura el galon exclusivo.</p>
+    <div class="tag r">Anticipando preguntas</div>
+    <h2 class="title r d1">Las preguntas dificiles<br><span style="color:var(--accent)">ya tienen respuesta</span></h2>
+
+    <div class="faq r d2">
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q"><span>Si un conductor acumula 26,000 XP y canjea todo de golpe?</span><span class="fq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">El XP es mensual y se resetea el dia 1. No se acumula. El record historico (26K XP) equivale a $260K COP = ~5 galones. Es nuestro conductor mas productivo — nos genera &gt;$3M en comisiones ese mes. Le devolvemos el 8% en galones.</div></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q"><span>Como garantizan que no se dispare el costo si crecen a 100K conductores?</span><span class="fq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">El sistema tiene techo natural: solo 0.2% supera 5K XP/mes. La mediana es 230 XP = $2,300 COP. Si escalamos 3x conductores, el costo escala linealmente pero la distribucion se mantiene. Mas conductores = mas viajes = mas comisiones = el programa se autofinancia.</div></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q"><span>Por que bajaron los XP promedio de 850 (Jul 2025) a 409 (May 2026)?</span><span class="fq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Dos razones: (1) Activamos cancelaciones -30 XP en mayo 2026 — antes no se penalizaba, ahora si. (2) Entraron conductores nuevos con menos actividad. Es saludable: la moneda XP ahora tiene quema real, evita inflacion. Es una senal de madurez del sistema.</div></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q"><span>Que pasa si un conductor hace fraude con los puntos?</span><span class="fq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Score Guardian monitorea 6 metricas en tiempo real. Un conductor fraudulento: (1) pierde 1,000 XP instantaneo, (2) su Liga baja a Bronce, (3) su limite de credito se reduce al minimo. El fraude se autocastiga — no puede canjear porque no tiene puntos.</div></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q"><span>Cual es el ROI para Terpel? Por que deberiamos poner plata?</span><span class="fq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Con $9.5M COP/mes (costo real ~$5M), Terpel accede a 67,812 conductores que tanquean 6,828 galones/dia. Eso es $3,277M COP/mes en ventas de combustible. CLV:CAC = 8.6x. Cada peso invertido genera $8.6 en fidelizacion de galones.</div></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q"><span>Por que no simplemente les dan un descuento directo en gasolina?</span><span class="fq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Porque el descuento no cambia comportamiento. El XP premia: menos cancelaciones (-30), mas viajes (+10), mas horas pico (+5), mas bonos cazados (+100). El conductor mejora su servicio para ganar galones. Terpel no regala — invierte en calidad de servicio.</div></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q"><span>Tienen contrato con Yango? Que pasa si pierden la operacion?</span><span class="fq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">ZAZ es socio operador #1 de Yango en Colombia, Peru y Venezuela. El sistema XP es propiedad de ZAZ, no de Yango. Si cambia la plataforma, los conductores siguen siendo nuestros y el programa migra. Terpel se asocia con ZAZ, no con Yango.</div></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q"><span>Como verificamos que los datos son reales y no inflados?</span><span class="fq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Toda la data vive en Google BigQuery con audit trail. Podemos dar acceso de lectura a un dashboard en tiempo real. Cada evento XP tiene timestamp, Driver_ID y fuente verificable. Invitamos a Ecopetrol a auditar la base de datos directamente.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SLIDE 8: CTA ═══════════ -->
+<section class="slide s-cta" id="s8" data-name="Siguiente paso">
+  <div class="slide-inner">
+    <h2 class="cta-title r">La infraestructura <span style="color:var(--eco-light)">esta lista</span>.<br>Los datos <span style="color:var(--accent)">lo demuestran</span>.<br>Solo falta <span style="color:var(--terpel)">Terpel</span>.</h2>
+    <p class="cta-sub r d1">Quien controle el habito, asegura el galon exclusivo.<br>La pregunta no es si funciona. La pregunta es <b>quien lo asegura primero</b>.</p>
 
     <div class="phase-row r d2">
-      <div class="phase">
-        <div class="pn">Fase 1 — Piloto (30 dias)</div>
-        <h4>500 conductores top</h4>
-        <p>Score Guardian Leyenda + Experto. Medimos canje real vs proyeccion. Dashboard compartido con Terpel en tiempo real.</p>
-      </div>
-      <div class="phase">
-        <div class="pn">Fase 2 — Escala</div>
-        <h4>67,812 conductores</h4>
-        <p>Abrir a toda la flota Colombia. Ajustar ratio si es necesario. Integrar con app Terpel. Optimizar por zona y horario.</p>
-      </div>
-      <div class="phase">
-        <div class="pn">Fase 3 — Expansion</div>
-        <h4>3 paises + aliados</h4>
-        <p>Peru (5 flotas, PEN). Venezuela (USD). Otros aliados: lubricantes, llantas, seguros. Ecosistema completo.</p>
-      </div>
+      <div class="phase"><div class="pn">Fase 1 — Piloto (30 dias)</div><h4>500 conductores top</h4><p>Leyenda + Experto. Canje real vs proyeccion. Dashboard compartido Terpel en tiempo real.</p></div>
+      <div class="phase"><div class="pn">Fase 2 — Escala</div><h4>67,812 conductores</h4><p>Toda la flota Colombia. Ajustar ratio. Integracion app Terpel. Misiones con marca Terpel.</p></div>
+      <div class="phase"><div class="pn">Fase 3 — Expansion</div><h4>3 paises + aliados</h4><p>Peru (PEN). Venezuela (USD). Lubricantes, llantas, seguros. Ecosistema completo.</p></div>
     </div>
 
     <button class="cta-btn r d3" onclick="toggleChat()">&#129302; Preguntale a nuestra IA — tiene toda la data en vivo</button>
+    <p class="r d4" style="color:var(--muted);font-size:.75rem;margin-top:1rem">Gemini 2.5 Flash con acceso a 12 meses de datos BigQuery de 67,812 conductores</p>
   </div>
 </section>
 
-<!-- ═══ CHAT WIDGET ═══ -->
+<!-- ═══ CHAT ═══ -->
 <button class="chat-fab" id="chatFab" onclick="toggleChat()">&#129302;</button>
 <div class="chat-panel" id="chatPanel">
-  <div class="chat-hdr"><div class="pulse"></div>ZAZ IA — Datos en vivo | Gemini 2.5 Flash</div>
+  <div class="chat-hdr"><div class="pulse"></div>ZAZ IA — Datos en vivo | Gemini 2.5</div>
   <div class="chat-msgs" id="chatMsgs">
-    <div class="msg ai">Bienvenidos. Tengo acceso a 12 meses de datos reales de 67,812 conductores en BigQuery. Pregunta sobre XP, costos, ROI, Score Guardian o infraestructura.</div>
+    <div class="msg ai">Bienvenidos. Tengo acceso a 12 meses de datos reales de 67,812 conductores. Pregunten sobre XP, costos, ROI, Score Guardian o infraestructura.</div>
   </div>
   <div class="chat-input">
     <input type="text" id="chatIn" placeholder="Escribe tu pregunta..." autocomplete="off">
@@ -496,153 +511,60 @@ body { font-family: 'Manrope', system-ui, sans-serif; background: var(--bg); col
   </div>
 </div>
 
-<!-- ═══ PRESENTER NOTES ═══ -->
 <div class="pnotes" id="pnotes"><div class="pn-label">NOTAS DEL PRESENTADOR (N para ocultar)</div><div id="pnotesText"></div></div>
 
 <script>
-const NOTES = [
-  "SLIDE 0 — Despues del video, di: \"Acaban de ver la fuga invisible. Ahora les voy a mostrar como la tapamos.\" Pausa 2 segundos. Senala los 204,840 galones. \"Ese volumen HOY no tiene direccion. Nosotros lo controlamos.\"",
-  "SLIDE 1 — Presentar ZAZ brevemente. Clave: \"No somos un simple operador de flotas. Somos una empresa de base tecnologica con IA propia.\" Mencionar: 17 flotas, LAURA, Score Guardian. No detenerse mucho — los detalles vienen despues.",
-  "SLIDE 2 — Explicar XP de forma simple: \"El conductor gana puntos por portarse bien y los pierde por portarse mal. Al final del mes, esos puntos se convierten en gasolina Terpel.\" Enfatizar: 31.7% se quema NATURALMENTE en cancelaciones. La economia se autorregula.",
-  "SLIDE 3 — Dejar que los numeros hablen. Clave: \"La mediana es 230 XP. Eso son $2,300 COP al mes. Menos de un galon. El conductor promedio gana 680 XP = $6,800 COP. El record historico es 26,060 XP — y ese conductor genero mas de $3M en comisiones para ZAZ.\"",
-  "SLIDE 4 — Score Guardian: \"Cada conductor tiene un perfil de comportamiento actualizado 6 veces al dia. Nuestros conductores no son pasajeros — el 51% lleva mas de 1 ano con nosotros.\" Senalar que los Leyenda son los mejores 166 de 67,812.",
-  "SLIDE 5 — Este es el momento de cerrar: \"Terpel no paga por publicidad masiva. Paga SOLO por comportamiento verificado en BigQuery. $49 pesos por galon incentivado — el 0.3% del precio. Es practicamente gratis.\" Mostrar Win-Win.",
-  "SLIDE 6 — Numeros del CFO: \"$147 pesos por conductor al mes. $49 pesos por galon. ROI 16.2x conservador. Y el costo real es $5.1M vs un techo de $9.5M — hay 46% de margen de seguridad.\" Si preguntan: la inversion anual real es $61M COP vs $38,832M en volumen.",
-  "SLIDE 7 — Cerrar con fuerza: \"La infraestructura esta lista. Los datos lo demuestran. Solo falta Terpel. Quien controle el habito, asegura el galon exclusivo.\" Invitar a probar el chat IA como demo. \"Haganle cualquier pregunta — tiene acceso a todos nuestros datos.\""
+const NOTES=[
+"HERO — \"Buenos dias. Somos ZAZ Conductores, el socio operador numero 1 de Yango. Lo que ven a la derecha es nuestra app — asi se ve un conductor top en tiempo real. 67,812 conductores, 3 paises, 204,840 galones al mes. Hoy venimos a hablar de como dirigir ese volumen hacia Terpel.\"",
+"IDENTIDAD — Clave: \"No somos una app de transporte. Somos una empresa de tecnologia de comportamiento.\" LEER la frase del recuadro. Enfatizar: el conductor no elige por precio, elige por habito. Y nosotros controlamos ese habito con datos.",
+"GAMIFICACION — Explicar simple: \"El conductor gana puntos por portarse bien y los pierde por portarse mal. Anillos de progreso, ligas mensuales que se resetean, y pronto misiones con marca Terpel.\" Senalar que 64% no llega ni a Bronce — HAY ESPACIO para activar con incentivo Terpel. Misiones post-piloto.",
+"DATOS — Dejar numeros hablar: \"La mediana es 230 XP = $2,300 COP = menos de 1 galon. El promedio 680 XP = $6,800. Solo 0.2% supera 5,000.\" Conductor record: 26,060 XP = 5 galones, pero ese conductor genero $3M en comisiones. Le devolvemos 8%.",
+"SCORE GUARDIAN — \"Cada conductor tiene un perfil actualizado 6 veces al dia. No son conductores pasajeros: 81% lleva mas de 6 meses, 51% mas de un ano. 513 en nuestra elite (Leyenda+Experto).\"",
+"SEGURIDAD — Este slide es para el CFO de Ecopetrol: \"5 capas protegen su inversion. Reset mensual, quema natural del 31.7%, distribucion que solo deja 0.9% arriba de Oro, techo de $9.5M, y kill switch automatico. No hay sorpresas.\"",
+"ROI — \"$147 pesos por conductor fidelizado al mes. $49 por galon incentivado = 0.3% del precio. ROI 16.2x conservador.\" PROYECCION: Si Terpel reactiva solo 10% de dormidos = volumen se duplica a 425,970 gal/mes. El incentivo no es un costo, es un catalizador de activacion.",
+"PREGUNTAS — Este slide muestra que anticipamos TODO. Hacer clic en cada pregunta para mostrar respuesta. Si alguien de Ecopetrol pregunta algo, decir: \"De hecho, ya teniamos esa preparada\" y hacer clic. Clave: la pregunta del fraude y la del descuento directo son las mas importantes.",
+"CIERRE — Con fuerza: \"La infraestructura esta lista. Los datos lo demuestran. Solo falta Terpel. La pregunta no es si funciona — la pregunta es quien lo asegura primero.\" Invitar al chat IA como demo."
 ];
 
-const slides = document.querySelectorAll('.slide');
-const navC = document.getElementById('navDots');
-const progBar = document.getElementById('progressBar');
-const counter = document.getElementById('slideCounter');
-const pnotes = document.getElementById('pnotes');
-const pnotesText = document.getElementById('pnotesText');
-let notesVisible = false;
+const slides=document.querySelectorAll('.slide');
+const navC=document.getElementById('navDots');
+const progBar=document.getElementById('progressBar');
+const counter=document.getElementById('slideCounter');
+const pnotes=document.getElementById('pnotes');
+const pnotesText=document.getElementById('pnotesText');
+let notesVisible=false;
 
-slides.forEach((s, i) => {
-  const d = document.createElement('button');
-  d.className = 'nav-dot';
-  d.innerHTML = `<span class="tip">${s.dataset.name || 'Slide '+i}</span>`;
-  d.onclick = () => s.scrollIntoView({ behavior: 'smooth' });
-  navC.appendChild(d);
-});
-const dots = document.querySelectorAll('.nav-dot');
+slides.forEach((s,i)=>{const d=document.createElement('button');d.className='nav-dot';d.innerHTML=`<span class="tip">${s.dataset.name||'Slide '+i}</span>`;d.onclick=()=>s.scrollIntoView({behavior:'smooth'});navC.appendChild(d)});
+const dots=document.querySelectorAll('.nav-dot');
 
-function getActive() {
-  let a = 0;
-  slides.forEach((s, i) => { if (s.getBoundingClientRect().top < window.innerHeight / 2) a = i; });
-  return a;
-}
+function getActive(){let a=0;slides.forEach((s,i)=>{if(s.getBoundingClientRect().top<window.innerHeight/2)a=i});return a}
+function updateNav(){const a=getActive();dots.forEach((d,i)=>d.classList.toggle('active',i===a));counter.textContent=String(a+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');const sh=document.documentElement.scrollHeight-window.innerHeight;progBar.style.width=sh>0?(window.scrollY/sh*100)+'%':'0%';if(notesVisible)pnotesText.textContent=NOTES[a]||''}
+window.addEventListener('scroll',updateNav);updateNav();
 
-function updateNav() {
-  const a = getActive();
-  dots.forEach((d, i) => d.classList.toggle('active', i === a));
-  counter.textContent = String(a + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
-  const scrollH = document.documentElement.scrollHeight - window.innerHeight;
-  progBar.style.width = scrollH > 0 ? (window.scrollY / scrollH * 100) + '%' : '0%';
-  if (notesVisible) pnotesText.textContent = NOTES[a] || '';
-}
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.12});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
 
-window.addEventListener('scroll', updateNav);
-updateNav();
+const marginObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.getElementById('marginFill').style.width='54%';marginObs.unobserve(e.target)}})},{threshold:.5});
+const mf=document.getElementById('marginFill');if(mf)marginObs.observe(mf.closest('.margin-bar'));
 
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('v'); });
-}, { threshold: 0.12 });
-document.querySelectorAll('.r').forEach(el => obs.observe(el));
+const meses=['Jun 25','Jul','Ago','Sep','Oct','Nov','Dic','Ene 26','Feb','Mar','Abr','May'];
+new Chart(document.getElementById('chartXP'),{type:'bar',data:{labels:meses,datasets:[
+{label:'Promedio XP',data:[700,850,740,747,794,842,836,687,667,496,414,409],backgroundColor:'rgba(240,165,0,.7)',borderColor:'#f0a500',borderWidth:1,borderRadius:5,order:2},
+{label:'Mediana',data:[250,300,280,280,260,260,240,190,220,180,150,110],backgroundColor:'rgba(59,130,246,.5)',borderColor:'#3b82f6',borderWidth:1,borderRadius:5,order:3},
+{label:'P95 (Top 5%)',data:[2480,3050,2510,2660,2850,3600,3470,2650,2680,1990,1670,1415],type:'line',borderColor:'#ef4444',backgroundColor:'rgba(239,68,68,.08)',borderWidth:2,pointRadius:3,tension:.3,fill:false,order:1}
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#6b7a8d',font:{family:'Manrope',size:11}}}},scales:{x:{ticks:{color:'#6b7a8d',font:{family:'Manrope',size:10}},grid:{color:'rgba(30,38,56,.5)'}},y:{ticks:{color:'#6b7a8d',font:{family:'Manrope'}},grid:{color:'rgba(30,38,56,.3)'}}}}});
 
-// Margin bar animation
-const marginObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { document.getElementById('marginFill').style.width = '54%'; marginObs.unobserve(e.target); }
-  });
-}, { threshold: 0.5 });
-const mf = document.getElementById('marginFill');
-if (mf) marginObs.observe(mf.closest('.margin-bar'));
+const CHAT_API=window.location.origin+'/chat';let chatOpen=false;
+function toggleChat(){chatOpen=!chatOpen;document.getElementById('chatPanel').classList.toggle('open',chatOpen);if(chatOpen)document.getElementById('chatIn').focus()}
+document.getElementById('chatIn').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat()}});
+async function sendChat(){const inp=document.getElementById('chatIn');const q=inp.value.trim();if(!q)return;addMsg(q,'user');inp.value='';document.getElementById('chatSendBtn').disabled=true;const t=addMsg('Consultando datos...','ai typing');try{const res=await fetch(CHAT_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q})});const data=await res.json();t.remove();addMsg(data.answer||'Error: '+(data.error||'Sin respuesta'),'ai')}catch(err){t.remove();addMsg('Error de conexion. Servidor en puerto 3099.','ai')}document.getElementById('chatSendBtn').disabled=false}
+function addMsg(text,type){const c=document.getElementById('chatMsgs');const d=document.createElement('div');d.className='msg '+type;d.textContent=text;c.appendChild(d);c.scrollTop=c.scrollHeight;return d}
 
-// Chart
-const meses = ['Jun 25','Jul','Ago','Sep','Oct','Nov','Dic','Ene 26','Feb','Mar','Abr','May'];
-const proms = [700,850,740,747,794,842,836,687,667,496,414,409];
-const meds = [250,300,280,280,260,260,240,190,220,180,150,110];
-const p95 = [2480,3050,2510,2660,2850,3600,3470,2650,2680,1990,1670,1415];
-
-new Chart(document.getElementById('chartXP'), {
-  type: 'bar',
-  data: {
-    labels: meses,
-    datasets: [
-      { label: 'Promedio XP', data: proms, backgroundColor: 'rgba(240,165,0,0.7)', borderColor: '#f0a500', borderWidth: 1, borderRadius: 5, order: 2 },
-      { label: 'Mediana', data: meds, backgroundColor: 'rgba(59,130,246,0.5)', borderColor: '#3b82f6', borderWidth: 1, borderRadius: 5, order: 3 },
-      { label: 'P95 (Top 5%)', data: p95, type: 'line', borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.08)', borderWidth: 2, pointRadius: 3, tension: 0.3, fill: false, order: 1 }
-    ]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { labels: { color: '#6b7a8d', font: { family: 'Manrope', size: 11 } } } },
-    scales: {
-      x: { ticks: { color: '#6b7a8d', font: { family: 'Manrope', size: 10 } }, grid: { color: 'rgba(30,38,56,0.5)' } },
-      y: { ticks: { color: '#6b7a8d', font: { family: 'Manrope' } }, grid: { color: 'rgba(30,38,56,0.3)' } }
-    }
-  }
-});
-
-// Chat
-const CHAT_API = window.location.origin + '/chat';
-let chatOpen = false;
-
-function toggleChat() {
-  chatOpen = !chatOpen;
-  document.getElementById('chatPanel').classList.toggle('open', chatOpen);
-  if (chatOpen) document.getElementById('chatIn').focus();
-}
-
-document.getElementById('chatIn').addEventListener('keydown', e => {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
-});
-
-async function sendChat() {
-  const inp = document.getElementById('chatIn');
-  const q = inp.value.trim();
-  if (!q) return;
-  addMsg(q, 'user');
-  inp.value = '';
-  document.getElementById('chatSendBtn').disabled = true;
-  const t = addMsg('Consultando datos...', 'ai typing');
-  try {
-    const res = await fetch(CHAT_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ question: q }) });
-    const data = await res.json();
-    t.remove();
-    addMsg(data.answer || 'Error: ' + (data.error || 'Sin respuesta'), 'ai');
-  } catch (err) {
-    t.remove();
-    addMsg('Error de conexion. Verifica que el servidor esta activo en puerto 3099.', 'ai');
-  }
-  document.getElementById('chatSendBtn').disabled = false;
-}
-
-function addMsg(text, type) {
-  const c = document.getElementById('chatMsgs');
-  const d = document.createElement('div');
-  d.className = 'msg ' + type;
-  d.textContent = text;
-  c.appendChild(d);
-  c.scrollTop = c.scrollHeight;
-  return d;
-}
-
-// Keyboard
-document.addEventListener('keydown', e => {
-  if (e.key === 'n' || e.key === 'N') {
-    if (document.activeElement.tagName === 'INPUT') return;
-    notesVisible = !notesVisible;
-    pnotes.classList.toggle('show', notesVisible);
-    if (notesVisible) pnotesText.textContent = NOTES[getActive()] || '';
-    return;
-  }
-  if (chatOpen && e.target.tagName === 'INPUT') return;
-  const a = getActive();
-  if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); if (a + 1 < slides.length) slides[a + 1].scrollIntoView({ behavior: 'smooth' }); }
-  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); if (a > 0) slides[a - 1].scrollIntoView({ behavior: 'smooth' }); }
+document.addEventListener('keydown',e=>{
+if((e.key==='n'||e.key==='N')&&document.activeElement.tagName!=='INPUT'){notesVisible=!notesVisible;pnotes.classList.toggle('show',notesVisible);if(notesVisible)pnotesText.textContent=NOTES[getActive()]||'';return}
+if(chatOpen&&e.target.tagName==='INPUT')return;const a=getActive();
+if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();if(a+1<slides.length)slides[a+1].scrollIntoView({behavior:'smooth'})}
+if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(a>0)slides[a-1].scrollIntoView({behavior:'smooth'})}
 });
 </script>
 </body>
