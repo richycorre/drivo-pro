@@ -213,7 +213,19 @@ body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(-
 <div class="nav-dots" id="navDots"></div>
 <div class="pnotes-hint">Pulsa N para notas del presentador</div>
 
-<!-- ═══════════ SLIDE 0: HERO ═══════════ -->
+<!-- ═══════════ SLIDE 0: VIDEO ═══════════ -->
+<section class="slide" id="sv" data-name="Video" style="background:var(--bg)">
+  <div class="slide-inner" style="text-align:center">
+    <div class="tag r">ZAZ CONDUCTORES × TERPEL</div>
+    <h2 class="title r d1" style="margin-bottom:2rem;font-size:clamp(1.5rem,3vw,2.2rem)">La Fuga Invisible</h2>
+    <div class="r d2" style="position:relative;padding-bottom:56.25%;height:0;max-width:880px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(240,165,0,.08);border:1px solid var(--border)">
+      <iframe src="https://www.youtube.com/embed/dXrwFc1G64w?rel=0&modestbranding=1" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none" allow="autoplay;encrypted-media;fullscreen" allowfullscreen></iframe>
+    </div>
+    <p class="r d3" style="color:var(--muted);font-size:.78rem;margin-top:1.5rem">Reproducir video — luego deslizar para la presentacion completa &#8595;</p>
+  </div>
+</section>
+
+<!-- ═══════════ SLIDE 1: HERO ═══════════ -->
 <section class="slide s-hero" id="s0" data-name="ZAZ × Terpel">
   <div class="slide-inner">
     <div class="hero-row">
@@ -515,6 +527,7 @@ body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(-
 
 <script>
 const NOTES=[
+"VIDEO — Apagar luces. Darle play al video. Dejar que termine. Cuando termine, di: \"Acaban de ver la fuga invisible. Ahora les vamos a mostrar los datos de como la tapamos.\" Pausa 2 segundos. Deslizar al siguiente slide.",
 "HERO — \"Buenos dias. Somos ZAZ Conductores, el socio operador numero 1 de Yango. Lo que ven a la derecha es nuestra app — asi se ve un conductor top en tiempo real. 67,812 conductores, 3 paises, 204,840 galones al mes. Hoy venimos a hablar de como dirigir ese volumen hacia Terpel.\"",
 "IDENTIDAD — Clave: \"No somos una app de transporte. Somos una empresa de tecnologia de comportamiento.\" LEER la frase del recuadro. Enfatizar: el conductor no elige por precio, elige por habito. Y nosotros controlamos ese habito con datos.",
 "GAMIFICACION — Explicar simple: \"El conductor gana puntos por portarse bien y los pierde por portarse mal. Anillos de progreso, ligas mensuales que se resetean, y pronto misiones con marca Terpel.\" Senalar que 64% no llega ni a Bronce — HAY ESPACIO para activar con incentivo Terpel. Misiones post-piloto.",
